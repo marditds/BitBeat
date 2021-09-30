@@ -1,0 +1,14 @@
+.homeDiv {
+  top: 20;
+  position: absolute;
+  margin: 200px auto;
+  width: 100%;
+  background-color: #d8e1e7;
+}
+
+.homeDiv h3,
+h5,
+p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
