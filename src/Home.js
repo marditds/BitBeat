@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./HOMECSS.css";
 import { itemsInfo } from "./HomeItemsInfo";
 
+//test comment
+
 const HomeItems = ({ title, name, info }) => {
   return (
     <div>
