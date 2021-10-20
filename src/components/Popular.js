@@ -88,6 +88,9 @@ const DropButtons = () => {
           <Dropdown.Item eventKey="This Month" href="#" id="dropdownMenuCSS">
             This Month
           </Dropdown.Item>
+          <Dropdown.Item eventKey="This Year" href="#" id="dropdownMenuCSS">
+            This Year
+          </Dropdown.Item>
         </DropdownButton>
       </Col>
     </div>
