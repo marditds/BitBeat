@@ -13,7 +13,7 @@ body {
 }
 
 #navLink {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Epilogue;
   font-size: 12pt;
   color: #f0a500;
 }
@@ -41,11 +41,13 @@ body {
 }
 
 #sellers {
+  font-family: Epilogue;
   color: #f0a500;
 }
 
 .viewAll {
   font-size: 11pt;
+  font-family: Epilogue;
   text-align: center;
   border: #334756 thin solid;
   border-radius: 20px;
@@ -68,6 +70,7 @@ body {
 #dropdownToggleCSS {
   width: 130px;
   text-align: left;
+  font-family: Epilogue;
   color: #f0a500;
   background-color: #334756;
   border: #334756 thin solid;
@@ -81,6 +84,7 @@ body {
 }
 
 #dropdownMenuCSS {
+  font-family: Epilogue;
   color: #334756;
   transition: 0.3s;
 }
@@ -98,12 +102,17 @@ body {
 
 .popCSS {
   transition: 0.3s;
-  color: #f0a500;
+  color: #fff;
+
   background-color: #334756;
   border: #334756 thin solid;
   border-radius: 4px;
   margin-top: 10px;
   padding: 10px;
+}
+
+.popCSS h6 {
+  font-family: Epilogue;
 }
 
 .popCSS:hover {
@@ -121,6 +130,7 @@ body {
 }
 
 #explore {
+  font-family: Epilogue;
   color: #f0a500;
 }
 
@@ -131,6 +141,7 @@ body {
   background-color: #334756;
   border: #f0a500 thin solid;
   box-shadow: none;
+  font-family: Epilogue;
 }
 
 #expdropdownToggleCSS:hover {
@@ -165,7 +176,7 @@ body {
 
 .expCSS {
   transition: 0.3s;
-  color: #f0a500;
+  color: #fff;
   background-color: #082032;
   margin-top: 10px;
   padding: 10px;
@@ -174,6 +185,7 @@ body {
 }
 
 .expInfo h6 {
+  font-family: Epilogue;
   margin-bottom: 0px;
 }
 
@@ -192,6 +204,7 @@ body {
 
 .seeMore {
   font-size: 11pt;
+  font-family: Epilogue;
   text-align: center;
   border: #f0a500 thin solid;
   border-radius: 20px;
@@ -211,7 +224,7 @@ body {
 }
 
 #footLink {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Epilogue;
   font-size: 12pt;
   color: #f0a500;
 }
