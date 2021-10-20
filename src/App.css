@@ -1,38 +1,278 @@
-.App {
+html {
+  background-color: #334756;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+#navbar {
+  /* background-color: #334756; */
+  background-color: #082032;
+  /* background-color: #000; */
+}
+
+#navLink {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  color: #f0a500;
+}
+
+#navLink:hover {
+  color: #334756;
+}
+
+.wallet {
+  font-size: 11pt;
   text-align: center;
+  border: orange thin solid;
+  border-radius: 15px;
+  padding: 10px;
+  transition: 0.3s;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wallet:hover {
+  transition: 0.3s;
+  border: #334756 thin solid;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.mainPic {
+  width: 100%;
+}
+
+#sellers {
+  color: #f0a500;
+}
+
+.viewAll {
+  font-size: 11pt;
+  text-align: center;
+  border: #334756 thin solid;
+  border-radius: 20px;
+  margin-right: 10px;
+  padding: 6px 20px 6px 20px;
+  color: #334756;
+  color: #f0a500;
+  background-color: #334756;
+  transition: 0.3s;
+}
+
+.viewAll:hover {
+  transition: 0.3s;
+  color: #f0a500;
+  color: #334756;
+  background-color: #334756;
+  background-color: #f0a500;
+}
+
+#dropdownToggleCSS {
+  width: 130px;
+  text-align: left;
+  color: #f0a500;
+  background-color: #334756;
+  border: #334756 thin solid;
+  box-shadow: none;
+}
+
+#dropdownToggleCSS:hover {
+  transition: 0.3s;
+  color: #334756;
+  background-color: #f0a500;
+}
+
+#dropdownMenuCSS {
+  color: #334756;
+  transition: 0.3s;
+}
+
+#dropdownMenuCSS:active {
+  color: #334756;
+  background-color: #f0a500;
+}
+
+#dropdownMenuCSS:hover {
+  transition: 0.3s;
+  color: #334756;
+  background-color: #f0a500;
+}
+
+.popCSS {
+  transition: 0.3s;
+  color: #f0a500;
+  background-color: #334756;
+  border: #334756 thin solid;
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.popCSS:hover {
+  transition: 0.3s;
+  background-color: #334756;
+  border: #f0a500 thin solid;
+  color: #f0a500;
+  padding-inline-end: 15px;
+  /* box-shadow: 6px 6px 0px 0px #f0a500; */
+}
+
+.popImg {
+  float: left;
+  height: 80px;
+}
+
+#explore {
+  color: #f0a500;
+}
+
+#expdropdownToggleCSS {
+  width: 110px;
+  text-align: left;
+  color: #f0a500;
+  background-color: #334756;
+  border: #f0a500 thin solid;
+  box-shadow: none;
+}
+
+#expdropdownToggleCSS:hover {
+  transition: 0.3s;
+  color: #f0a500;
+  border: #334756 thin solid;
+  background-color: #082032;
+}
+
+.expviewAll {
+  font-size: 11pt;
+  text-align: center;
+  border: #f0a500 thin solid;
+  border-radius: 20px;
+  padding: 6px 20px 6px 20px;
+  color: #334756;
+  color: #f0a500;
+  background-color: #334756;
+  transition: 0.3s;
+}
+
+.expviewAll:hover {
+  font-size: 11pt;
+  text-align: center;
+  border: #082032 thin solid;
+  border-radius: 20px;
+  padding: 6px 20px 6px 20px;
+  color: #f0a500;
+  background-color: #082032;
+  transition: 0.3s;
+}
+
+.expCSS {
+  transition: 0.3s;
+  color: #f0a500;
+  background-color: #082032;
+  margin-top: 10px;
+  padding: 10px;
+  border: #334756 thin solid;
+  border-radius: 3px;
+}
+
+.expInfo h6 {
+  margin-bottom: 0px;
+}
+
+.expImg {
+  border-radius: 3px;
+  padding-bottom: 20px;
+}
+
+.expCSS:hover {
+  transition: 0.3s;
+  color: #082032;
+  background-color: #f0a500;
+  border: #334756 thin solid;
+  /* box-shadow: 7px 7px 0px 0px #082032; */
+}
+
+.seeMore {
+  font-size: 11pt;
+  text-align: center;
+  border: #f0a500 thin solid;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  color: #f0a500;
+  transition: 0.3s;
+}
+
+.seeMore:hover {
+  transition: 0.3s;
+  color: #f0a500;
+  background-color: #082032;
+  border: #082032 thin solid;
+}
+
+#footLink {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+  color: #f0a500;
+}
+
+#footLink:hover {
+  color: #082032;
+}
+
+#profPic {
+  float: right;
+  width: 105px;
+  height: 105px;
+}
+
+@media (max-width: 411px) {
+  .viewAll {
+    width: max-content;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 414px) {
+  .popImg {
+    height: 40px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 490px) {
+  .viewAll {
+    width: max-content;
+  }
+}
+
+@media (max-width: 575px) {
+  .expImg {
+    width: 300px;
+  }
+}
+
+@media (max-width: 990px) {
+  .expviewAll {
+    width: max-content;
+  }
+}
+
+@media (max-width: 992px) {
+  .popImg {
+    clear: right;
+  }
+  .popInfo {
+    clear: left;
+  }
+}
+
+@media (max-width: 1011px) {
+  .wallet {
+    width: max-content;
+  }
+}
+
+@media (min-width: 1200px) {
+  .popImg {
+    height: 50px;
   }
 }
