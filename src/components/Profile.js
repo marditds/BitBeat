@@ -11,7 +11,7 @@ const Creations = () => {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
     setItemCount(User.itemCount);
   }
-  useEffect(setCreationCount);
+  useEffect(setCreationCount, []);
   return <div>{itemCount}</div>;
 };
 
@@ -36,9 +36,9 @@ const Profile = () => {
     setPic(profImages(User.src).default);
   }
 
-  useEffect(setPersonName);
-  useEffect(setPersonSold);
-  useEffect(setPersonPic);
+  useEffect(setPersonName, []);
+  useEffect(setPersonSold, []);
+  useEffect(setPersonPic, []);
 
   return (
     <div style={{ backgroundColor: "red" }}>
@@ -57,7 +57,6 @@ const Profile = () => {
           {/* </Row>
         <Row> */}
           <ProfileTabs />
-          <Creations />
         </Row>
       </Container>
     </div>
@@ -81,6 +80,7 @@ const ProfileTabs = () => {
     >
       <Tab eventKey="Creations" title="Creations">
         <p>This is the Creations tab.</p>
+        <Creations />
       </Tab>
       <Tab eventKey="Collections" title="Collections">
         <p>This is the Collections tab.</p>
