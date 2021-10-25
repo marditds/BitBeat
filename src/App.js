@@ -12,10 +12,11 @@ function App() {
     <div className="App" style={{ backgroundColor: "#082032" }}>
       <BrowserRouter>
         <NavBar />
+
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/discover" component={Home} />
-          <Route exact path="/howitworks" component={Home} /> */}
+          {/* <Route exact path="/discover" component={Home} /> 
+          <Route exact path="/" component={Home} />*/}
           <Route exact path="/profile/:id" children={<Profile />} />
           <Route exact path="*" component={Error} />
         </Switch>

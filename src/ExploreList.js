@@ -1,4 +1,5 @@
 export const itemImages = require.context("./", true);
+export const itemSounds = require.context("./", true);
 
 export const exploreInfo = [
   {
@@ -8,6 +9,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 2,
@@ -16,6 +18,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 3,
@@ -24,6 +27,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 4,
@@ -32,6 +36,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 5,
@@ -40,6 +45,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 6,
@@ -48,6 +54,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 7,
@@ -56,6 +63,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 8,
@@ -64,6 +72,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 9,
@@ -72,6 +81,7 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
   {
     id: 10,
@@ -80,5 +90,6 @@ export const exploreInfo = [
     price: "0.028 ETH",
     bid: "0.12 ETH",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
   },
 ];

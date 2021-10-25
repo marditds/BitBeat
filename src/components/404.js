@@ -6,7 +6,9 @@ export const Error = () => {
       className="d-flex justify-content-center"
       style={{ marginTop: "150px" }}
     >
-      <h2 style={{ color: "#FFF" }}>THIS PAGE IS NONEXISTENT.</h2>
+      <h2 id="error" style={{ color: "#FFF" }}>
+        ERROR 404 - THIS PAGE IS NONEXISTENT.
+      </h2>
     </div>
   );
 };

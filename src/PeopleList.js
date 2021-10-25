@@ -6,6 +6,7 @@ export const peopleInfo = [
     name: "John Doe1",
     sold: "1000",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 4,
   },
   {
@@ -13,6 +14,7 @@ export const peopleInfo = [
     name: "John Doe2",
     sold: "1500",
     src: "./profPic2.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 12,
   },
   {
@@ -20,6 +22,7 @@ export const peopleInfo = [
     name: "John Doe3",
     sold: "1030",
     src: "./profPic3.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 8,
   },
   {
@@ -27,6 +30,7 @@ export const peopleInfo = [
     name: "John Doe4",
     sold: "1200",
     src: "./profPic4.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 2,
   },
   {

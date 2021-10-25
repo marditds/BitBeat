@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { exploreInfo, itemImages } from "../ExploreList";
+import { exploreInfo, itemImages, itemSounds } from "../ExploreList";
 import {
   Container,
   Image,
@@ -9,17 +9,20 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../profPic.png";
+import { Player } from "./Player";
 
-const ExploreItem = ({ src, name, title, price, bid }) => {
+const ExploreItem = ({ src, name, title, price, bid, musicSrc }) => {
   return (
     <div className="d-grid justify-content-center expCSS">
       <Image src={itemImages(src).default} className="expImg" fluid />
+      <Player src={itemSounds(musicSrc).default} />
       <div className="expInfo">
-        <h6>{name}</h6>
-        <h6>{title}</h6>
-        <h6>{price}</h6>
-        <h6>{bid}</h6>
+        <Link to="/" className="text-decoration-none">
+          <h6>{name}</h6>
+          <h6>{title}</h6>
+          <h6>{price}</h6>
+          <h6>{bid}</h6>
+        </Link>
       </div>
     </div>
   );
@@ -36,9 +39,10 @@ export const ExploreList = () => {
           {exploreInfo.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.id}>
-                <Link to="/" className="text-decoration-none">
-                  <ExploreItem {...item}></ExploreItem>
-                </Link>
+                {/* <Link to="/" className="text-decoration-none"> */}
+
+                <ExploreItem {...item}></ExploreItem>
+                {/* </Link> */}
               </Col>
             );
           })}
@@ -76,62 +80,60 @@ const DropButtons = () => {
   };
 
   return (
-    <div>
-      <Row className="align-items-center">
-        <Col>
-          <h3 id="explore">Explore NFTs</h3>
-        </Col>
+    <Row className="align-items-center">
+      <Col>
+        <h3 id="explore">Explore NFTs</h3>
+      </Col>
 
-        <Col className="d-flex justify-content-end">
-          <DropdownButton
-            id="expdropdownToggleCSS"
-            title={val}
-            onSelect={options}
-          >
-            <Dropdown.Item eventKey="Collections" href="#" id="dropdownMenuCSS">
-              Collections
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-              A
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-              B
-            </Dropdown.Item>
-          </DropdownButton>
+      <Col className="d-flex justify-content-end">
+        <DropdownButton
+          id="expdropdownToggleCSS"
+          title={val}
+          onSelect={options}
+        >
+          <Dropdown.Item eventKey="Collections" href="#" id="dropdownMenuCSS">
+            Collections
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
+            A
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
+            B
+          </Dropdown.Item>
+        </DropdownButton>
 
-          <DropdownButton
-            id="expdropdownToggleCSS"
-            title={val2}
-            onSelect={options2}
-          >
-            <Dropdown.Item eventKey="Sale Type" href="#" id="dropdownMenuCSS">
-              Sale Type
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-              A
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-              B
-            </Dropdown.Item>
-          </DropdownButton>
+        <DropdownButton
+          id="expdropdownToggleCSS"
+          title={val2}
+          onSelect={options2}
+        >
+          <Dropdown.Item eventKey="Sale Type" href="#" id="dropdownMenuCSS">
+            Sale Type
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
+            A
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
+            B
+          </Dropdown.Item>
+        </DropdownButton>
 
-          <DropdownButton
-            id="expdropdownToggleCSS"
-            title={val3}
-            onSelect={options3}
-          >
-            <Dropdown.Item eventKey="Price" href="#" id="dropdownMenuCSS">
-              Price
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-              A
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-              B
-            </Dropdown.Item>
-          </DropdownButton>
-        </Col>
-      </Row>
-    </div>
+        <DropdownButton
+          id="expdropdownToggleCSS"
+          title={val3}
+          onSelect={options3}
+        >
+          <Dropdown.Item eventKey="Price" href="#" id="dropdownMenuCSS">
+            Price
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
+            A
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
+            B
+          </Dropdown.Item>
+        </DropdownButton>
+      </Col>
+    </Row>
   );
 };

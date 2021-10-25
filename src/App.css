@@ -6,6 +6,10 @@ body {
   scroll-behavior: smooth;
 }
 
+#error {
+  font-family: Epilogue;
+}
+
 #navbar {
   /* background-color: #334756; */
   background-color: #082032;
@@ -133,13 +137,13 @@ body {
 
 #explore {
   font-family: Epilogue;
-  color: #f0a500;
+  color: #fff;
 }
 
 #expdropdownToggleCSS {
-  width: 110px;
+  width: 118px;
   text-align: left;
-  color: #f0a500;
+  color: #fff;
   background-color: #334756;
   border: #f0a500 thin solid;
   box-shadow: none;
@@ -153,29 +157,6 @@ body {
   background-color: #082032;
 }
 
-.expviewAll {
-  font-size: 11pt;
-  text-align: center;
-  border: #f0a500 thin solid;
-  border-radius: 20px;
-  padding: 6px 20px 6px 20px;
-  color: #334756;
-  color: #f0a500;
-  background-color: #334756;
-  transition: 0.3s;
-}
-
-.expviewAll:hover {
-  font-size: 11pt;
-  text-align: center;
-  border: #082032 thin solid;
-  border-radius: 20px;
-  padding: 6px 20px 6px 20px;
-  color: #f0a500;
-  background-color: #082032;
-  transition: 0.3s;
-}
-
 .expCSS {
   transition: 0.3s;
   color: #fff;
@@ -187,6 +168,8 @@ body {
 }
 
 .expInfo h6 {
+  transition: 0.3s;
+  color: #fff;
   font-family: Epilogue;
   margin-bottom: 0px;
 }
@@ -199,10 +182,42 @@ body {
 .expCSS:hover {
   transition: 0.3s;
   transform: scale(1.05);
-  color: #082032;
   background-color: #f0a500;
   border: #334756 thin solid;
-  /* box-shadow: 7px 7px 0px 0px #082032; */
+}
+
+.expCSS:hover h6 {
+  transition: 0.3s;
+  color: #082032;
+  font-family: Epilogue;
+  margin-bottom: 0px;
+}
+
+.playerButton,
+.pauseButton {
+  transition: 0.3s;
+  margin-top: -100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.pauseButton {
+  transition: 0.3s;
+  color: #f0a500;
+}
+
+.expCSS:hover .playerButton {
+  transition: 0.3s;
+  color: #f0a500;
+
+  z-index: 9999;
 }
 
 .seeMore {
@@ -215,7 +230,7 @@ body {
   padding-bottom: 10px;
   padding-left: 40px;
   padding-right: 40px;
-  color: #f0a500;
+  color: #fff;
   transition: 0.3s;
 }
 
