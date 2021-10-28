@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <Navbar
       className="flex-wrap"
-      style={{ marginTop: "240px", backgroundColor: "#334756" }}
+      style={{ marginTop: "240px", bottom: "0", backgroundColor: "#334756" }}
       id="navbar"
     >
       <Container className="d-flex justify-content-around align-items-start">

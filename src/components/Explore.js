@@ -15,7 +15,7 @@ const ExploreItem = ({ src, name, title, price, bid, musicSrc }) => {
   return (
     <div className="d-grid justify-content-center expCSS">
       <Image src={itemImages(src).default} className="expImg" fluid />
-      <Player src={itemSounds(musicSrc).default} />
+      <Player sound={itemSounds(musicSrc).default} />
       <div className="expInfo">
         <Link to="/" className="text-decoration-none">
           <h6>{name}</h6>
@@ -39,10 +39,7 @@ export const ExploreList = () => {
           {exploreInfo.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.id}>
-                {/* <Link to="/" className="text-decoration-none"> */}
-
                 <ExploreItem {...item}></ExploreItem>
-                {/* </Link> */}
               </Col>
             );
           })}

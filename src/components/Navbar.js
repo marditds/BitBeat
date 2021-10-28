@@ -36,7 +36,7 @@ export const NavBar = () => {
           </Form>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/" className="wallet" id="navLink">
+          <Nav.Link href="/discover" className="wallet" id="navLink">
             Connect Wallet
           </Nav.Link>
         </Nav.Item>
