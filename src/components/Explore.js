@@ -10,12 +10,18 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Player } from "./Player";
+import { useHistory } from "react-router-dom";
 
-const ExploreItem = ({ src, name, title, price, bid, musicSrc }) => {
+const ExploreItem = ({ id, src, name, title, price, bid, musicSrc }) => {
+  const history = useHistory();
+
   return (
-    <div className="d-grid justify-content-center expCSS">
+    <div
+      className="d-grid justify-content-center expCSS"
+      onClick={() => history.push(`/item/${id}`)}
+    >
       <Image src={itemImages(src).default} className="expImg" fluid />
-      <Player sound={itemSounds(musicSrc).default} />
+      <Player src={itemSounds(musicSrc).default} />
       <div className="expInfo">
         <Link to="/" className="text-decoration-none">
           <h6>{name}</h6>
@@ -39,7 +45,10 @@ export const ExploreList = () => {
           {exploreInfo.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.id}>
+                {/* <Link to="/" className="text-decoration-none"> */}
+
                 <ExploreItem {...item}></ExploreItem>
+                {/* </Link> */}
               </Col>
             );
           })}
