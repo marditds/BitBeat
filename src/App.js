@@ -5,26 +5,27 @@ import { Footer } from "./components/Footer";
 import { Error } from "./components/404";
 import { Home } from "./components/Home";
 import Profile from "./components/Profile";
-import { ScrollTop } from "./components/ScrollTop";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { ItemsPage } from "./components/ItemsPage";
+import { Discover } from "./components/Discover";
 
 function App() {
   return (
     <div className="App" style={{ backgroundColor: "#082032" }}>
-      <NavBar />
       <BrowserRouter>
+        <NavBar />
+
         <Switch>
           <Route exact path="/" component={Home} />
-
-          <Route exact path="/discover" component={Error} />
-          <Route exact path="/howitworks" component={Error} />
-          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/discover" component={Home} /> 
+          <Route exact path="/" component={Home} />*/}
+          <Route exact path="/discover" component={Discover} />
           <Route exact path="/profile/:id" children={<Profile />} />
+          <Route exact path="/item/:id" children={<ItemsPage />} />
           <Route exact path="*" component={Error} />
         </Switch>
+        <Footer />
       </BrowserRouter>
-      <ScrollTop />
-      <Footer />
     </div>
   );
 }
