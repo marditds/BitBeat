@@ -1,60 +1,34 @@
 import React, { useState, useRef } from "react";
-import {
-  BsFillPlayFill,
-  BsPlayCircleFill,
-  BsPauseFill,
-  BsPauseCircleFill,
-} from "react-icons/bs";
-import { Col, Row } from "react-bootstrap";
+import { BsFillPlayFill } from "react-icons/bs";
+import { BsPauseFill } from "react-icons/bs";
 
 export const Player = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showPause, setShowPause] = useState(false);
   const audioRef = useRef();
 
-  const playAndPasue = () => {
+  const playAndPasue = (e) => {
+    e.stopPropagation();
     const audio = audioRef.current;
 
     if (!isPlaying) {
       setIsPlaying(true);
       audio.play();
-      setShowPause(true);
     } else {
       setIsPlaying(false);
       audio.pause();
-      setShowPause(false);
     }
   };
 
   return (
     <div>
-      <audio src={props.sound} ref={audioRef}></audio>
+      <audio src={props.src} ref={audioRef}></audio>
       <div onClick={playAndPasue}>
         {isPlaying ? (
-          // <BottomPlayer />
           <BsPauseFill className="pauseButton" />
         ) : (
           <BsFillPlayFill className="playerButton" />
         )}
       </div>
-    </div>
-  );
-};
-
-const BottomPlayer = () => {
-  const [show, setShow] = useState(false);
-
-  const showing = () => {
-    if (!show) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  };
-
-  return (
-    <div onClick={showing}>
-      {!show ? <BsPauseCircleFill className="bottomPlayer" /> : null}
     </div>
   );
 };
