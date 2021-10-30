@@ -170,12 +170,17 @@ body {
 
 .expCSS {
   transition: 0.3s;
+  cursor: pointer;
   color: #fff;
   background-color: #082032;
   padding: 10px;
   border: #334756 thin solid;
   border-radius: 3px;
   position: relative;
+}
+
+.expInfo {
+  margin-top: -20px;
 }
 
 .expInfo h6 {
@@ -191,6 +196,8 @@ body {
   position: relative;
   top: 0;
   left: 0;
+  width: 415px;
+  height: 415px;
 }
 
 .expCSS:hover {
@@ -220,6 +227,8 @@ body {
 
 .pauseButton {
   color: #f0a500;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
 }
 
 .bottomPlayer {
@@ -231,8 +240,16 @@ body {
   z-index: 999999;
 }
 
-.expCSS:hover .playerButton {
+/* .expCSS:hover .playerButton {
   color: #f0a500;
+  background: #334756 0.3;
+  z-index: 9999;
+} */
+
+.playerButton:hover {
+  color: #f0a500;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
   z-index: 9999;
 }
 
@@ -254,6 +271,57 @@ body {
   color: #f0a500;
   background-color: #082032;
   border: #082032 thin solid;
+}
+
+.itemDiscoverImg {
+  border-radius: 3px;
+  padding-bottom: 20px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px !important;
+}
+
+.itemDescSectionInModal {
+  color: black;
+  align-items: center;
+}
+
+.itemModalBody {
+  padding: 30px !important;
+}
+
+.itemPriceBox {
+  position: absolute;
+  z-index: 1;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: -15px;
+  margin-left: -15px;
+}
+
+.itemDescSection {
+  color: #fff;
+}
+
+.itemImg {
+  border-radius: 3px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.expInfo {
+  width: 100%;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+
+.itemsModal {
+  max-width: 90% !important;
 }
 
 #footLink {
