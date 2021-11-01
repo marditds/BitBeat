@@ -1,4 +1,5 @@
 export const profImages = require.context("./", true);
+export const itemSounds = require.context("./", true);
 
 export const peopleInfo = [
   {
@@ -38,6 +39,7 @@ export const peopleInfo = [
     name: "John Doe5",
     sold: "1008",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 10,
   },
   {
@@ -45,6 +47,7 @@ export const peopleInfo = [
     name: "John Doe6",
     sold: "1045",
     src: "./profPic3.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 11,
   },
   {
@@ -52,6 +55,7 @@ export const peopleInfo = [
     name: "John Doe7",
     sold: "1830",
     src: "./profPic2.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 7,
   },
   {
@@ -59,6 +63,7 @@ export const peopleInfo = [
     name: "John Doe8",
     sold: "3600",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 3,
   },
   {
@@ -66,6 +71,7 @@ export const peopleInfo = [
     name: "John Doe9",
     sold: "85500",
     src: "./profPic4.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 4,
   },
   {
@@ -73,6 +79,7 @@ export const peopleInfo = [
     name: "John Doe10",
     sold: "73000",
     src: "./profPic.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 14,
   },
   {
@@ -80,6 +87,7 @@ export const peopleInfo = [
     name: "John Doe11",
     sold: "7000",
     src: "./profPic3.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 6,
   },
   {
@@ -87,6 +95,7 @@ export const peopleInfo = [
     name: "John Doe12",
     sold: "8500",
     src: "./profPic4.png",
+    musicSrc: "./sexOnFire.mp3",
     itemCount: 2,
   },
 ];

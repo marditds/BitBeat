@@ -231,7 +231,40 @@ body {
   border-radius: 50%;
 }
 
-.bottomPlayer {
+.playerButton:hover {
+  color: #f0a500;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
+  z-index: 9999;
+}
+
+.playerButton2,
+.pauseButton2 {
+  position: relative;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  width: 120px;
+  height: 120px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pauseButton2 {
+  color: #f0a500;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
+}
+
+.playerButton2:hover {
+  color: #f0a500;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
+  z-index: 9999;
+}
+
+/*.bottomPlayer {
   cursor: pointer;
   position: fixed;
   bottom: 0;
@@ -240,18 +273,11 @@ body {
   z-index: 999999;
 }
 
-/* .expCSS:hover .playerButton {
+ .expCSS:hover .playerButton {
   color: #f0a500;
   background: #334756 0.3;
   z-index: 9999;
 } */
-
-.playerButton:hover {
-  color: #f0a500;
-  background: rgb(8, 32, 50, 0.7);
-  border-radius: 50%;
-  z-index: 9999;
-}
 
 .seeMore {
   font-size: 11pt;

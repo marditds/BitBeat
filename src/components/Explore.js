@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { Player } from "./Player";
 import { useHistory } from "react-router-dom";
 
-const ExploreItem = ({ id, src, name, title, price, bid, musicSrc }) => {
+export const ExploreItem = ({ id, src, name, title, price, bid, musicSrc }) => {
   const history = useHistory();
   return (
     <div
