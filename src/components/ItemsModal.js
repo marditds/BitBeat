@@ -1,6 +1,6 @@
 import { Col, Image, Modal, Row } from "react-bootstrap";
 import { RatingView } from "react-simple-star-rating";
-import { exploreInfo, itemImages, itemSounds } from "../ExploreList";
+import { itemImages } from "../ExploreList";
 
 export const ItemModal = ({ show, setShow, item }) => {
   return (

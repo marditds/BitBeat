@@ -32,14 +32,17 @@ const Popular = ({ id, src, name, sold }) => {
 };
 
 export const PopularList = () => {
-  const [user, setUser] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
+      // .get(
+      //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
+      // )
       .then((response) => {
-        console.log(response);
-        setUser(response.data);
+        // setUsers(JSON.parse(response.data));
+        setUsers(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -50,7 +53,7 @@ export const PopularList = () => {
     <Container style={{ marginTop: "25px" }}>
       <DropButtons />
       <Row md={2}>
-        {user.map((popularInfo) => {
+        {users.map((userInfo) => {
           return (
             <Col
               xxl={2}
@@ -61,13 +64,13 @@ export const PopularList = () => {
               xs={6}
               className="d-felx align-self-end"
               style={{ marginTop: "5px" }}
-              key={popularInfo.id}
+              key={userInfo.id}
             >
               <Link
-                to={`/profile/${popularInfo.id}`}
+                to={`/profile/${userInfo.id}`}
                 className="text-decoration-none"
               >
-                <Popular {...popularInfo}></Popular>
+                <Popular {...userInfo}></Popular>
               </Link>
             </Col>
           );

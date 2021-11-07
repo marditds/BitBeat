@@ -1,15 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { RatingView } from "react-simple-star-rating";
-import { exploreInfo, itemImages, itemSounds } from "../ExploreList";
-import {
-  Container,
-  Image,
-  Row,
-  Col,
-  Dropdown,
-  DropdownButton,
-} from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { exploreInfo, itemImages } from "../ExploreList";
+import { Container, Image, Row, Col } from "react-bootstrap";
 import { ItemModal } from "./ItemsModal";
 
 export const Discover = () => {

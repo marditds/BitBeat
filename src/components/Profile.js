@@ -31,9 +31,13 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/users")
+      // .get("https://jsonplaceholder.typicode.com/users")
+      .get(
+        "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
+      )
       .then((response) => {
-        setUsers(response.data);
+        setUsers(JSON.parse(response.data));
+        // setUsers(response.data);
       })
       .catch((error) => {
         console.log(error);
