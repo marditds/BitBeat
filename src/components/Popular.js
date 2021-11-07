@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { peopleInfo, profImages } from "../PeopleList";
+import axios from "axios";
 import {
   Container,
   Image,
@@ -18,7 +18,7 @@ const Popular = ({ id, src, name, sold }) => {
     >
       <h6>{id}</h6>
       <Image
-        src={profImages(src).default}
+        // src={profImages(src).default}
         alt=""
         roundedCircle
         className="popImg"
@@ -32,11 +32,25 @@ const Popular = ({ id, src, name, sold }) => {
 };
 
 export const PopularList = () => {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        console.log(response);
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Container style={{ marginTop: "25px" }}>
       <DropButtons />
       <Row md={2}>
-        {peopleInfo.map((popularInfo) => {
+        {user.map((popularInfo) => {
           return (
             <Col
               xxl={2}

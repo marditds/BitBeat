@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Image, Tabs, Tab } from "react-bootstrap";
+import axios from "axios";
 import { peopleInfo, profImages, itemSounds } from "../PeopleList";
 import { useParams } from "react-router-dom";
 import { Player2 } from "./Player2";
@@ -25,13 +26,27 @@ const Profile = () => {
   const [sold, setSold] = useState(0);
   const [profPic, setPic] = useState([]);
   const [sound, setSound] = useState([]);
+  const [users, setUsers] = useState([]);
   const { id } = useParams();
 
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   function setPersonName() {
-    const User = peopleInfo.find((person) => person.id === parseInt(id));
-    setName(User.name);
+    const user = users.find((person) => person.id === parseInt(id));
+    if (user) {
+      setName(user.name);
+    }
   }
-  useEffect(setPersonName, []);
+  useEffect(setPersonName, [users]);
 
   function setPersonPic() {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
@@ -94,7 +109,7 @@ const Profile = () => {
           style={{ backgroundColor: "green" }}
         >
           <Col>
-            <Image src={profPic} alt="" roundedCircle fluid id="profPic" />
+            {/* <Image src={profPic} alt="" roundedCircle fluid id="profPic" /> */}
           </Col>
           <Col>
             <p>{name}</p>
