@@ -1,10 +1,22 @@
-import React from "react";
-import { Image, Nav, Navbar, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
+import Moralis from "moralis";
+import { useMoralis } from "react-moralis";
 
 export const NavBar = () => {
+  const [walletText, setWalletText] = useState("Connect Wallet");
+  const { authenticate, isAuthenticated } = useMoralis();
+
+  const authenticateFunc = () => {
+    authenticate();
+    if (isAuthenticated) {
+      setWalletText("Connrcted");
+    }
+  };
+
   return (
     <div>
       <Navbar
@@ -36,8 +48,13 @@ export const NavBar = () => {
           </Form>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/discover" className="wallet" id="navLink">
-            Connect Wallet
+          <Nav.Link
+            href=" "
+            className="wallet"
+            id="connectWallet"
+            onClick={authenticateFunc}
+          >
+            {walletText}
           </Nav.Link>
         </Nav.Item>
       </Navbar>
