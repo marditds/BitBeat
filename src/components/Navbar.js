@@ -3,7 +3,6 @@ import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
-import Moralis from "moralis";
 import { useMoralis } from "react-moralis";
 
 export const NavBar = () => {
@@ -13,7 +12,7 @@ export const NavBar = () => {
   const authenticateFunc = () => {
     authenticate();
     if (isAuthenticated) {
-      setWalletText("Connrcted");
+      setWalletText("Connected");
     }
   };
 
