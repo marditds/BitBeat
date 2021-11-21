@@ -5,11 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { MoralisProvider } from "react-moralis";
 
-const serverUrl = "https://zpjwjldz2ely.usemoralis.com:2053/server";
-const appId = "8Q0AVoSqAxvlQ0JbXtTIou9w0kiLgKehimbp6ub6";
+// const serverUrl = "https://zpjwjldz2ely.usemoralis.com:2053/server";
+// const appId = "8Q0AVoSqAxvlQ0JbXtTIou9w0kiLgKehimbp6ub6";
 
 ReactDOM.render(
-  <MoralisProvider appId={appId} serverUrl={serverUrl}>
+  <MoralisProvider
+    appId="8Q0AVoSqAxvlQ0JbXtTIou9w0kiLgKehimbp6ub6"
+    serverUrl="https://zpjwjldz2ely.usemoralis.com:2053/server"
+  >
     <App />
   </MoralisProvider>,
 

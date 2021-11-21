@@ -7,13 +7,15 @@ import { useMoralis } from "react-moralis";
 
 export const NavBar = () => {
   const [walletText, setWalletText] = useState("Connect Wallet");
-  const { authenticate, isAuthenticated } = useMoralis();
+  const { authenticate, isAuthenticated, logout } = useMoralis();
 
   const authenticateFunc = () => {
     authenticate();
-    if (isAuthenticated) {
-      setWalletText("Connected");
-    }
+    // if (!isAuthenticated) {
+    //   setWalletText("Connect Wallet");
+    // } else {
+    //   setWalletText("Connected");
+    // }
   };
 
   return (
