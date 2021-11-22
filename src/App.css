@@ -28,12 +28,18 @@ body {
 }
 
 .wallet {
+  cursor: pointer;
+  color: #f0a500;
   font-size: 11pt;
   text-align: center;
   border: orange thin solid;
   border-radius: 15px;
   padding: 10px;
   transition: 0.3s;
+}
+
+.wallet:hover {
+  color: #334756;
 }
 
 .jumptToTopArrow {

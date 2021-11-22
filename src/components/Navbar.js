@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
+import { Image, Nav, Navbar, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
 import { useMoralis } from "react-moralis";
 
 export const NavBar = () => {
-  const [walletText, setWalletText] = useState("Connect Wallet");
   const { authenticate, isAuthenticated, logout } = useMoralis();
 
-  const authenticateFunc = () => {
-    authenticate();
-    // if (!isAuthenticated) {
-    //   setWalletText("Connect Wallet");
-    // } else {
-    //   setWalletText("Connected");
-    // }
-  };
+  const showConnect = isAuthenticated ? "none" : "block";
+  const showLogOut = isAuthenticated ? "block" : "none";
+
+  if (!isAuthenticated) {
+    console.log("aaaaaaaaaaaaaaaaa");
+  } else {
+    console.log("bbbbbbbbbbbbbbbbb");
+    // setWalletText("Wallet is connected");
+  }
 
   return (
     <div>
@@ -48,15 +48,22 @@ export const NavBar = () => {
             </Form.Group>
           </Form>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            href=" "
-            className="wallet"
-            id="connectWallet"
-            onClick={authenticateFunc}
-          >
-            {walletText}
-          </Nav.Link>
+
+        <Nav.Item
+          className="wallet"
+          id="connectWallet"
+          onClick={() => authenticate()}
+          style={{ display: showConnect }}
+        >
+          Connect Wallet
+        </Nav.Item>
+        <Nav.Item
+          className="wallet"
+          id="connectWallet"
+          onClick={() => logout()}
+          style={{ display: showLogOut }}
+        >
+          Log Out
         </Nav.Item>
       </Navbar>
     </div>

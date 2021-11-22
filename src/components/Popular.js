@@ -82,6 +82,7 @@ export const PopularList = () => {
 
 const DropButtons = () => {
   const [val, setVal] = useState("Today");
+
   const options = (e) => {
     setVal(e);
   };
