@@ -9,13 +9,13 @@ export const NavBar = () => {
   const { authenticate, isAuthenticated, logout } = useMoralis();
 
   const showConnect = isAuthenticated ? "none" : "block";
+  const showProfile = isAuthenticated ? "block" : "none";
   const showLogOut = isAuthenticated ? "block" : "none";
 
   if (!isAuthenticated) {
     console.log("aaaaaaaaaaaaaaaaa");
   } else {
     console.log("bbbbbbbbbbbbbbbbb");
-    // setWalletText("Wallet is connected");
   }
 
   return (
@@ -57,6 +57,15 @@ export const NavBar = () => {
         >
           Connect Wallet
         </Nav.Item>
+        <Nav.Link
+          href="/profile"
+          className="wallet"
+          id="profileButton"
+          // onClick={() => logout()}
+          style={{ display: showProfile }}
+        >
+          Profile
+        </Nav.Link>
         <Nav.Item
           className="wallet"
           id="connectWallet"

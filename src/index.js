@@ -10,8 +10,8 @@ import { MoralisProvider } from "react-moralis";
 
 ReactDOM.render(
   <MoralisProvider
-    appId="8Q0AVoSqAxvlQ0JbXtTIou9w0kiLgKehimbp6ub6"
-    serverUrl="https://zpjwjldz2ely.usemoralis.com:2053/server"
+    appId="cZv9zIpMxV7r5VkyFMwGZV6rhDWAhEpiVp6kGksd"
+    serverUrl="https://acv92lhffirh.usemoralis.com:2053/server"
   >
     <App />
   </MoralisProvider>,

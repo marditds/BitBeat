@@ -28,6 +28,7 @@ body {
 }
 
 .wallet {
+  font-family: Epilogue;
   cursor: pointer;
   color: #f0a500;
   font-size: 11pt;
@@ -39,6 +40,14 @@ body {
 }
 
 .wallet:hover {
+  color: #334756;
+}
+
+#profileButton {
+  color: #f0a500;
+}
+
+#profileButton:hover {
   color: #334756;
 }
 
@@ -371,6 +380,27 @@ body {
   float: right;
   width: 105px;
   height: 105px;
+}
+
+.saveInfoButton {
+  font-family: Epilogue;
+  cursor: pointer;
+  background-color: orange;
+  text-align: center;
+  width: 10%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 25px;
+  transition: 0.3s;
+}
+.saveInfoButton:hover {
+  background-color: #f0a400af;
+}
+
+.saveInfoButton:active {
+  background-color: #f0a4004b;
+  color: #f0a500;
 }
 
 @media (max-width: 411px) {

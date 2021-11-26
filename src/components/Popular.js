@@ -36,6 +36,7 @@ export const PopularList = () => {
 
   useEffect(() => {
     axios
+      // .get("https://zpjwjldz2ely.usemoralis.com:2053/server")
       .get("https://jsonplaceholder.typicode.com/users")
       // .get(
       //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
