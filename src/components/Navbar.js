@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Nav, Navbar, Form } from "react-bootstrap";
+import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
@@ -22,58 +22,66 @@ export const NavBar = () => {
     <div>
       <Navbar
         style={{ paddingTop: "10px", paddingBottom: "10px" }}
-        className="justify-content-around d-flex navBarCSS"
-        expand="sm"
+        collapseOnSelect
+        expand="md"
         id="navbar"
       >
+        {/* <Container> */}
         <Navbar.Brand href="/">
-          <Image src={logo} style={{ height: "80px" }} />
+          <Image src={logo} style={{ height: "80px", paddingLeft: "20px" }} />
         </Navbar.Brand>
 
-        <Nav.Item>
-          <Nav.Link href="/discover" id="navLink">
-            Discover
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/howitworks" id="navLink">
-            How It Works
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item style={{ width: "50%" }} className="align-self-center">
-          <Form action="/" method="get">
-            <Form.Group>
-              <Form.Control type="text" placeholder="Search..." />
-              <div className="searchPic"></div>
-            </Form.Group>
-          </Form>
-        </Nav.Item>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-around"
+        >
+          <Nav.Item>
+            <Nav.Link href="/discover" id="navLink">
+              Discover
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/howitworks" id="navLink">
+              How It Works
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item style={{ width: "50%" }} className="align-self-center">
+            <Form action="/" method="get">
+              <Form.Group>
+                <Form.Control type="text" placeholder="Search..." />
+                <div className="searchPic"></div>
+              </Form.Group>
+            </Form>
+          </Nav.Item>
 
-        <Nav.Item
-          className="wallet"
-          id="connectWallet"
-          onClick={() => authenticate()}
-          style={{ display: showConnect }}
-        >
-          Connect Wallet
-        </Nav.Item>
-        <Nav.Link
-          href="/profile"
-          className="wallet"
-          id="profileButton"
-          // onClick={() => logout()}
-          style={{ display: showProfile }}
-        >
-          Profile
-        </Nav.Link>
-        <Nav.Item
-          className="wallet"
-          id="connectWallet"
-          onClick={() => logout()}
-          style={{ display: showLogOut }}
-        >
-          Log Out
-        </Nav.Item>
+          <Nav.Item
+            className="wallet"
+            id="connectWallet"
+            onClick={() => authenticate()}
+            style={{ display: showConnect }}
+          >
+            Connect Wallet
+          </Nav.Item>
+          <Nav.Link
+            href="/profile"
+            className="wallet"
+            id="profileButton"
+            // onClick={() => logout()}
+            style={{ display: showProfile }}
+          >
+            Profile
+          </Nav.Link>
+          <Nav.Item
+            className="wallet"
+            id="connectWallet"
+            onClick={() => logout()}
+            style={{ display: showLogOut }}
+          >
+            Log Out
+          </Nav.Item>
+        </Navbar.Collapse>
+        {/* </Container> */}
       </Navbar>
     </div>
   );

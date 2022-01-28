@@ -51,6 +51,19 @@ body {
   color: #334756;
 }
 
+.navbar-toggler-icon {
+  transition: 0.3s;
+  margin-right: 7px;
+  font-size: x-large;
+  background-color: #f0a500;
+  border-radius: 3px;
+}
+
+.navbar-toggler-icon:hover {
+  background-color: #334756;
+  border-radius: 3px;
+}
+
 .jumptToTopArrow {
   width: 80px;
   height: 80px;
@@ -386,12 +399,10 @@ body {
   font-family: Epilogue;
   cursor: pointer;
   background-color: orange;
+  padding-left: 10px;
+  padding-right: 10px;
   text-align: center;
-  width: 10%;
   margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 25px;
   transition: 0.3s;
 }
 .saveInfoButton:hover {

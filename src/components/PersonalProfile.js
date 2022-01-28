@@ -1,52 +1,154 @@
-import React, { useState } from "react";
-import { Container, Tab, Tabs, FloatingLabel, Form } from "react-bootstrap";
-import { useMoralis } from "react-moralis";
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Tab,
+  Tabs,
+  Form,
+  Button,
+  Image,
+  Stack,
+} from "react-bootstrap";
+import { useMoralis, useMoralisFile } from "react-moralis";
+import avatarDefault from "../images/avatarDefault.png";
 
 export const PersonalProfile = () => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const { setUserData, user, isAuthenticated } = useMoralis();
+  const { saveFile } = useMoralisFile();
 
-  <pre>{JSON.stringify(user)}</pre>;
+  const [photoFile, setPhotoFile] = useState();
+  const [photoFileName, setPhotoFileName] = useState();
+  const [avatar, setAvatar] = useState();
 
-  const handleSetName = (elem) => {
-    setName(elem.target.value);
+  // <pre>{JSON.stringify(user)}</pre>;
+
+  const handleSetUsername = (elem) => {
+    setUsername(elem.target.value);
+  };
+
+  const handleSetEmail = (elem) => {
+    setEmail(elem.target.value);
+  };
+
+  useEffect(() => {
+    if (user) {
+      setAvatar(user.attributes?.avatar?._url);
+    }
+  }, [user]);
+
+  const onChangePhoto = (e) => {
+    setPhotoFile(e.target.files[0]);
+    setPhotoFileName(e.target.files[0].name);
+  };
+
+  const handleSubmitPhoto = async (e) => {
+    e.preventDefault();
+    const name = photoFileName;
+    const file = photoFile;
+    let pic = await saveFile(name, file);
+    user.set("avatar", pic);
+    await user.save();
+    if (photoFileName != null && photoFile != null) {
+      setAvatar(user.attributes.avatar._url);
+    } else {
+      alert("No File Chosen.");
+    }
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    setUserData({ name: { name } });
+    setUserData({ username, email });
   };
-
-  if (isAuthenticated) {
-    // setProfName(user.get("name"));
-  }
 
   return (
     <Container>
-      <p style={{ color: "white" }}></p>
-      <div className="">
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Your Name:"
-          className="mb-5"
-          style={{ width: "25%", marginLeft: "auto", marginRight: "auto" }}
-          className=""
-          value={name}
-        >
-          <Form.Control
-            type="text"
-            placeholder="name"
-            value={name}
-            onChange={handleSetName}
-          />
-        </FloatingLabel>
-        <p className="saveInfoButton" onClick={handleSave}>
-          Save Info
-        </p>
-      </div>
-      {/* <p style={{ color: "white" }}>Name:{profName}</p> */}
-      <p style={{ color: "white" }}>Sold:</p>
+      <Row
+        className="d-flex flex-row-reverse"
+        lg={2}
+        md={2}
+        sm={1}
+        xs={1}
+        xxs={1}
+      >
+        <Col className="d-flex flex-column justify-content-center align-items-start">
+          <Form>
+            <Form.Group
+              className="mb-3 d-flex  align-items-end"
+              controlId="nameEnteryArea"
+              value={username}
+            >
+              <Form.Label style={{ color: "white" }}>Name: </Form.Label>
+              <Form.Control
+                type="name"
+                placeholder={isAuthenticated ? user.get("username") : null}
+                value={username}
+                onChange={handleSetUsername}
+                style={{ marginLeft: "9px" }}
+              />
+            </Form.Group>
 
+            <Form.Group
+              className="mb-3 d-flex align-items-end"
+              controlId="emailEnteryArea"
+              value={email}
+            >
+              <Form.Label style={{ color: "white" }}>Email: </Form.Label>
+              <Form.Control
+                type="email"
+                placeholder={isAuthenticated ? user.get("email") : null}
+                value={email}
+                onChange={handleSetEmail}
+                style={{ marginLeft: "7px" }}
+              />
+            </Form.Group>
+          </Form>
+
+          <div className="d-flex">
+            <Form onSubmit={handleSubmitPhoto}>
+              <Form.Group controlId="UploadPicture">
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  size="sm"
+                  onChange={onChangePhoto}
+                />
+              </Form.Group>
+            </Form>
+            <Button
+              onClick={handleSubmitPhoto}
+              style={{ marginLeft: "10px" }}
+              size="sm"
+            >
+              Upload
+            </Button>
+          </div>
+
+          <p className="saveInfoButton" onClick={handleSave}>
+            Save Info
+          </p>
+        </Col>
+
+        <Col>
+          <Stack className="d-grid justify-content-end text-center">
+            <Image
+              src={avatar ? avatar : avatarDefault}
+              style={{ width: "150px", height: "150px" }}
+              roundedCircle
+            />
+
+            <p style={{ color: "white" }}>
+              {isAuthenticated ? user.get("username") : null}
+            </p>
+
+            {/* <p style={{ color: "white" }}>
+              {isAuthenticated ? user.get("email") : null}
+            </p> */}
+          </Stack>
+        </Col>
+      </Row>
       <ProfileTabs />
     </Container>
   );
