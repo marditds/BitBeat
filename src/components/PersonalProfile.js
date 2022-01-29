@@ -14,16 +14,15 @@ import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
 
 export const PersonalProfile = () => {
+  const { setUserData, user, isAuthenticated } = useMoralis();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const { setUserData, user, isAuthenticated } = useMoralis();
   const { saveFile } = useMoralisFile();
-
-  const [photoFile, setPhotoFile] = useState();
-  const [photoFileName, setPhotoFileName] = useState();
+  const [photoFile, setPhotoFile] = useState(avatarDefault);
   const [avatar, setAvatar] = useState();
+  const [uploadStatus, setUploadStatus] = useState(true);
 
-  // <pre>{JSON.stringify(user)}</pre>;
+  //// <pre>{JSON.stringify(user)}</pre>;
 
   const handleSetUsername = (elem) => {
     setUsername(elem.target.value);
@@ -33,6 +32,17 @@ export const PersonalProfile = () => {
     setEmail(elem.target.value);
   };
 
+  const handleSave = (e) => {
+    e.preventDefault();
+    if (username == "" && email) {
+      setUserData({ email });
+    } else if (email == "" && username) {
+      setUserData({ username });
+    } else {
+      setUserData({ username, email });
+    }
+  };
+
   useEffect(() => {
     if (user) {
       setAvatar(user.attributes?.avatar?._url);
@@ -40,27 +50,26 @@ export const PersonalProfile = () => {
   }, [user]);
 
   const onChangePhoto = (e) => {
-    setPhotoFile(e.target.files[0]);
-    setPhotoFileName(e.target.files[0].name);
+    if (e.target.files[0]) {
+      setPhotoFile(e.target.files[0]);
+    }
+    if (e.target.files[0] !== null) {
+      setUploadStatus(false);
+    }
   };
 
   const handleSubmitPhoto = async (e) => {
     e.preventDefault();
-    const name = photoFileName;
     const file = photoFile;
+    const name = photoFile.name;
     let pic = await saveFile(name, file);
     user.set("avatar", pic);
     await user.save();
-    if (photoFileName != null && photoFile != null) {
+    if (photoFile.name) {
       setAvatar(user.attributes.avatar._url);
     } else {
       alert("No File Chosen.");
     }
-  };
-
-  const handleSave = (e) => {
-    e.preventDefault();
-    setUserData({ username, email });
   };
 
   return (
@@ -73,7 +82,7 @@ export const PersonalProfile = () => {
         xs={1}
         xxs={1}
       >
-        <Col className="d-flex flex-column justify-content-center align-items-start">
+        <Col className="d-flex flex-column flex-grow-1 justify-content-center align-items-start">
           <Form>
             <Form.Group
               className="mb-3 d-flex  align-items-end"
@@ -118,9 +127,11 @@ export const PersonalProfile = () => {
               </Form.Group>
             </Form>
             <Button
+              type="button"
               onClick={handleSubmitPhoto}
               style={{ marginLeft: "10px" }}
               size="sm"
+              disabled={uploadStatus}
             >
               Upload
             </Button>
@@ -140,7 +151,7 @@ export const PersonalProfile = () => {
             />
 
             <p style={{ color: "white" }}>
-              {isAuthenticated ? user.get("username") : null}
+              {isAuthenticated ? user.get("username") : "Your Name"}
             </p>
 
             {/* <p style={{ color: "white" }}>
