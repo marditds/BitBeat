@@ -6,6 +6,7 @@ import {
   Tab,
   Tabs,
   Form,
+  InputGroup,
   Button,
   Image,
   Stack,
@@ -90,13 +91,15 @@ export const PersonalProfile = () => {
               value={username}
             >
               <Form.Label style={{ color: "white" }}>Name: </Form.Label>
-              <Form.Control
-                type="name"
-                placeholder={isAuthenticated ? user.get("username") : null}
-                value={username}
-                onChange={handleSetUsername}
-                style={{ marginLeft: "9px" }}
-              />
+              <InputGroup>
+                <Form.Control
+                  type="name"
+                  placeholder={isAuthenticated ? user.get("username") : null}
+                  value={username}
+                  onChange={handleSetUsername}
+                  style={{ marginLeft: "9px" }}
+                />
+              </InputGroup>
             </Form.Group>
 
             <Form.Group
@@ -111,6 +114,7 @@ export const PersonalProfile = () => {
                 value={email}
                 onChange={handleSetEmail}
                 style={{ marginLeft: "7px" }}
+                required
               />
             </Form.Group>
           </Form>
