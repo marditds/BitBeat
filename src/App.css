@@ -413,7 +413,13 @@ body {
 }
 
 #uploadButton:hover {
-  background-color: #334756c2;
+  color: #082032;
+  background-color: #7691a1;
+}
+
+#uploadButton:active {
+  background-color: #334756;
+  color: #7691a1;
 }
 
 #saveInfoButton {
