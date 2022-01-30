@@ -39,6 +39,9 @@ export const PersonalProfile = () => {
       setUserData({ email });
     } else if (email == "" && username) {
       setUserData({ username });
+      // } else if (user.get("username") == null && user.get("email") == null) {
+      //   setUserData({ username, email });
+      // }
     } else {
       setUserData({ username, email });
     }
@@ -91,15 +94,14 @@ export const PersonalProfile = () => {
               value={username}
             >
               <Form.Label style={{ color: "white" }}>Name: </Form.Label>
-              <InputGroup>
-                <Form.Control
-                  type="name"
-                  placeholder={isAuthenticated ? user.get("username") : null}
-                  value={username}
-                  onChange={handleSetUsername}
-                  style={{ marginLeft: "9px" }}
-                />
-              </InputGroup>
+              <Form.Control
+                required
+                type="name"
+                placeholder={isAuthenticated ? user.get("username") : null}
+                value={username}
+                onChange={handleSetUsername}
+                style={{ marginLeft: "9px" }}
+              />
             </Form.Group>
 
             <Form.Group
