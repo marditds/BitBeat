@@ -19,8 +19,10 @@ export const ExploreItem = ({ id, src, name, title, price, bid, musicSrc }) => {
       className="d-grid justify-content-center expCSS"
       onClick={() => history.push(`/item/${id}`)}
     >
-      <Image src={itemImages(src).default} className="expImg" fluid />
-      <Player sound={itemSounds(musicSrc).default} />
+      <div className="thumbnail">
+        <Image src={itemImages(src).default} className="expImg" fluid />
+        <Player sound={itemSounds(musicSrc).default} />
+      </div>
       <div className="expInfo">
         <Link to="/" className="text-decoration-none">
           <h6>{name}</h6>

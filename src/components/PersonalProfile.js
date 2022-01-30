@@ -6,7 +6,6 @@ import {
   Tab,
   Tabs,
   Form,
-  InputGroup,
   Button,
   Image,
   Stack,
@@ -18,6 +17,7 @@ export const PersonalProfile = () => {
   const { setUserData, user, isAuthenticated } = useMoralis();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [saveInfoStaus, setSaveInfoStatus] = useState(true);
   const { saveFile } = useMoralisFile();
   const [photoFile, setPhotoFile] = useState(avatarDefault);
   const [avatar, setAvatar] = useState();
@@ -27,10 +27,12 @@ export const PersonalProfile = () => {
 
   const handleSetUsername = (elem) => {
     setUsername(elem.target.value);
+    setSaveInfoStatus(false);
   };
 
   const handleSetEmail = (elem) => {
     setEmail(elem.target.value);
+    setSaveInfoStatus(false);
   };
 
   const handleSave = (e) => {
@@ -39,9 +41,6 @@ export const PersonalProfile = () => {
       setUserData({ email });
     } else if (email == "" && username) {
       setUserData({ username });
-      // } else if (user.get("username") == null && user.get("email") == null) {
-      //   setUserData({ username, email });
-      // }
     } else {
       setUserData({ username, email });
     }
@@ -123,7 +122,7 @@ export const PersonalProfile = () => {
 
           <div className="d-flex">
             <Form onSubmit={handleSubmitPhoto}>
-              <Form.Group controlId="UploadPicture">
+              <Form.Group controlId="uploadPicture">
                 <Form.Control
                   type="file"
                   accept="image/*"
@@ -135,7 +134,7 @@ export const PersonalProfile = () => {
             <Button
               type="button"
               onClick={handleSubmitPhoto}
-              style={{ marginLeft: "10px" }}
+              id="uploadButton"
               size="sm"
               disabled={uploadStatus}
             >
@@ -143,9 +142,14 @@ export const PersonalProfile = () => {
             </Button>
           </div>
 
-          <p className="saveInfoButton" onClick={handleSave}>
+          <Button
+            size="sm"
+            id="saveInfoButton"
+            onClick={handleSave}
+            disabled={saveInfoStaus}
+          >
             Save Info
-          </p>
+          </Button>
         </Col>
 
         <Col>

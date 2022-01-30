@@ -206,11 +206,9 @@ body {
   border-radius: 3px;
   position: relative;
 }
-
 .expInfo {
-  margin-top: -20px;
+  padding-bottom: 10px;
 }
-
 .expInfo h6 {
   transition: 0.3s;
   color: #fff;
@@ -220,12 +218,12 @@ body {
 
 .expImg {
   border-radius: 3px;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   position: relative;
   top: 0;
   left: 0;
   width: 415px;
-  height: 415px;
+  height: auto;
 }
 
 .expCSS:hover {
@@ -240,10 +238,14 @@ body {
   margin-bottom: 0px;
 }
 
+.thumbnail {
+  position: relative;
+}
+
 .playerButton,
 .pauseButton {
   position: absolute;
-  top: 32%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 0.3s;
@@ -395,21 +397,40 @@ body {
   height: 105px;
 }
 
-.saveInfoButton {
+#uploadPicture {
   font-family: Epilogue;
-  cursor: pointer;
-  background-color: orange;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center;
-  margin-top: 10px;
-  transition: 0.3s;
-}
-.saveInfoButton:hover {
-  background-color: #f0a400af;
+  box-shadow: none;
+  /* border: black; */
 }
 
-.saveInfoButton:active {
+#uploadButton {
+  font-family: Epilogue;
+  transition: 0.3s;
+  margin-left: 10px;
+  background-color: #334756;
+  border: none;
+  box-shadow: none;
+}
+
+#uploadButton:hover {
+  background-color: #334756c2;
+}
+
+#saveInfoButton {
+  font-family: Epilogue;
+  color: #082032;
+  background-color: #f0a500;
+  border: none;
+  margin-top: 10px;
+  transition: 0.3s;
+  box-shadow: none;
+}
+#saveInfoButton:hover {
+  background-color: #f0a400af;
+  color: white;
+}
+
+#saveInfoButton:active {
   background-color: #f0a4004b;
   color: #f0a500;
 }
