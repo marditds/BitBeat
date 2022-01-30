@@ -27,22 +27,33 @@ export const PersonalProfile = () => {
 
   const handleSetUsername = (elem) => {
     setUsername(elem.target.value);
-    setSaveInfoStatus(false);
+    if (elem.target.value) {
+      setSaveInfoStatus(false);
+    } else {
+      setSaveInfoStatus(true);
+    }
   };
 
   const handleSetEmail = (elem) => {
     setEmail(elem.target.value);
-    setSaveInfoStatus(false);
+    if (elem.target.value) {
+      setSaveInfoStatus(false);
+    } else {
+      setSaveInfoStatus(true);
+    }
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-    if (username == "" && email) {
-      setUserData({ email });
-    } else if (email == "" && username) {
+    if (username && email == "") {
       setUserData({ username });
+      alert(username + " was saved sucessfully.");
+    } else if (email && username == "") {
+      setUserData({ email });
+      alert(email + " was saved sucessfully.");
     } else {
       setUserData({ username, email });
+      alert("Your info was saved sucessfully.");
     }
   };
 
@@ -55,9 +66,9 @@ export const PersonalProfile = () => {
   const onChangePhoto = (e) => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
-    }
-    if (e.target.files[0] !== null) {
       setUploadStatus(false);
+    } else {
+      setUploadStatus(true);
     }
   };
 
@@ -85,16 +96,15 @@ export const PersonalProfile = () => {
         xs={1}
         xxs={1}
       >
-        <Col className="d-flex flex-column flex-grow-1 justify-content-center align-items-start">
+        <Col className="d-flex flex-column flex-grow-1 justify-content-center align-items-start ">
           <Form>
             <Form.Group
               className="mb-3 d-flex  align-items-end"
-              controlId="nameEnteryArea"
+              controlId="nameEntryArea"
               value={username}
             >
               <Form.Label style={{ color: "white" }}>Name: </Form.Label>
               <Form.Control
-                required
                 type="name"
                 placeholder={isAuthenticated ? user.get("username") : null}
                 value={username}
@@ -105,7 +115,7 @@ export const PersonalProfile = () => {
 
             <Form.Group
               className="mb-3 d-flex align-items-end"
-              controlId="emailEnteryArea"
+              controlId="emailEntryArea"
               value={email}
             >
               <Form.Label style={{ color: "white" }}>Email: </Form.Label>

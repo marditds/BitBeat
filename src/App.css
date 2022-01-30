@@ -391,6 +391,40 @@ body {
   color: #082032;
 }
 
+#nameEntryArea,
+#emailEntryArea {
+  font-family: Epilogue;
+  border: #f0a500 transparent;
+  box-shadow: none;
+}
+
+#nameEntryArea:focus,
+#emailEntryArea:focus {
+  border-style: solid;
+  border-width: 1px 1px;
+  border-color: #f0a500;
+}
+
+#saveInfoButton {
+  font-family: Epilogue;
+  color: #082032;
+  background-color: #f0a500;
+  border: none;
+  margin-top: 10px;
+  transition: 0.3s;
+  box-shadow: none;
+}
+
+#saveInfoButton:hover {
+  background-color: #f0a400af;
+  color: white;
+}
+
+#saveInfoButton:active {
+  background-color: #f0a4004b;
+  color: #f0a500;
+}
+
 #profPic {
   float: right;
   width: 105px;
@@ -400,7 +434,15 @@ body {
 #uploadPicture {
   font-family: Epilogue;
   box-shadow: none;
-  /* border: black; */
+  border-style: solid;
+  border-width: 1px 1px;
+  border-color: #334756;
+}
+
+#uploadPicture:focus {
+  border-style: solid;
+  border-width: 1px 1px;
+  border-color: #f0a500;
 }
 
 #uploadButton {
@@ -420,25 +462,6 @@ body {
 #uploadButton:active {
   background-color: #334756;
   color: #7691a1;
-}
-
-#saveInfoButton {
-  font-family: Epilogue;
-  color: #082032;
-  background-color: #f0a500;
-  border: none;
-  margin-top: 10px;
-  transition: 0.3s;
-  box-shadow: none;
-}
-#saveInfoButton:hover {
-  background-color: #f0a400af;
-  color: white;
-}
-
-#saveInfoButton:active {
-  background-color: #f0a4004b;
-  color: #f0a500;
 }
 
 @media (max-width: 411px) {
