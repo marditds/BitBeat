@@ -25,7 +25,7 @@ export const PersonalProfile = () => {
 
   //// <pre>{JSON.stringify(user)}</pre>;
 
-  const handleSetUsername = (elem) => {
+  const onChangeUsername = (elem) => {
     setUsername(elem.target.value);
     if (elem.target.value) {
       setSaveInfoStatus(false);
@@ -34,7 +34,7 @@ export const PersonalProfile = () => {
     }
   };
 
-  const handleSetEmail = (elem) => {
+  const onChangeEmail = (elem) => {
     setEmail(elem.target.value);
     if (elem.target.value) {
       setSaveInfoStatus(false);
@@ -108,7 +108,7 @@ export const PersonalProfile = () => {
                 type="name"
                 placeholder={isAuthenticated ? user.get("username") : null}
                 value={username}
-                onChange={handleSetUsername}
+                onChange={onChangeUsername}
                 style={{ marginLeft: "9px" }}
               />
             </Form.Group>
@@ -123,7 +123,7 @@ export const PersonalProfile = () => {
                 type="email"
                 placeholder={isAuthenticated ? user.get("email") : null}
                 value={email}
-                onChange={handleSetEmail}
+                onChange={onChangeEmail}
                 style={{ marginLeft: "7px" }}
                 required
               />
