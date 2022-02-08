@@ -29,7 +29,7 @@ body {
 #navToggleButton {
   transition: 0.3s;
   background-color: #f0a500;
-  margin-right: 7px;
+  margin-right: 20px;
 }
 
 #navToggleButton:focus {
@@ -403,12 +403,22 @@ body {
   color: #082032;
 }
 
+.nameEmailCol {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
 #nameEntryArea,
 #emailEntryArea,
 #searchBar {
   font-family: Epilogue;
   /* border: #f0a500 transparent; */
   box-shadow: none;
+}
+#nameEntryArea,
+#emailEntryArea {
+  width: 300px;
 }
 
 #nameEntryArea:focus,
@@ -443,6 +453,16 @@ body {
   float: right;
   width: 105px;
   height: 105px;
+}
+
+.profPicCol {
+  display: grid;
+  justify-content: end;
+}
+
+.personalProfPic {
+  width: 150px;
+  height: 150px;
 }
 
 #uploadPicture {
@@ -503,6 +523,21 @@ body {
   }
 }
 
+@media (max-width: 767px) {
+  .nameEmailCol {
+    align-items: center;
+  }
+  .profPicCol {
+    justify-content: center;
+    align-self: center;
+  }
+  .personalProfPic {
+    margin-top: 20px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
 @media (max-width: 990px) {
   .expviewAll {
     width: max-content;
@@ -515,11 +550,6 @@ body {
   }
   .popInfo {
     clear: left;
-  }
-}
-
-@media (max-width: 1011px) {
-  .wallet {
   }
 }
 

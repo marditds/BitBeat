@@ -95,21 +95,24 @@ export const PersonalProfile = () => {
         sm={1}
         xs={1}
         xxs={1}
+        style={{ marginTop: "15px", marginBottom: "15px" }}
       >
-        <Col className="d-flex flex-column flex-grow-1 justify-content-center align-items-start ">
+        <Col className="nameEmailCol">
           <Form>
             <Form.Group
-              className="mb-3 d-flex  align-items-end"
+              className="mb-3 d-flex align-items-end"
               controlId="nameEntryArea"
               value={username}
             >
-              <Form.Label style={{ color: "white" }}>Name: </Form.Label>
+              <Form.Label style={{ color: "white", marginRight: "auto" }}>
+                Name:
+              </Form.Label>
               <Form.Control
                 type="name"
                 placeholder={isAuthenticated ? user.get("username") : null}
                 value={username}
                 onChange={onChangeUsername}
-                style={{ marginLeft: "9px" }}
+                style={{ marginLeft: "7px", width: "15rem" }}
               />
             </Form.Group>
 
@@ -118,19 +121,20 @@ export const PersonalProfile = () => {
               controlId="emailEntryArea"
               value={email}
             >
-              <Form.Label style={{ color: "white" }}>Email: </Form.Label>
+              <Form.Label style={{ color: "white", marginRight: "auto" }}>
+                Email:
+              </Form.Label>
               <Form.Control
                 type="email"
                 placeholder={isAuthenticated ? user.get("email") : null}
                 value={email}
                 onChange={onChangeEmail}
-                style={{ marginLeft: "7px" }}
-                required
+                style={{ marginLeft: "7px", width: "15rem" }}
               />
             </Form.Group>
           </Form>
 
-          <div className="d-flex">
+          <div className="d-flex" style={{ width: "292.74px" }}>
             <Form onSubmit={handleSubmitPhoto}>
               <Form.Group controlId="uploadPicture">
                 <Form.Control
@@ -162,22 +166,21 @@ export const PersonalProfile = () => {
           </Button>
         </Col>
 
-        <Col>
-          <Stack className="d-grid justify-content-end text-center">
-            <Image
-              src={avatar ? avatar : avatarDefault}
-              style={{ width: "150px", height: "150px" }}
-              roundedCircle
-            />
+        <Col className="profPicCol">
+          <Image
+            src={avatar ? avatar : avatarDefault}
+            className="personalProfPic"
+            roundedCircle
+            fluid
+          />
 
-            <p style={{ color: "white" }}>
+          {/* <p style={{ color: "white" }}>
               {isAuthenticated ? user.get("username") : "Your Name"}
-            </p>
+            </p> */}
 
-            {/* <p style={{ color: "white" }}>
+          {/* <p style={{ color: "white" }}>
               {isAuthenticated ? user.get("email") : null}
             </p> */}
-          </Stack>
         </Col>
       </Row>
       <ProfileTabs />
