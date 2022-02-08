@@ -529,12 +529,11 @@ body {
   }
   .profPicCol {
     justify-content: center;
-    align-self: center;
+    margin-bottom: 16px;
   }
   .personalProfPic {
-    margin-top: 20px;
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
   }
 }
 

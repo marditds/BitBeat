@@ -89,14 +89,29 @@ export const PersonalProfile = () => {
   return (
     <Container>
       <Row
-        className="d-flex flex-row-reverse"
+        className="d-flex "
         lg={2}
         md={2}
         sm={1}
         xs={1}
         xxs={1}
-        style={{ marginTop: "15px", marginBottom: "15px" }}
+        style={{ marginTop: "15px", marginBottom: "20px" }}
       >
+        <Col className="profPicCol">
+          <Image
+            src={avatar ? avatar : avatarDefault}
+            className="personalProfPic"
+            roundedCircle
+          />
+
+          {/* <p style={{ color: "white" }}>
+              {isAuthenticated ? user.get("username") : "Your Name"}
+            </p> */}
+
+          {/* <p style={{ color: "white" }}>
+              {isAuthenticated ? user.get("email") : null}
+            </p> */}
+        </Col>
         <Col className="nameEmailCol">
           <Form>
             <Form.Group
@@ -164,23 +179,6 @@ export const PersonalProfile = () => {
           >
             Save Info
           </Button>
-        </Col>
-
-        <Col className="profPicCol">
-          <Image
-            src={avatar ? avatar : avatarDefault}
-            className="personalProfPic"
-            roundedCircle
-            fluid
-          />
-
-          {/* <p style={{ color: "white" }}>
-              {isAuthenticated ? user.get("username") : "Your Name"}
-            </p> */}
-
-          {/* <p style={{ color: "white" }}>
-              {isAuthenticated ? user.get("email") : null}
-            </p> */}
         </Col>
       </Row>
       <ProfileTabs />
