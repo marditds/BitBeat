@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Col, Row, Image, Tabs, Tab } from "react-bootstrap";
+import { Container, Col, Row, Tabs, Tab } from "react-bootstrap";
 import axios from "axios";
 import { peopleInfo, profImages, itemSounds } from "../PeopleList";
 import { useParams } from "react-router-dom";

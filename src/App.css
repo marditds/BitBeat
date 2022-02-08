@@ -451,6 +451,7 @@ body {
   border-style: solid;
   border-width: 1px 1px;
   border-color: #334756;
+  border-radius: 5px;
 }
 
 #uploadPicture:focus {

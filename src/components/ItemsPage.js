@@ -13,7 +13,7 @@ export const ItemsPage = () => {
   useEffect(() => {
     const exploreItem = exploreInfo.find((item) => item.id === parseInt(id));
     setItem(exploreItem);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setFiltedItem();
@@ -22,7 +22,7 @@ export const ItemsPage = () => {
   const setFiltedItem = () => {
     if (item) {
       const filteredItems = exploreInfo.filter(
-        (x) => x.creatorId == item.creatorId && x.id != item.id
+        (x) => x.creatorId === item.creatorId && x.id !== item.id
       );
       setSameCreatorItems(filteredItems);
     }

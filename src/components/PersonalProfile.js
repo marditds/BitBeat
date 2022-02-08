@@ -45,10 +45,10 @@ export const PersonalProfile = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    if (username && email == "") {
+    if (username && email === "") {
       setUserData({ username });
       alert(username + " was saved sucessfully.");
-    } else if (email && username == "") {
+    } else if (email && username === "") {
       setUserData({ email });
       alert(email + " was saved sucessfully.");
     } else {
