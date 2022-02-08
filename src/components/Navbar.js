@@ -23,15 +23,17 @@ export const NavBar = () => {
       <Navbar
         style={{ paddingTop: "10px", paddingBottom: "10px" }}
         collapseOnSelect
-        expand="md"
+        expand="lg"
         id="navbar"
       >
-        {/* <Container> */}
         <Navbar.Brand href="/">
           <Image src={logo} style={{ height: "80px", paddingLeft: "20px" }} />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          id="navToggleButton"
+        />
         <Navbar.Collapse
           id="responsive-navbar-nav"
           className="justify-content-around"
@@ -46,10 +48,14 @@ export const NavBar = () => {
               How It Works
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item style={{ width: "50%" }} className="align-self-center">
+          <Nav.Item className="align-self-center" id="searchBarSpace">
             <Form action="/" method="get">
               <Form.Group>
-                <Form.Control type="text" placeholder="Search..." />
+                <Form.Control
+                  type="text"
+                  placeholder="Search..."
+                  id="searchBar"
+                />
                 <div className="searchPic"></div>
               </Form.Group>
             </Form>
@@ -63,9 +69,10 @@ export const NavBar = () => {
           >
             Connect Wallet
           </Nav.Item>
+
           <Nav.Link
             href="/profile"
-            className="wallet"
+            className="profileButton"
             id="profileButton"
             // onClick={() => logout()}
             style={{ display: showProfile }}
@@ -73,15 +80,14 @@ export const NavBar = () => {
             Profile
           </Nav.Link>
           <Nav.Item
-            className="wallet"
-            id="connectWallet"
+            className="logOutButton"
+            id="logOutButton"
             onClick={() => logout()}
             style={{ display: showLogOut }}
           >
             Log Out
           </Nav.Item>
         </Navbar.Collapse>
-        {/* </Container> */}
       </Navbar>
     </div>
   );

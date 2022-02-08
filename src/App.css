@@ -11,7 +11,6 @@ body {
 }
 
 #navbar {
-  /* background-color: #334756; */
   background-color: #082032;
   /* background-color: #000; */
 }
@@ -27,7 +26,31 @@ body {
   color: #334756;
 }
 
-.wallet {
+#navToggleButton {
+  transition: 0.3s;
+  background-color: #f0a500;
+  margin-right: 7px;
+}
+
+#navToggleButton:focus {
+  box-shadow: none;
+}
+
+#navToggleButton:hover {
+  background-color: #7691a1;
+}
+
+.navbar-toggler-icon {
+  font-size: x-large;
+}
+
+#searchBarSpace {
+  width: 50%;
+}
+
+.wallet,
+.profileButton,
+.logOutButton {
   font-family: Epilogue;
   cursor: pointer;
   color: #f0a500;
@@ -37,31 +60,20 @@ body {
   border-radius: 15px;
   padding: 10px;
   transition: 0.3s;
+  align-self: center;
 }
 
-.wallet:hover {
-  color: #334756;
-}
-
-#profileButton {
+#profileButton,
+#logOutButton {
+  padding: 10px;
   color: #f0a500;
 }
 
-#profileButton:hover {
+.wallet:hover,
+#profileButton:hover,
+#logOutButton:hover {
   color: #334756;
-}
-
-.navbar-toggler-icon {
-  transition: 0.3s;
-  margin-right: 7px;
-  font-size: x-large;
-  background-color: #f0a500;
-  border-radius: 3px;
-}
-
-.navbar-toggler-icon:hover {
-  background-color: #334756;
-  border-radius: 3px;
+  border: #334756 thin solid;
 }
 
 .jumptToTopArrow {
@@ -392,14 +404,16 @@ body {
 }
 
 #nameEntryArea,
-#emailEntryArea {
+#emailEntryArea,
+#searchBar {
   font-family: Epilogue;
-  border: #f0a500 transparent;
+  /* border: #f0a500 transparent; */
   box-shadow: none;
 }
 
 #nameEntryArea:focus,
-#emailEntryArea:focus {
+#emailEntryArea:focus,
+#searchBar:focus {
   border-style: solid;
   border-width: 1px 1px;
   border-color: #f0a500;
@@ -505,7 +519,22 @@ body {
 
 @media (max-width: 1011px) {
   .wallet {
-    width: max-content;
+  }
+}
+
+@media (max-width: 991px) {
+  .wallet,
+  .profileButton,
+  .logOutButton {
+    margin-top: 13px;
+    margin-bottom: 13px;
+    width: fit-content;
+    margin-left: 12px;
+  }
+
+  #searchBarSpace {
+    margin: 0 auto;
+    width: 97%;
   }
 }
 
