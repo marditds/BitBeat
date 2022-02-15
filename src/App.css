@@ -166,6 +166,7 @@ body {
 
 .popCSS {
   transition: 0.3s;
+  min-height: 76.38px;
   color: #fff;
   background-color: #334756;
   border: #334756 thin solid;
