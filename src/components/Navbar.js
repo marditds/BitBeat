@@ -86,6 +86,25 @@ export const NavBar = () => {
           >
             Log Out
           </Nav.Item>
+
+          <div className="navButtonSet2">
+            <Nav.Link
+              href="/profile"
+              className="profileButton2"
+              id="profileButton2"
+              style={{ display: showProfile }}
+            >
+              Profile
+            </Nav.Link>
+            <Nav.Item
+              className="logOutButton2"
+              id="logOutButton2"
+              onClick={() => logout()}
+              style={{ display: showLogOut }}
+            >
+              Log Out
+            </Nav.Item>
+          </div>
         </Navbar.Collapse>
       </Navbar>
     </div>

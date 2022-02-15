@@ -10,7 +10,7 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 
-const Popular = ({ id, objectId, avatar, username, email }) => {
+const Popular = ({ objectId, avatar, username, email }) => {
   function shortString(str) {
     return str.length > 7 ? str.substring(0, 6) + "..." : str;
   }

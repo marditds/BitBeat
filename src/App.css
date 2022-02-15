@@ -51,7 +51,9 @@ body {
 
 .wallet,
 .profileButton,
-.logOutButton {
+.logOutButton,
+.profileButton2,
+.logOutButton2 {
   font-family: Epilogue;
   cursor: pointer;
   color: #f0a500;
@@ -64,14 +66,18 @@ body {
 }
 
 #profileButton,
-#logOutButton {
+#logOutButton,
+#profileButton2,
+#logOutButton2 {
   padding: 10px;
   color: #f0a500;
 }
 
 .wallet:hover,
 #profileButton:hover,
-#logOutButton:hover {
+#logOutButton:hover,
+#profileButton2:hover,
+#logOutButton2:hover {
   color: #334756;
   border: #334756 thin solid;
 }
@@ -128,7 +134,7 @@ body {
 }
 
 #dropdownToggleCSS {
-  width: 130px;
+  width: min-content;
   text-align: left;
   font-family: Epilogue;
   color: #f0a500;
@@ -499,6 +505,15 @@ body {
   color: #7691a1;
 }
 
+.navButtonSet1 {
+  display: flex;
+}
+
+.navButtonSet2 {
+  display: none;
+  visibility: hidden;
+}
+
 @media (max-width: 411px) {
   .viewAll {
     width: max-content;
@@ -543,28 +558,45 @@ body {
   }
 }
 
+@media (max-width: 991px) {
+  .wallet {
+    margin-top: 13px;
+    width: fit-content;
+    margin-left: 12px;
+  }
+
+  .profileButton,
+  .logOutButton {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .navButtonSet2 {
+    display: flex;
+    visibility: visible;
+    margin-left: 12px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    width: fit-content;
+  }
+
+  .profileButton2 {
+    margin-right: 18px;
+  }
+
+  #searchBarSpace {
+    margin: 0 auto;
+    width: 97%;
+  }
+}
+
 @media (max-width: 992px) {
   .popImg {
     clear: right;
   }
   .popInfo {
     clear: left;
-  }
-}
-
-@media (max-width: 991px) {
-  .wallet,
-  .profileButton,
-  .logOutButton {
-    margin-top: 13px;
-    margin-bottom: 13px;
-    width: fit-content;
-    margin-left: 12px;
-  }
-
-  #searchBarSpace {
-    margin: 0 auto;
-    width: 97%;
   }
 }
 
