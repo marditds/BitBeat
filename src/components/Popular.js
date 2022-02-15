@@ -9,10 +9,15 @@ import {
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
+import avatarDefault from "../images/avatarDefault.png";
 
 const Popular = ({ objectId, avatar, username, email }) => {
   function shortString(str) {
-    return str.length > 7 ? str.substring(0, 6) + "..." : str;
+    return str && str.length > 7 ? str.substring(0, 6) + "..." : str;
+  }
+
+  function profAvatar(avat) {
+    return avat ? avat._url : avatarDefault;
   }
 
   return (
@@ -21,7 +26,12 @@ const Popular = ({ objectId, avatar, username, email }) => {
       key={objectId}
     >
       <h6> </h6>
-      <Image src={avatar._url} alt="" roundedCircle className="popImg" />
+      <Image
+        src={profAvatar(avatar)}
+        alt="profile_picutre"
+        roundedCircle
+        className="popImg"
+      />
       <div>
         <h6>{shortString(username)}</h6>
         <h6>{shortString(email)}</h6>
@@ -82,7 +92,7 @@ const DropButtons = () => {
   return (
     <div className="d-flex align-items-center">
       <Col>
-        <h3 id="sellers">Popular Sellers</h3>
+        <h3 id="sellers">Our Creators</h3>
       </Col>
       <Col className="d-flex justify-content-end align-items-center">
         <Link to="/" className="text-decoration-none viewAll">

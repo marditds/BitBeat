@@ -51,31 +51,31 @@ const Profile = () => {
       setName(user.name);
     }
   }
-  useEffect(setPersonName, [users]);
+  useEffect(setPersonName, [users, id]);
 
   function setPersonPic() {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
     setPic(profImages(User.src).default);
   }
-  useEffect(setPersonPic, []);
+  useEffect(setPersonPic, [id]);
 
   function setPersonSound() {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
     setSound(itemSounds(User.musicSrc).default);
   }
-  useEffect(setPersonSound, []);
+  useEffect(setPersonSound, [id]);
 
   function setCreationCount() {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
     setItemCount(User.itemCount);
   }
-  useEffect(setCreationCount, []);
+  useEffect(setCreationCount, [id]);
 
   function setPersonSold() {
     const User = peopleInfo.find((person) => person.id === parseInt(id));
     setSold(User.sold);
   }
-  useEffect(setPersonSold, []);
+  useEffect(setPersonSold, [id]);
 
   const ProfileTabs = () => {
     const [tabTitle, setTabTitle] = useState("Creations");
