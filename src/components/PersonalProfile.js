@@ -8,7 +8,6 @@ import {
   Form,
   Button,
   Image,
-  Stack,
 } from "react-bootstrap";
 import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
@@ -23,7 +22,7 @@ export const PersonalProfile = () => {
   const [avatar, setAvatar] = useState();
   const [uploadStatus, setUploadStatus] = useState(true);
 
-  //// <pre>{JSON.stringify(user)}</pre>;
+  // <pre>{JSON.stringify(user)}</pre>;
 
   const onChangeUsername = (elem) => {
     setUsername(elem.target.value);

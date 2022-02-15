@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useMoralisCloudFunction } from "react-moralis";
 import {
   Container,
   Image,
@@ -10,72 +10,63 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 
-const Popular = ({ id, src, name, sold }) => {
+const Popular = ({ id, objectId, avatar, username, email }) => {
+  function shortString(str) {
+    return str.length > 7 ? str.substring(0, 6) + "..." : str;
+  }
+
   return (
     <div
       className="justify-content-around d-flex align-items-center popCSS"
-      key={id}
+      key={objectId}
     >
-      <h6>{id}</h6>
-      <Image
-        // src={profImages(src).default}
-        alt=""
-        roundedCircle
-        className="popImg"
-      />
+      <h6> </h6>
+      <Image src={avatar._url} alt="" roundedCircle className="popImg" />
       <div>
-        <h6>{name}</h6>
-        <h6>${sold}</h6>
+        <h6>{shortString(username)}</h6>
+        <h6>{shortString(email)}</h6>
       </div>
     </div>
   );
 };
 
 export const PopularList = () => {
+  const { data } = useMoralisCloudFunction("theUsers", {
+    autoFetch: true,
+  });
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios
-      // .get("https://zk0p00pjcbme.usemoralis.com:2053/server")
-      .get("https://jsonplaceholder.typicode.com/users")
-      // .get(
-      //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
-      // )
-      .then((response) => {
-        // setUsers(JSON.parse(response.data));
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    setUsers(data);
+  }, [data]);
 
   return (
     <Container style={{ marginTop: "25px" }}>
       <DropButtons />
       <Row md={2}>
-        {users.map((userInfo) => {
-          return (
-            <Col
-              xxl={2}
-              xl={2}
-              lg={3}
-              md={4}
-              sm={6}
-              xs={6}
-              className="d-felx align-self-end"
-              style={{ marginTop: "5px" }}
-              key={userInfo.id}
-            >
-              <Link
+        {users &&
+          users.map((user) => {
+            return (
+              <Col
+                xxl={2}
+                xl={2}
+                lg={3}
+                md={4}
+                sm={6}
+                xs={6}
+                className="d-felx align-self-end"
+                style={{ marginTop: "5px" }}
+                key={user.objectId}
+              >
+                {/* <Link
                 to={`/profile/${userInfo.id}`}
                 className="text-decoration-none"
-              >
-                <Popular {...userInfo}></Popular>
-              </Link>
-            </Col>
-          );
-        })}
+              > */}
+                <Popular {...user}></Popular>
+                {/* </Link> */}
+              </Col>
+            );
+          })}
       </Row>
     </Container>
   );

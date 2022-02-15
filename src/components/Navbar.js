@@ -74,7 +74,6 @@ export const NavBar = () => {
             href="/profile"
             className="profileButton"
             id="profileButton"
-            // onClick={() => logout()}
             style={{ display: showProfile }}
           >
             Profile
