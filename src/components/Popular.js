@@ -68,12 +68,12 @@ export const PopularList = () => {
                 style={{ marginTop: "5px" }}
                 key={user.objectId}
               >
-                {/* <Link
-                to={`/profile/${userInfo.id}`}
-                className="text-decoration-none"
-              > */}
-                <Popular {...user}></Popular>
-                {/* </Link> */}
+                <Link
+                  to={`/profile/${user.objectId}`}
+                  className="text-decoration-none"
+                >
+                  <Popular {...user}></Popular>
+                </Link>
               </Col>
             );
           })}

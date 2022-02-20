@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Tabs, Tab } from "react-bootstrap";
-import axios from "axios";
-import { peopleInfo, profImages, itemSounds } from "../PeopleList";
+// import axios from "axios";
+// import { peopleInfo, profImages, itemSounds } from "../PeopleList";
 import { useParams } from "react-router-dom";
 import { Player2 } from "./Player2";
+import { useMoralisCloudFunction } from "react-moralis";
 
 const Creations = (props) => {
   return (
@@ -11,7 +12,7 @@ const Creations = (props) => {
       {[...Array(props.itemCount)].map((e, i) => {
         return (
           <div key={i}>
-            {props.name}
+            {props.username}
             <Player2 sound={props.sound} />
           </div>
         );
@@ -21,61 +22,73 @@ const Creations = (props) => {
 };
 
 const Profile = () => {
-  const [name, setName] = useState("Name");
-  const [itemCount, setItemCount] = useState(0);
-  const [sold, setSold] = useState(0);
-  const [profPic, setPic] = useState([]);
-  const [sound, setSound] = useState([]);
+  // const [itemCount, setItemCount] = useState(0);
+  // const [sold, setSold] = useState(0);
+  // const [profPic, setPic] = useState([]);
+  // const [sound, setSound] = useState([]);
+  const [username, setUsername] = useState("Username");
   const [users, setUsers] = useState([]);
   const { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      // .get(
-      //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
-      // )
-      .then((response) => {
-        // var d = JSON.stringify(response.data);
-        // setUsers(JSON.parse(d));
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        console.log(error + "Hakooop");
-      });
-  }, []);
+  const { data } = useMoralisCloudFunction("theUsers", {
+    autoFetch: true,
+  });
 
-  function setPersonName() {
-    const user = users.find((person) => person.id === parseInt(id));
+  useEffect(() => {
+    setUsers(data);
+  }, [data]);
+
+  function setPersonUsername() {
+    const user =
+      users[0] &&
+      users[0].find((person) => person[0].objectId === parseInt(id));
     if (user) {
-      setName(user.name);
+      setUsername(user[0].username);
+      console.log(user[0].username);
     }
   }
-  useEffect(setPersonName, [users, id]);
+  useEffect(setPersonUsername, [users, id]);
+  // console.log(users[0].objectId);
 
-  function setPersonPic() {
-    const User = peopleInfo.find((person) => person.id === parseInt(id));
-    setPic(profImages(User.src).default);
-  }
-  useEffect(setPersonPic, [id]);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/users")
+  //     // .get(
+  //     //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
+  //     // )
+  //     .then((response) => {
+  //       // var d = JSON.stringify(response.data);
+  //       // setUsers(JSON.parse(d));
+  //       setUsers(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error + "Hakooop");
+  //     });
+  // }, []);
 
-  function setPersonSound() {
-    const User = peopleInfo.find((person) => person.id === parseInt(id));
-    setSound(itemSounds(User.musicSrc).default);
-  }
-  useEffect(setPersonSound, [id]);
+  // function setPersonPic() {
+  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
+  //   // setPic(profImages(User.src).default);
+  // }
+  // useEffect(setPersonPic, [id]);
 
-  function setCreationCount() {
-    const User = peopleInfo.find((person) => person.id === parseInt(id));
-    setItemCount(User.itemCount);
-  }
-  useEffect(setCreationCount, [id]);
+  // function setPersonSound() {
+  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
+  //   // setSound(itemSounds(User.musicSrc).default);
+  // }
+  // useEffect(setPersonSound, [id]);
 
-  function setPersonSold() {
-    const User = peopleInfo.find((person) => person.id === parseInt(id));
-    setSold(User.sold);
-  }
-  useEffect(setPersonSold, [id]);
+  // function setCreationCount() {
+  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
+  //   // setItemCount(User.itemCount);
+  // }
+  // useEffect(setCreationCount, [id]);
+
+  // function setPersonSold() {
+  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
+  //   // setSold(User.sold);
+  // }
+  // useEffect(setPersonSold, [id]);
 
   const ProfileTabs = () => {
     const [tabTitle, setTabTitle] = useState("Creations");
@@ -93,11 +106,11 @@ const Profile = () => {
         <Tab eventKey="Creations" title="Creations">
           <p>This is the Creations tab.</p>
 
-          <Creations
-            itemCount={itemCount}
-            name={name}
-            sound={sound}
-          ></Creations>
+          {/* <Creations
+          username={username}
+          itemCount={itemCount}
+          sound={sound}
+          ></Creations> */}
         </Tab>
         <Tab eventKey="Collections" title="Collections">
           <p>This is the Collections tab.</p>
@@ -117,8 +130,8 @@ const Profile = () => {
             {/* <Image src={profPic} alt="" roundedCircle fluid id="profPic" /> */}
           </Col>
           <Col>
-            <p>{name}</p>
-            <p>Sold: ${sold}</p>
+            <p>{username}</p>
+            {/* <p>Sold: ${sold}</p> */}
           </Col>
           <ProfileTabs />
         </Row>
