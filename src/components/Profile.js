@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Tabs, Tab } from "react-bootstrap";
 // import axios from "axios";
 // import { peopleInfo, profImages, itemSounds } from "../PeopleList";
-import { useParams } from "react-router-dom";
-import { Player2 } from "./Player2";
+// import { Player2 } from "./Player2";
 import { useMoralisCloudFunction } from "react-moralis";
+import { useParams } from "react-router-dom";
 
-const Creations = (props) => {
-  return (
-    <Row xl={5} lg={4} md={3} sm={2} xs={2}>
-      {[...Array(props.itemCount)].map((e, i) => {
-        return (
-          <div key={i}>
-            {props.username}
-            <Player2 sound={props.sound} />
-          </div>
-        );
-      })}
-    </Row>
-  );
-};
+// const Creations = (props) => {
+//   return (
+//     <Row xl={5} lg={4} md={3} sm={2} xs={2}>
+//       {[...Array(props.itemCount)].map((e, i) => {
+//         return (
+//           <div key={i}>
+//             {props.username}
+//             <Player2 sound={props.sound} />
+//           </div>
+//         );
+//       })}
+//     </Row>
+//   );
+// };
 
 const Profile = () => {
   // const [itemCount, setItemCount] = useState(0);
@@ -28,26 +28,39 @@ const Profile = () => {
   // const [sound, setSound] = useState([]);
   const [username, setUsername] = useState("Username");
   const [users, setUsers] = useState([]);
-  const { id } = useParams();
+  const { objectId } = useParams();
 
   const { data } = useMoralisCloudFunction("theUsers", {
     autoFetch: true,
   });
 
+  // console.log(useParams());
+
+  // var aaa = JSON.stringify(data);
+
+  // useEffect(() => {
+  //   const user = aaa && aaa.find((person) => person.objectId === objectId);
+  //   if (user) {
+  //     setUsername(user.username);
+  //     console.log(user.username);
+  //   }
+  // }, []);
+
   useEffect(() => {
     setUsers(data);
   }, [data]);
 
+  console.log(users);
+
   function setPersonUsername() {
-    const user =
-      users[0] &&
-      users[0].find((person) => person[0].objectId === parseInt(id));
+    const user = users && users.find((person) => person.objectId === objectId);
     if (user) {
-      setUsername(user[0].username);
-      console.log(user[0].username);
+      setUsername(user.username);
+      // console.log(users.username);
     }
   }
-  useEffect(setPersonUsername, [users, id]);
+  useEffect(setPersonUsername, [users, objectId]);
+
   // console.log(users[0].objectId);
 
   // useEffect(() => {
