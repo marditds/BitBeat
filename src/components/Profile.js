@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Container, Col, Row, Tabs, Tab } from "react-bootstrap";
-// import axios from "axios";
-// import { peopleInfo } from "../PeopleList";
+import React, { useState } from "react";
+import { Container, Col, Row, Tabs, Tab, Image } from "react-bootstrap";
 // import { Player2 } from "./Player2";
 import { useMoralisCloudFunction } from "react-moralis";
 import { useParams } from "react-router-dom";
+import avatarDefault from "../images/avatarDefault.png";
 
 // const Creations = (props) => {
 //   return (
@@ -22,86 +21,21 @@ import { useParams } from "react-router-dom";
 // };
 
 const Profile = () => {
-  // const [itemCount, setItemCount] = useState(0);
-  // const [sold, setSold] = useState(0);
-  // const [profPic, setPic] = useState([]);
-  // const [sound, setSound] = useState([]);
-  const [username, setUsername] = useState("Username");
-  const [users, setUsers] = useState([]);
-  const { objectId } = useParams();
+  const { data: users } = useMoralisCloudFunction("theUsers");
+  const { id } = useParams();
 
-  const { data, isLoading } = useMoralisCloudFunction("theUsers", {
-    autoFetch: true,
-  });
+  const user = users && users.find((person) => person.objectId === id);
+  const username = user?.username ?? "Username";
 
-  // console.log(useParams());
-
-  // var aaa = JSON.stringify(data);
-
-  // useEffect(() => {
-  //   const user = aaa && aaa.find((person) => person.objectId === objectId);
-  //   if (user) {
-  //     setUsername(user.username);
-  //     console.log(user.username);
-  //   }
-  // }, []);
-
-  useEffect(() => {
-    setUsers(data);
-  }, [data]);
-
-  console.log("This is USERS:");
-  console.log(users);
-
-  function setPersonUsername() {
-    const user = users && users.find((person) => person.objectId === objectId);
-    if (user) {
-      setUsername(user.username);
-    }
+  function shortString(str) {
+    return str && str.length > 15 ? str.substring(0, 15) + "..." : str;
   }
-  useEffect(setPersonUsername, [users, objectId]);
 
-  // console.log(users[0].objectId);
+  var avatar = user?.avatar;
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://jsonplaceholder.typicode.com/users")
-  //     // .get(
-  //     //   "https://bafyreibnlksobmrhubdfmnwjq2go5bt7s3at2rqlsk2rntorzcaorafeii.ipfs.dweb.link/metadata.json"
-  //     // )
-  //     .then((response) => {
-  //       // var d = JSON.stringify(response.data);
-  //       // setUsers(JSON.parse(d));
-  //       setUsers(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error + "Hakooop");
-  //     });
-  // }, []);
-
-  // function setPersonPic() {
-  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
-  //   // setPic(profImages(User.src).default);
-  // }
-  // useEffect(setPersonPic, [id]);
-
-  // function setPersonSound() {
-  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
-  //   // setSound(itemSounds(User.musicSrc).default);
-  // }
-  // useEffect(setPersonSound, [id]);
-
-  // function setCreationCount() {
-  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
-  //   // setItemCount(User.itemCount);
-  // }
-  // useEffect(setCreationCount, [id]);
-
-  // function setPersonSold() {
-  //   const User = peopleInfo.find((person) => person.id === parseInt(id));
-  //   // setSold(User.sold);
-  // }
-  // useEffect(setPersonSold, [id]);
+  function profAvatar(avat) {
+    return avat ? avat._url : avatarDefault;
+  }
 
   const ProfileTabs = () => {
     const [tabTitle, setTabTitle] = useState("Creations");
@@ -140,10 +74,16 @@ const Profile = () => {
           style={{ backgroundColor: "green" }}
         >
           <Col>
-            {/* <Image src={profPic} alt="" roundedCircle fluid id="profPic" /> */}
+            <Image
+              src={profAvatar(avatar)}
+              alt=""
+              roundedCircle
+              fluid
+              id="profPic"
+            />
           </Col>
           <Col>
-            <p>{username}</p>
+            <p>{shortString(username)}</p>
             {/* <p>Sold: ${sold}</p> */}
           </Col>
           <ProfileTabs />
