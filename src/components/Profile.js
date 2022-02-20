@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col, Row, Tabs, Tab } from "react-bootstrap";
 // import axios from "axios";
-// import { peopleInfo, profImages, itemSounds } from "../PeopleList";
+// import { peopleInfo } from "../PeopleList";
 // import { Player2 } from "./Player2";
 import { useMoralisCloudFunction } from "react-moralis";
 import { useParams } from "react-router-dom";
@@ -30,7 +30,7 @@ const Profile = () => {
   const [users, setUsers] = useState([]);
   const { objectId } = useParams();
 
-  const { data } = useMoralisCloudFunction("theUsers", {
+  const { data, isLoading } = useMoralisCloudFunction("theUsers", {
     autoFetch: true,
   });
 
@@ -50,13 +50,13 @@ const Profile = () => {
     setUsers(data);
   }, [data]);
 
+  console.log("This is USERS:");
   console.log(users);
 
   function setPersonUsername() {
     const user = users && users.find((person) => person.objectId === objectId);
     if (user) {
       setUsername(user.username);
-      // console.log(users.username);
     }
   }
   useEffect(setPersonUsername, [users, objectId]);
