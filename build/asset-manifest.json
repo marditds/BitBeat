@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.43a7f504.chunk.css",
-    "main.js": "./static/js/main.3ee749f3.chunk.js",
-    "main.js.map": "./static/js/main.3ee749f3.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.775c43ac.js",
-    "runtime-main.js.map": "./static/js/runtime-main.775c43ac.js.map",
+    "main.css": "./static/css/main.6bf59c78.chunk.css",
+    "main.js": "./static/js/main.659d4d2c.chunk.js",
+    "main.js.map": "./static/js/main.659d4d2c.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.ece2de92.js",
+    "runtime-main.js.map": "./static/js/runtime-main.ece2de92.js.map",
     "static/css/2.f2512455.chunk.css": "./static/css/2.f2512455.chunk.css",
-    "static/js/2.96d5638e.chunk.js": "./static/js/2.96d5638e.chunk.js",
-    "static/js/2.96d5638e.chunk.js.map": "./static/js/2.96d5638e.chunk.js.map",
-    "static/js/3.1715863a.chunk.js": "./static/js/3.1715863a.chunk.js",
-    "static/js/3.1715863a.chunk.js.map": "./static/js/3.1715863a.chunk.js.map",
+    "static/js/2.5df56426.chunk.js": "./static/js/2.5df56426.chunk.js",
+    "static/js/2.5df56426.chunk.js.map": "./static/js/2.5df56426.chunk.js.map",
+    "static/js/3.0ac94b1b.chunk.js": "./static/js/3.0ac94b1b.chunk.js",
+    "static/js/3.0ac94b1b.chunk.js.map": "./static/js/3.0ac94b1b.chunk.js.map",
     "index.html": "./index.html",
     "static/css/2.f2512455.chunk.css.map": "./static/css/2.f2512455.chunk.css.map",
-    "static/css/main.43a7f504.chunk.css.map": "./static/css/main.43a7f504.chunk.css.map",
-    "static/js/2.96d5638e.chunk.js.LICENSE.txt": "./static/js/2.96d5638e.chunk.js.LICENSE.txt",
+    "static/css/main.6bf59c78.chunk.css.map": "./static/css/main.6bf59c78.chunk.css.map",
+    "static/js/2.5df56426.chunk.js.LICENSE.txt": "./static/js/2.5df56426.chunk.js.LICENSE.txt",
     "static/media/avatarDefault.png": "./static/media/avatarDefault.3158ff90.png",
     "static/media/logo.png": "./static/media/logo.410a3100.png",
     "static/media/logo.svg": "./static/media/logo.6ce24c58.svg",
@@ -27,10 +27,10 @@
     "static/media/sexOnFire.mp3": "./static/media/sexOnFire.0e5905b5.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.775c43ac.js",
+    "static/js/runtime-main.ece2de92.js",
     "static/css/2.f2512455.chunk.css",
-    "static/js/2.96d5638e.chunk.js",
-    "static/css/main.43a7f504.chunk.css",
-    "static/js/main.3ee749f3.chunk.js"
+    "static/js/2.5df56426.chunk.js",
+    "static/css/main.6bf59c78.chunk.css",
+    "static/js/main.659d4d2c.chunk.js"
   ]
 }
