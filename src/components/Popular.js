@@ -50,8 +50,6 @@ export const PopularList = () => {
     setUsers(data);
   }, [data]);
 
-  console.log(users);
-
   return (
     <Container style={{ marginTop: "25px" }}>
       <DropButtons />
