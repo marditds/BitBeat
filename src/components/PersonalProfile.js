@@ -96,7 +96,7 @@ export const PersonalProfile = () => {
         xxs={1}
         style={{ marginTop: "15px", marginBottom: "20px" }}
       >
-        <Col className="profPicCol">
+        <Col className="personalProfPicCol">
           <Image
             src={avatar ? avatar : avatarDefault}
             className="personalProfPic"

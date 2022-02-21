@@ -462,7 +462,15 @@ body {
   height: 105px;
 }
 
-.profPicCol {
+.userInfoCol {
+  color: white;
+  align-self: center;
+}
+.userInfoCol > p {
+  margin-bottom: 0;
+}
+
+.personalProfPicCol {
   display: grid;
   justify-content: end;
 }
@@ -543,10 +551,15 @@ body {
   .nameEmailCol {
     align-items: center;
   }
-  .profPicCol {
+
+  .personalProfPicCol,
+  .profPicCol,
+  .userInfoCol {
+    display: flex;
     justify-content: center;
     margin-bottom: 16px;
   }
+
   .personalProfPic {
     width: 130px;
     height: 130px;

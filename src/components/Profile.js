@@ -28,7 +28,7 @@ const Profile = () => {
   const username = user?.username ?? "Username";
 
   function shortString(str) {
-    return str && str.length > 15 ? str.substring(0, 15) + "..." : str;
+    return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
   }
 
   var avatar = user?.avatar;
@@ -67,27 +67,30 @@ const Profile = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "red" }}>
+    <div>
       <Container style={{ paddingTop: "25px" }}>
         <Row
-          className="align-items-center"
-          style={{ backgroundColor: "green" }}
+          lg={2}
+          md={2}
+          sm={1}
+          xs={1}
+          xxs={1}
+          style={{ marginBottom: "25px" }}
         >
-          <Col>
+          <Col className="profPicCol">
             <Image
               src={profAvatar(avatar)}
-              alt=""
+              alt="profilePicture"
               roundedCircle
               fluid
               id="profPic"
             />
           </Col>
-          <Col>
+          <Col className="userInfoCol">
             <p>{shortString(username)}</p>
-            {/* <p>Sold: ${sold}</p> */}
           </Col>
-          <ProfileTabs />
         </Row>
+        <ProfileTabs />
       </Container>
     </div>
   );
