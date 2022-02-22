@@ -186,12 +186,17 @@ body {
   border: #f0a500 thin solid;
   color: #f0a500;
   padding-inline-end: 15px;
-  /* box-shadow: 6px 6px 0px 0px #f0a500; */
 }
 
 .popImg {
+  filter: grayscale(45%);
   float: left;
   height: 80px;
+  width: 80px;
+}
+
+.popCSS:hover > .popImg {
+  filter: grayscale(0%);
 }
 
 #explore {
@@ -617,6 +622,6 @@ body {
 
 @media (min-width: 1200px) {
   .popImg {
-    height: 50px;
+    /* height: 50px; */
   }
 }
