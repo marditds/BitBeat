@@ -178,6 +178,7 @@ body {
 .popCSS h6 {
   font-family: Epilogue;
   width: max-content;
+  margin-bottom: 0;
 }
 
 .popCSS:hover {
