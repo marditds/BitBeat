@@ -41,9 +41,7 @@ const Popular = ({ objectId, avatar, username, email }) => {
 };
 
 export const PopularList = () => {
-  const { data } = useMoralisCloudFunction("theUsers", {
-    autoFetch: true,
-  });
+  const { data } = useMoralisCloudFunction("theUsers");
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
