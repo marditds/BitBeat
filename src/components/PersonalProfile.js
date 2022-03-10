@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
+import { CreateItem } from "./CreateItem";
 
 export const PersonalProfile = () => {
   const { setUserData, user, isAuthenticated } = useMoralis();
@@ -186,7 +187,7 @@ export const PersonalProfile = () => {
 };
 
 const ProfileTabs = () => {
-  const [tabTitle, setTabTitle] = useState("Creations");
+  const [tabTitle, setTabTitle] = useState("Create");
 
   const switchTabs = (e) => {
     setTabTitle(e);
@@ -198,8 +199,9 @@ const ProfileTabs = () => {
       activeKey={tabTitle}
       onSelect={switchTabs}
     >
-      <Tab eventKey="Creations" title="Creations">
+      <Tab eventKey="Create" title="Create">
         <p style={{ color: "white" }}>This is the Creations tab.</p>
+        <CreateItem />
       </Tab>
       <Tab eventKey="Collections" title="Collections">
         <p style={{ color: "white" }}>This is the Collections tab.</p>
