@@ -532,6 +532,42 @@ body {
   font-family: Epilogue;
 }
 
+#createItemName,
+#createItemPrice,
+#createItemThumb,
+#createItemAudio,
+#createItemDesc,
+#createItemStatus {
+  transition: 0.3s;
+  box-shadow: none;
+}
+
+#createItemName:focus,
+#createItemPrice:focus,
+#createItemThumb:focus,
+#createItemAudio:focus,
+#createItemDesc:focus,
+#createItemStatus:focus {
+  border-color: #f0a500;
+}
+
+#createItemButton {
+  transition: 0.3s;
+  border: none;
+  color: #082032;
+  background-color: #7691a1;
+  box-shadow: none;
+}
+
+#createItemButton:hover {
+  color: #334756;
+  background-color: #f0a500;
+}
+
+#createItemButton:active {
+  color: white;
+}
+
 .navButtonSet1 {
   display: flex;
 }

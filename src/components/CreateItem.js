@@ -45,13 +45,16 @@ export const CreateItem = () => {
               <Form.Control
                 type="name"
                 placeholder="name"
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                style={{
+                  marginLeft: "7px",
+                  maxWidth: "18rem",
+                }}
               />
             </Form.Group>
 
             {/* Item Price */}
             <Form.Group
-              controlId="formBasicEmail"
+              controlId="createItemPrice"
               className="d-flex align-items-center mb-3"
             >
               <Form.Label
@@ -74,7 +77,7 @@ export const CreateItem = () => {
             {/* Upload Thumbnail */}
             <Form.Group
               className="d-flex align-items-center mb-3"
-              controlId="uploadPicture"
+              controlId="createItemThumb"
             >
               <Form.Label
                 style={{
@@ -97,7 +100,7 @@ export const CreateItem = () => {
             {/* Item Sound Bite */}
             <Form.Group
               className="d-flex align-items-center mb-3"
-              controlId="uploadAudio"
+              controlId="createItemAudio"
             >
               <Form.Label
                 style={{
@@ -119,7 +122,7 @@ export const CreateItem = () => {
 
             {/* Item Description */}
             <Form.Group
-              controlId="itemDescription"
+              controlId="createItemDesc"
               className="d-flex align-items-center mb-3"
             >
               <Form.Label
@@ -142,7 +145,7 @@ export const CreateItem = () => {
 
             {/* Item Status */}
             <Form.Group
-              controlId="selectCreateItemStatus"
+              controlId="createItemStatus"
               className="d-flex align-items-center mb-3"
             >
               <Form.Label
@@ -159,13 +162,22 @@ export const CreateItem = () => {
                 aria-label=" "
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
               >
-                <option>Choose:</option>
-                <option value="1">Not For Sale</option>
-                <option value="2">Instant Buy</option>
-                <option value="3">Accept Offers</option>
+                <option className="opt">Select</option>
+                <option className="opt" value="1">
+                  Not For Sale
+                </option>
+                <option className="opt" value="2">
+                  Instant Buy
+                </option>
+                <option className="opt" value="3">
+                  Accept Offers
+                </option>
               </Form.Select>
             </Form.Group>
           </Form>
+          <Button size="md" id="createItemButton" style={{ float: "right" }}>
+            Create
+          </Button>
         </Col>
       </Row>
     </Container>
