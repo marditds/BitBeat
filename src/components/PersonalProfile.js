@@ -200,7 +200,6 @@ const ProfileTabs = () => {
       onSelect={switchTabs}
     >
       <Tab eventKey="Create" title="Create">
-        <p style={{ color: "white" }}>This is the Creations tab.</p>
         <CreateItem />
       </Tab>
       <Tab eventKey="Collections" title="Collections">
