@@ -10,11 +10,16 @@ import {
   Image,
 } from "react-bootstrap";
 import { ItemSample } from "./ItemSample";
-import defaultImg from "../images/profPic.png";
+import thumbDefault from "../images/avatarDefault.png";
 
 export const CreateItem = () => {
   const [name, setName] = useState("Item Name");
   const [price, setPrice] = useState("0");
+  const [desc, setDesc] = useState("Description");
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailFile, setThumbnailFile] = useState(thumbDefault);
+  const [sound, setSound] = useState(null);
+  const [soundFile, setSoundFile] = useState(null);
 
   const onChangeName = (elem) => {
     setName(elem.target.value);
@@ -22,6 +27,30 @@ export const CreateItem = () => {
 
   const onChangePrice = (elem) => {
     setPrice(elem.target.value);
+  };
+
+  const onChangeDesc = (elem) => {
+    setDesc(elem.target.value);
+  };
+
+  const onChangeThumbnail = (e) => {
+    setThumbnail(e.target.files[0]);
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setThumbnailFile(reader.result);
+    });
+    reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const onChangeSound = (e) => {
+    if (e.target.files[0]) {
+      setSound(e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setSoundFile(reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
   };
 
   return (
@@ -34,13 +63,27 @@ export const CreateItem = () => {
         xs={1}
         xxs={1}
         style={{ marginTop: "15px" }}
+        className="createTabContent"
       >
         <Col>
-          <ItemSample name={name} price={price} imgSRC={defaultImg} />
+          <div style={{ maxWidth: "280px", margin: "auto" }}>
+            <h3 style={{ color: "white", fontFamily: "Epilogue" }}>Preview</h3>
+            <ItemSample
+              name={name}
+              price={price}
+              imgSRC={thumbnailFile}
+              soundSRC={soundFile}
+              desc={desc}
+            />
+          </div>
         </Col>
         <Col
           className="createItemCol"
-          style={{ maxWidth: "415px", marginRight: "auto" }}
+          style={{
+            maxWidth: "415px",
+
+            marginTop: "40.03px",
+          }}
         >
           <Form>
             {/* Item name */}
@@ -60,7 +103,7 @@ export const CreateItem = () => {
               </Form.Label>
 
               <Form.Control
-                type="name"
+                type="text"
                 placeholder="name"
                 style={{
                   marginLeft: "7px",
@@ -88,7 +131,7 @@ export const CreateItem = () => {
               </Form.Label>
 
               <Form.Control
-                type="price"
+                type="text"
                 placeholder="price"
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
                 value={price}
@@ -116,10 +159,11 @@ export const CreateItem = () => {
                 accept="image/*"
                 size="sm"
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                onChange={onChangeThumbnail}
               />
             </Form.Group>
 
-            {/* Item Sound Bite */}
+            {/* Upload Sound Bite */}
             <Form.Group
               className="d-flex align-items-center mb-3"
               controlId="createItemAudio"
@@ -139,6 +183,7 @@ export const CreateItem = () => {
                 accept="audio/*"
                 size="sm"
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                onChange={onChangeSound}
               />
             </Form.Group>
 
@@ -146,6 +191,7 @@ export const CreateItem = () => {
             <Form.Group
               controlId="createItemDesc"
               className="d-flex align-items-center mb-3"
+              value={desc}
             >
               <Form.Label
                 style={{
@@ -158,10 +204,12 @@ export const CreateItem = () => {
               </Form.Label>
 
               <Form.Control
-                type="description"
+                type="text"
                 placeholder="description"
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
                 as="textarea"
+                value={desc}
+                onChange={onChangeDesc}
               />
             </Form.Group>
 

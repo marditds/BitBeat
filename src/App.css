@@ -278,6 +278,8 @@ body {
   height: 120px;
   color: #fff;
   cursor: pointer;
+  background: rgb(8, 32, 50, 0.7);
+  border-radius: 50%;
 }
 
 .pauseButton {
@@ -593,6 +595,14 @@ body {
   visibility: hidden;
 }
 
+/* .createTabContent {
+  display: flex;
+} */
+
+.createItemCol {
+  margin-right: auto;
+}
+
 @media (max-width: 411px) {
   .viewAll {
     width: max-content;
@@ -633,6 +643,15 @@ body {
   .personalProfPic {
     width: 130px;
     height: 130px;
+  }
+
+  .createTabContent {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .createItemCol {
+    margin: 0 auto 50px auto;
   }
 }
 
