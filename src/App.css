@@ -530,6 +530,7 @@ body {
 
 .createTabs {
   font-family: Epilogue;
+  margin-top: 50px;
 }
 
 .createTabs button.nav-link {
