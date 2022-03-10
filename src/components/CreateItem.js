@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -9,28 +9,45 @@ import {
   Button,
   Image,
 } from "react-bootstrap";
+import { ItemSample } from "./ItemSample";
+import defaultImg from "../images/profPic.png";
 
 export const CreateItem = () => {
+  const [name, setName] = useState("Item Name");
+  const [price, setPrice] = useState("0");
+
+  const onChangeName = (elem) => {
+    setName(elem.target.value);
+  };
+
+  const onChangePrice = (elem) => {
+    setPrice(elem.target.value);
+  };
+
   return (
     <Container>
       <Row
-        xl={1}
-        lg={1}
-        md={1}
+        xl={2}
+        lg={2}
+        md={2}
         sm={1}
         xs={1}
         xxs={1}
         style={{ marginTop: "15px" }}
       >
+        <Col>
+          <ItemSample name={name} price={price} imgSRC={defaultImg} />
+        </Col>
         <Col
           className="createItemCol"
-          style={{ width: "415px", marginLeft: "auto", marginRight: "auto" }}
+          style={{ maxWidth: "415px", marginRight: "auto" }}
         >
           <Form>
             {/* Item name */}
             <Form.Group
               controlId="createItemName"
               className="d-flex align-items-center mb-3"
+              value={name}
             >
               <Form.Label
                 style={{
@@ -49,6 +66,8 @@ export const CreateItem = () => {
                   marginLeft: "7px",
                   maxWidth: "18rem",
                 }}
+                value={name}
+                onChange={onChangeName}
               />
             </Form.Group>
 
@@ -56,6 +75,7 @@ export const CreateItem = () => {
             <Form.Group
               controlId="createItemPrice"
               className="d-flex align-items-center mb-3"
+              value={price}
             >
               <Form.Label
                 style={{
@@ -71,6 +91,8 @@ export const CreateItem = () => {
                 type="price"
                 placeholder="price"
                 style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                value={price}
+                onChange={onChangePrice}
               />
             </Form.Group>
 
