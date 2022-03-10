@@ -195,14 +195,14 @@ const ProfileTabs = () => {
 
   return (
     <Tabs
-      className=" justify-content-center"
+      className="justify-content-center createTabs"
       activeKey={tabTitle}
       onSelect={switchTabs}
     >
       <Tab eventKey="Create" title="Create">
         <CreateItem />
       </Tab>
-      <Tab eventKey="Collections" title="Collections">
+      <Tab eventKey="Collections" title="Collections" id="tabLink">
         <p style={{ color: "white" }}>This is the Collections tab.</p>
       </Tab>
     </Tabs>

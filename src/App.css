@@ -528,6 +528,21 @@ body {
   font-family: Epilogue;
 } */
 
+.createTabs {
+  font-family: Epilogue;
+}
+
+.createTabs button.nav-link {
+  margin-left: 4px;
+  border: white solid 1px;
+  color: white;
+}
+
+.createTabs button.nav-link:hover {
+  background-color: #7691a1;
+  color: #082032;
+}
+
 .createItemCol {
   font-family: Epilogue;
 }
