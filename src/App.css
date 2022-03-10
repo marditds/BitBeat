@@ -530,8 +530,6 @@ body {
 
 .createItemCol {
   font-family: Epilogue;
-  display: flex;
-  flex-direction: column;
 }
 
 .navButtonSet1 {

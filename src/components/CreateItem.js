@@ -24,7 +24,7 @@ export const CreateItem = () => {
       >
         <Col
           className="createItemCol"
-          style={{ maxWidth: "372px", marginLeft: "auto", marginRight: "auto" }}
+          style={{ width: "415px", marginLeft: "auto", marginRight: "auto" }}
         >
           <Form>
             {/* Item name */}
