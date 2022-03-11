@@ -81,7 +81,6 @@ export const CreateItem = () => {
           className="createItemCol"
           style={{
             maxWidth: "415px",
-
             marginTop: "40.03px",
           }}
         >
@@ -105,10 +104,7 @@ export const CreateItem = () => {
               <Form.Control
                 type="text"
                 placeholder="name"
-                style={{
-                  marginLeft: "7px",
-                  maxWidth: "18rem",
-                }}
+                className="createItemFormCSS"
                 value={name}
                 onChange={onChangeName}
               />
@@ -133,7 +129,7 @@ export const CreateItem = () => {
               <Form.Control
                 type="text"
                 placeholder="price"
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                className="createItemFormCSS"
                 value={price}
                 onChange={onChangePrice}
               />
@@ -158,7 +154,7 @@ export const CreateItem = () => {
                 type="file"
                 accept="image/*"
                 size="sm"
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                className="createItemFormCSS"
                 onChange={onChangeThumbnail}
               />
             </Form.Group>
@@ -182,7 +178,7 @@ export const CreateItem = () => {
                 type="file"
                 accept="audio/*"
                 size="sm"
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                className="createItemFormCSS"
                 onChange={onChangeSound}
               />
             </Form.Group>
@@ -206,7 +202,7 @@ export const CreateItem = () => {
               <Form.Control
                 type="text"
                 placeholder="description"
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
+                className="createItemFormCSS"
                 as="textarea"
                 value={desc}
                 onChange={onChangeDesc}
@@ -228,10 +224,7 @@ export const CreateItem = () => {
                 Status:
               </Form.Label>
 
-              <Form.Select
-                aria-label=" "
-                style={{ marginLeft: "7px", maxWidth: "18rem" }}
-              >
+              <Form.Select aria-label=" " className="createItemFormCSS">
                 <option className="opt">Select</option>
                 <option className="opt" value="1">
                   Not For Sale
