@@ -20,18 +20,6 @@ export const CreateItem = () => {
   const [thumbnailFile, setThumbnailFile] = useState();
   const [sound, setSound] = useState(null);
   const [soundFile, setSoundFile] = useState(null);
-  const [createButtonStatus, setCreateButtonStatus] = useState(true);
-
-  const handleCreate = (e) => {
-    e.preventDefault();
-    if (name && price && desc && thumbnailFile && soundFile) {
-      alert("hello");
-      setCreateButtonStatus((prevStatus) => false);
-    } else {
-      setCreateButtonStatus((prevStatus) => true);
-      alert("goodbye");
-    }
-  };
 
   const onChangeName = (elem) => {
     setName((prevName) => elem.target.value);
@@ -256,12 +244,7 @@ export const CreateItem = () => {
               </Form.Select>
             </Form.Group>
           </Form>
-          <Button
-            onClick={handleCreate}
-            size="md"
-            id="createItemButton"
-            style={{ float: "right" }}
-          >
+          <Button size="md" id="createItemButton" style={{ float: "right" }}>
             Create
           </Button>
         </Col>
