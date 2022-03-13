@@ -13,45 +13,63 @@ import { ItemSample } from "./ItemSample";
 import thumbDefault from "../images/avatarDefault.png";
 
 export const CreateItem = () => {
-  const [name, setName] = useState("Item Name");
-  const [price, setPrice] = useState("0");
-  const [desc, setDesc] = useState("Description");
+  const [name, setName] = useState();
+  const [price, setPrice] = useState();
+  const [desc, setDesc] = useState();
   const [thumbnail, setThumbnail] = useState(null);
-  const [thumbnailFile, setThumbnailFile] = useState(thumbDefault);
+  const [thumbnailFile, setThumbnailFile] = useState();
   const [sound, setSound] = useState(null);
   const [soundFile, setSoundFile] = useState(null);
+  const [createButtonStatus, setCreateButtonStatus] = useState(true);
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    if (name && price && desc && thumbnailFile && soundFile) {
+      alert("hello");
+      setCreateButtonStatus((prevStatus) => false);
+    } else {
+      setCreateButtonStatus((prevStatus) => true);
+      alert("goodbye");
+    }
+  };
 
   const onChangeName = (elem) => {
-    setName(elem.target.value);
+    setName((prevName) => elem.target.value);
   };
 
   const onChangePrice = (elem) => {
-    setPrice(elem.target.value);
+    setPrice((prevPrice) => elem.target.value);
   };
 
   const onChangeDesc = (elem) => {
-    setDesc(elem.target.value);
+    setDesc((prevDesc) => elem.target.value);
   };
 
   const onChangeThumbnail = (e) => {
-    setThumbnail(e.target.files[0]);
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      setThumbnailFile(reader.result);
-    });
-    reader.readAsDataURL(e.target.files[0]);
-  };
-
-  const onChangeSound = (e) => {
     if (e.target.files[0]) {
-      setSound(e.target.files[0]);
+      setThumbnail((prevThumb) => e.target.files[0]);
       const reader = new FileReader();
       reader.addEventListener("load", () => {
-        setSoundFile(reader.result);
+        setThumbnailFile((prevThumbFile) => reader.result);
       });
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+
+  const onChangeSound = (e) => {
+    if (e.target.files[0]) {
+      setSound((prevSound) => e.target.files[0]);
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        setSoundFile((prevSounfFile) => reader.result);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  function shortString(str) {
+    return str && str.length > 200 ? str.substring(0, 200) + "..." : str;
+  }
 
   return (
     <Container>
@@ -69,11 +87,11 @@ export const CreateItem = () => {
           <div style={{ maxWidth: "280px", margin: "auto" }}>
             <h3 style={{ color: "white", fontFamily: "Epilogue" }}>Preview</h3>
             <ItemSample
-              name={name}
-              price={price}
-              imgSRC={thumbnailFile}
+              name={name ? name : "Item Name"}
+              price={price ? price : "0"}
+              imgSRC={thumbnailFile ? thumbnailFile : thumbDefault}
               soundSRC={soundFile}
-              desc={desc}
+              desc={desc ? shortString(desc) : "Description"}
             />
           </div>
         </Col>
@@ -98,7 +116,7 @@ export const CreateItem = () => {
                   marginRight: "auto",
                 }}
               >
-                Name:
+                Item Name:
               </Form.Label>
 
               <Form.Control
@@ -127,8 +145,8 @@ export const CreateItem = () => {
               </Form.Label>
 
               <Form.Control
-                type="text"
-                placeholder="price"
+                type="number"
+                placeholder="price (ETH)"
                 className="createItemFormCSS"
                 value={price}
                 onChange={onChangePrice}
@@ -238,7 +256,12 @@ export const CreateItem = () => {
               </Form.Select>
             </Form.Group>
           </Form>
-          <Button size="md" id="createItemButton" style={{ float: "right" }}>
+          <Button
+            onClick={handleCreate}
+            size="md"
+            id="createItemButton"
+            style={{ float: "right" }}
+          >
             Create
           </Button>
         </Col>
