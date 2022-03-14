@@ -13,6 +13,7 @@ export const ItemSample = ({
   desc,
 }) => {
   const history = useHistory();
+
   return (
     <div className="d-grid justify-content-center expCSS">
       <div className="thumbnail">
