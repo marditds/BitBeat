@@ -6,6 +6,11 @@ body {
   scroll-behavior: smooth;
 }
 
+h3{
+  font-family: Epilogue;
+  color: white;
+}
+
 #error {
   font-family: Epilogue;
 }
@@ -602,6 +607,11 @@ body {
 .createItemFormCSS {
   margin-left: 7px;
   max-width: 18rem;
+}
+
+#accordTitle{
+  color: #0ae30a;
+  background-color: #7691a1;
 }
 
 @media (max-width: 411px) {
