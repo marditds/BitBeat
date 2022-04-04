@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Nav, Col, Navbar, Image } from "react-bootstrap";
+import { Container, Nav, Row, Col, Navbar, Image } from "react-bootstrap";
 import logo from "../logo.png";
 
 export const Footer = () => {
@@ -10,10 +10,13 @@ export const Footer = () => {
       id="navbar"
     >
       <Container className="d-flex justify-content-around align-items-start">
+        <Row className="w-100">
+          <Col>      
         <Navbar.Brand style={{ width: "25%", paddingTop: "15px" }}>
           <Image src={logo} style={{ height: "70px" }} />
-        </Navbar.Brand>
-        <Col>
+        </Navbar.Brand></Col>
+  
+        <Col >
           <Nav className="flex-column ">
             <Navbar.Text
               className="fw-bolder"
@@ -88,25 +91,31 @@ export const Footer = () => {
             </Nav.Link>
           </Nav>
         </Col>
+        </Row>
+        
       </Container>
       <Container style={{ marginTop: "15px" }}>
-        <Col>
+        <Row className="w-100">
           <Nav className="d-flex justify-content-between align-items-center">
+            <Col>
             <Nav.Item style={{ color: "#F0A500" }}>
               © <Image src={logo} style={{ width: "40px" }} /> . All Rights
               Reserved.
             </Nav.Item>
+            </Col>
+            <Col className="d-flex justify-content-end">
             <Nav.Item className="d-flex">
               <Nav.Link href="/" id="footLink">
                 Terms of Use
               </Nav.Link>
-
+ 
               <Nav.Link href="/" id="footLink">
                 Privacy Policy
               </Nav.Link>
             </Nav.Item>
+            </Col>
           </Nav>
-        </Col>
+        </Row>
       </Container>
     </Navbar>
   );
