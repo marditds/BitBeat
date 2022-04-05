@@ -7,7 +7,7 @@ import guide1 from "../images/guide1.png";
 export const HowItWorks = () => {
     return (
         <Container>
-            <p style={{ marginTop: "30px", marginBottom: "15px", color: "white", fontFamily: "Epilogue", fontSize: "20pt" }}>How <Image src={logo} alt="logo" style={{ height: "70px", paddingLeft: "5px", paddingRight: "5px" }} fluid /> Works</p>
+            <p style={{ marginTop: "30px", marginBottom: "15px", color: "white", fontFamily: "Epilogue", fontSize: "20pt" }} className="d-flex align-items-baseline">How <Image src={logo} alt="logo" style={{ height: "70px", paddingLeft: "5px", paddingRight: "5px" }} fluid /> Works</p>
             <Accordion defaultActiveKey={['0']} alwaysOpen >
                 <Accordion.Item eventKey="0" id="accordion-item">
                     <Accordion.Header style={{ fontFamily: "Epilogue", marginBottom: "0px" }}>
