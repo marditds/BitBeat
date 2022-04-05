@@ -10,7 +10,8 @@ import { Discover } from "./components/Discover";
 import { ScrollTop } from "./components/ScrollTop";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { PersonalProfile } from "./components/PersonalProfile";
-import { HowItWorks } from "./components/howitworks";
+import { HowItWorks } from "./components/HowItWorks";
+import { About } from "./components/About";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/howitworks" component={HowItWorks} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/profile" component={PersonalProfile} />
           <Route exact path="/profile/:id" children={<Profile />} />
           <Route exact path="/item/:id" children={<ItemsPage />} />
