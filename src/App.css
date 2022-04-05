@@ -609,9 +609,32 @@ h3{
   max-width: 18rem;
 }
 
-#accordTitle{
-  color: #0ae30a;
+#accordion-item{
+  background-color: #f0a500;
+}
+
+div.accordion-body{
+  color: white;
+  background-color: #334756;
+}
+
+button.accordion-button{
+  color: #f0a500;
+  background-color: #334756;
+}
+
+button.accordion-button:focus{
+  border-color: #f0a500;
+  box-shadow: none;
+}
+
+button.accordion-button:not(.collapsed){
+  color: #082032;
   background-color: #7691a1;
+}
+
+button.accordion-button.collapsed::after{
+  color: #f0a500; 
 }
 
 @media (max-width: 411px) {

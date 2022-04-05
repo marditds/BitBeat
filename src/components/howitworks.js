@@ -1,16 +1,18 @@
 import React from "react";
 import { Accordion, Container, Image } from "react-bootstrap";
 import logo from "../logo.png";
-import metamask from "../images/MetaMask.png";
+import metamask from "../images/MetaMaskWhite.png";
 import guide1 from "../images/guide1.png";
 
 export const HowItWorks = () => {
     return (
         <Container>
             <p style={{ marginTop: "30px", marginBottom: "15px", color: "white", fontFamily: "Epilogue", fontSize: "20pt" }}>How <Image src={logo} alt="logo" style={{ height: "70px", paddingLeft: "5px", paddingRight: "5px" }} fluid /> Works</p>
-            <Accordion defaultActiveKey={['0']} alwaysOpen>
-                <Accordion.Item eventKey="0">
-                    <Accordion.Header style={{ fontFamily: "Epilogue", marginBottom: "0px" }} id="accordTitle">Step #1</Accordion.Header>
+            <Accordion defaultActiveKey={['0']} alwaysOpen >
+                <Accordion.Item eventKey="0" id="accordion-item">
+                    <Accordion.Header style={{ fontFamily: "Epilogue", marginBottom: "0px" }}>
+                        Step #1
+                    </Accordion.Header>
                     <Accordion.Body style={{ fontFamily: "Epilogue" }}>
                         <p style={{ marginBottom: "0" }}> The website will be accessible to everyone. The visitors will have to enter the website’s URL in their browser of choice to have access to the website.
                             Before visiting the website, the users are required to install the cryptocurrency wallet, MetaMask’s browser extension. Failing to do so will result in failure of access to the content of the website. The extension is available in most browsers’ extension stores.</p>
@@ -26,7 +28,7 @@ export const HowItWorks = () => {
 
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="1">
+                <Accordion.Item eventKey="1" id="accordion-item">
                     <Accordion.Header style={{ fontFamily: "Epilogue", marginBottom: "0px" }}>Step #2</Accordion.Header>
                     <Accordion.Body style={{ fontFamily: "Epilogue" }}>
                         <p style={{ marginBottom: "0" }}>
