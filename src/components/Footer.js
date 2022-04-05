@@ -50,9 +50,9 @@ export const Footer = () => {
               <Nav.Link
                 style={{ width: "fit-content" }}
                 id="footLink"
-                href="/#sellers"
+                href="/#creators"
               >
-                Sellers
+                Our Creators
               </Nav.Link>
             </Nav>
           </Col>

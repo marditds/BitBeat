@@ -90,7 +90,7 @@ const DropButtons = () => {
   return (
     <div className="d-flex align-items-center">
       <Col>
-        <h3 id="sellers">Our Creators</h3>
+        <h3 id="creators">Our Creators</h3>
       </Col>
       <Col className="d-flex justify-content-end align-items-center">
         <Link to="/" className="text-decoration-none viewAll">
