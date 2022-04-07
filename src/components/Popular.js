@@ -87,6 +87,10 @@ const DropButtons = () => {
     setVal(e);
   };
 
+  function stringControl(str) {
+    return str && str.length < 5 ? str.substring(0, 4) + ":)" : str;
+  }
+
   return (
     <div className="d-flex align-items-center">
       <Col>
@@ -96,18 +100,18 @@ const DropButtons = () => {
         <Link to="/" className="text-decoration-none viewAll">
           View All
         </Link>
-        <DropdownButton id="dropdownToggleCSS" title={val} onSelect={options}>
-          <Dropdown.Item eventKey="Today" href="#" id="dropdownMenuCSS">
+        <DropdownButton id="dropdownToggleCSS" title={stringControl(val)} onSelect={options} >
+          <Dropdown.Item eventKey="Today" href="#" id="dropdownMenuCSS"  >
             Today
           </Dropdown.Item>
-          <Dropdown.Item eventKey="This Week" href="#" id="dropdownMenuCSS">
-            This Week
+          <Dropdown.Item eventKey="Week" href="#" id="dropdownMenuCSS" >
+            Week
           </Dropdown.Item>
-          <Dropdown.Item eventKey="This Month" href="#" id="dropdownMenuCSS">
-            This Month
+          <Dropdown.Item eventKey="Month" href="#" id="dropdownMenuCSS" >
+            Month
           </Dropdown.Item>
-          <Dropdown.Item eventKey="This Year" href="#" id="dropdownMenuCSS">
-            This Year
+          <Dropdown.Item eventKey="Year" href="#" id="dropdownMenuCSS" >
+            Year
           </Dropdown.Item>
         </DropdownButton>
       </Col>

@@ -423,6 +423,10 @@ h3{
   color: #082032;
 }
 
+#footLink:hover {
+  
+}
+
 .nameEmailCol {
   display: flex;
   flex-direction: column;
