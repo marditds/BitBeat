@@ -10,7 +10,7 @@ import { Discover } from "./components/Discover";
 import { ScrollTop } from "./components/ScrollTop";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { PersonalProfile } from "./components/PersonalProfile";
-import { HowItWorks } from "./components/howitworks";
+import { HowItWorks } from "./components/HowItWorks";
 import { About } from "./components/About";
 
 function App() {
