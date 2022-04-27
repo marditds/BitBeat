@@ -1,31 +1,27 @@
-import React, { useState } from "react";
-import { Container, Col, Row, Tabs, Tab, Image } from "react-bootstrap";
-// import { Player2 } from "./Player2";
-import { useMoralisCloudFunction } from "react-moralis";
+import React, { useState, useEffect } from "react";
+import { Container, Col, Row, Tabs, Tab, Image, Button } from "react-bootstrap";
+import { ItemSample } from "./ItemSample";
+import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
 import { useParams } from "react-router-dom";
 import avatarDefault from "../images/avatarDefault.png";
 
-// const Creations = (props) => {
-//   return (
-//     <Row xl={5} lg={4} md={3} sm={2} xs={2}>
-//       {[...Array(props.itemCount)].map((e, i) => {
-//         return (
-//           <div key={i}>
-//             {props.username}
-//             <Player2 sound={props.sound} />
-//           </div>
-//         );
-//       })}
-//     </Row>
-//   );
-// };
-
 const Profile = () => {
   const { data: users } = useMoralisCloudFunction("theUsers");
+  const { data: userItems } = useMoralisCloudFunction("getUserItems");
   const { id } = useParams();
+  const [itemData, setItemData] = useState([]);
+
+  useEffect(() => {
+    setItemData(userItems);
+  }, [userItems]);
+
 
   const user = users && users.find((person) => person.objectId === id);
   const username = user?.username ?? "Username";
+
+  const basicQuery = async () => {
+    console.log(userItems);
+  };
 
   function shortString(str) {
     return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
@@ -38,7 +34,7 @@ const Profile = () => {
   }
 
   const ProfileTabs = () => {
-    const [tabTitle, setTabTitle] = useState("Creations");
+    const [tabTitle, setTabTitle] = useState("Collections");
 
     const switchTabs = (e) => {
       setTabTitle(e);
@@ -50,18 +46,26 @@ const Profile = () => {
         activeKey={tabTitle}
         onSelect={switchTabs}
       >
-        <Tab eventKey="Creations" title="Creations">
-          <p>This is the Creations tab.</p>
-
-          {/* <Creations
-          username={username}
-          itemCount={itemCount}
-          sound={sound}
-          ></Creations> */}
-        </Tab>
+        {/* COLLECTIONS TAB */}
         <Tab eventKey="Collections" title="Collections">
-          <p>This is the Collections tab.</p>
+
+          <Button onClick={basicQuery} className="mb-5">Click Click Click</Button>
+          <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
+            {itemData && itemData.map((item) => {
+              return (
+                <Col style={{ marginTop: "15px" }} key={item.tokenObjectId}>
+                  <ItemSample {...item}></ItemSample>
+                </Col>
+              );
+            })}
+
+          </Row>
         </Tab>
+
+        <Tab eventKey="Creations" title="Creations">
+          <p style={{ color: "white" }}>This is the Creations tab.</p>
+        </Tab>
+
       </Tabs>
     );
   };

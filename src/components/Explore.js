@@ -152,9 +152,6 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
   }, [image, audio, item]);
 
 
-  // console.log(item);
-
-
   function shortUsername(str) {
     return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
   }

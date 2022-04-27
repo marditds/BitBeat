@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Player } from "./Player";
+import avatarDefault from "../images/avatarDefault.png";
 
-export const ItemSample = ({
-  id,
-  imgSRC,
-  name,
-  price,
-  bid,
-  soundSRC,
-  desc,
-}) => {
+export const ItemSample = ({ uid, src, sellerUsername, name, askingPrice, bid, tokenUri }) => {
+
+  const [image, setImage] = useState([]);
+  const [audio, setAudio] = useState([]);
+  const [item, setItem] = useState([]);
+
+  async function fetchData() {
+    const response = await fetch(tokenUri);
+    const json = await response.json();
+    setImage(json.image);
+    setAudio(json.audio);
+    setItem(json);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [image, audio, item]);
+
 
   function shortUsername(str) {
     return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
@@ -26,16 +36,17 @@ export const ItemSample = ({
   }
 
   return (
-    <div className="d-grid justify-content-center expCSS">
+    <div className="d-grid justify-content-center expCSS" style={{ height: "100%" }}>
       <div className="thumbnail">
-        <Image src={imgSRC} className="expImg" fluid />
-        <Player sound={soundSRC} />
+        <Image src={image ? image : avatarDefault} className="expImg" fluid />
+        <Player sound={audio} />
       </div>
       {/* <Link to={`/item/${id}`} className="text-decoration-none"> */}
       <div className="expInfo">
-        <h6>{shortUsername(name)}</h6>
-        <h6>{shortPrice(price)} ETH</h6>
-        <h6>{shortDesc(desc)}</h6>
+        <h6>By: {shortUsername(sellerUsername)}</h6>
+        <h6>{item.name}</h6>
+        <h6>{shortPrice(askingPrice)} ETH</h6>
+        <h6>{shortDesc(item.description)} </h6>
       </div>
       {/* </Link> */}
     </div>

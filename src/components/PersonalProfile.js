@@ -13,6 +13,7 @@ import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
 import { CreateItem } from "./CreateItem";
 import { ItemSample } from "./ItemSample";
+import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
 
 export const PersonalProfile = () => {
   const { setUserData, user, isAuthenticated } = useMoralis();
@@ -179,6 +180,8 @@ export const PersonalProfile = () => {
 };
 
 const ProfileTabs = () => {
+
+
   const [tabTitle, setTabTitle] = useState("Create");
 
   const switchTabs = (e) => {
@@ -191,29 +194,22 @@ const ProfileTabs = () => {
       activeKey={tabTitle}
       onSelect={switchTabs}
     >
+      {/* CREATE NFT FORM TAB */}
       <Tab eventKey="Create" title="Create">
         <CreateItem />
       </Tab>
+
+      {/* COLLECTIONS TAB */}
       <Tab eventKey="Collections" title="Collections" id="tabLink">
-        <p style={{ color: "white" }}>This is the Collections tab.</p>
         <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
-          <Col>
-            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
-          </Col>
-          <Col>
-            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
-          </Col>
-          <Col>
-            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
-          </Col>
-          <Col>
-            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
-          </Col>
-          <Col>
-            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
-          </Col>
 
-
+          {/* {itemData && itemData.map((item) => {
+            return (
+              <Col style={{ marginTop: "15px" }} key={item.uid}>
+                <ExploreItem {...item}></ExploreItem>
+              </Col>
+            );
+          })} */}
         </Row>
 
       </Tab>

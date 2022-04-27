@@ -14,19 +14,36 @@ import thumbDefault from "../images/avatarDefault.png";
 
 export const CreateItem = () => {
   const [name, setName] = useState();
-  const [price, setPrice] = useState();
+  const [askingPrice, setaskingPrice] = useState();
   const [desc, setDesc] = useState();
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailFile, setThumbnailFile] = useState();
   const [sound, setSound] = useState(null);
   const [soundFile, setSoundFile] = useState(null);
 
+  const [image, setImage] = useState([]);
+  const [audio, setAudio] = useState([]);
+  const [item, setItem] = useState([]);
+
+
+  // async function fetchData() {
+  //   const response = await fetch(tokenUri);
+  //   const json = await response.json();
+  //   setImage(json.image);
+  //   setAudio(json.audio);
+  //   setItem(json);
+  // }
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, [image, audio, item]);
+
   const onChangeName = (elem) => {
     setName((prevName) => elem.target.value);
   };
 
   const onChangePrice = (elem) => {
-    setPrice((prevPrice) => elem.target.value);
+    setaskingPrice((prevPrice) => elem.target.value);
   };
 
   const onChangeDesc = (elem) => {
@@ -75,11 +92,13 @@ export const CreateItem = () => {
           <div style={{ maxWidth: "280px", margin: "auto" }}>
             <h3 style={{ color: "white", fontFamily: "Epilogue" }}>Preview</h3>
             <ItemSample
+
+              sellerUsername=""
               name={name ? name : "Item Name"}
-              price={price ? price : "0"}
-              imgSRC={thumbnailFile ? thumbnailFile : thumbDefault}
-              soundSRC={soundFile}
-              desc={desc ? shortString(desc) : "Description"}
+              askingPrice={askingPrice ? askingPrice : "0"}
+              image={thumbnailFile ? thumbnailFile : thumbDefault}
+              audio={soundFile}
+            // desc={item.desc ? shortString(item.desc) : "Description"}
             />
           </div>
         </Col>
@@ -120,7 +139,7 @@ export const CreateItem = () => {
             <Form.Group
               controlId="createItemPrice"
               className="d-flex align-items-center mb-3"
-              value={price}
+              value={askingPrice}
             >
               <Form.Label
                 style={{
@@ -136,7 +155,7 @@ export const CreateItem = () => {
                 type="number"
                 placeholder="price (ETH)"
                 className="createItemFormCSS"
-                value={price}
+                value={askingPrice}
                 onChange={onChangePrice}
               />
             </Form.Group>
