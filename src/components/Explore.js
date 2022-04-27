@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { exploreInfo, itemImages, itemSounds } from "../ExploreList";
 import {
   Container,
@@ -14,9 +14,15 @@ import { useHistory } from "react-router-dom";
 import { useMoralisCloudFunction } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
 
-
-
 export const ExploreList = () => {
+  const { data } = useMoralisCloudFunction("getItems");
+
+  const [itemData, setItemData] = useState([]);
+  useEffect(() => {
+    setItemData(data);
+  }, [data]);
+
+
   return (
     <div style={{ backgroundColor: "#334756" }}>
       <Container
@@ -24,7 +30,7 @@ export const ExploreList = () => {
       >
         <DropButtons />
         <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
-          {exploreInfo.map((item) => {
+          {itemData && itemData.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.id}>
                 <ExploreItem {...item}></ExploreItem>
@@ -130,15 +136,6 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
   const [audio, setAudio] = useState([]);
   const [item, setItem] = useState([]);
 
-  // async function fetchImage() {
-
-
-  //   const response = await fetch(tokenUri);
-
-  //   const json = await response.json();
-  //   console.log(json);
-  //   setImage(json.image);
-  // }
 
   async function fetchData() {
     const response = await fetch(tokenUri);
@@ -151,59 +148,11 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [image, audio, item]);
 
 
   console.log(item);
 
-
-
-
-  // useEffect(() => {
-  //   fetchImage();
-  // }, [tokenUri]);
-
-  // axios.get(tokenUri, function(req, res){
-  //   res.header("Access-Control-Allow-Origin", "*");
-  //   console.log(res)
-  // })
-
-  // axios.get(tokenUri, {
-  //   headers: {
-  //     "Access-Control-Allow-Origin": "*",
-  //   },
-  // }).then((res) => {
-  //   console.log(res.data.image);
-  //   setImage(res.data.image);
-  // });
-
-  // useEffect(() => {
-  //   console.log(image);
-  // }, [image]);
-
-
-
-  //   return (
-  //     <div
-  //       className="d-grid justify-content-center expCSS"
-  //     >
-  //       <div>
-  //         <Image src={image} fluid />
-  //         <Player sound={audio} />
-  //       </div>
-  //       <Link to={`/item/${uid}`} className="text-decoration-none">
-  //         <div className="expInfo">
-  //         <h5>{title}</h5>
-  //         <h6>{sellerUsername}</h6>
-  //         <h6>{askingPrice}</h6>
-  //         <h6>{bid}</h6>
-  //         </div>
-  //         </Link>
-
-
-  //     </div>
-  //   );
-  // };
 
   function shortUsername(str) {
     return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
