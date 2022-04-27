@@ -11,9 +11,10 @@ import {
 } from "react-bootstrap";
 import { ItemSample } from "./ItemSample";
 import thumbDefault from "../images/avatarDefault.png";
+import { Player } from "./Player";
 
 export const CreateItem = () => {
-  const [name, setName] = useState();
+  const [title, setTitle] = useState();
   const [askingPrice, setaskingPrice] = useState();
   const [desc, setDesc] = useState();
   const [thumbnail, setThumbnail] = useState(null);
@@ -21,25 +22,17 @@ export const CreateItem = () => {
   const [sound, setSound] = useState(null);
   const [soundFile, setSoundFile] = useState(null);
 
-  const [image, setImage] = useState([]);
-  const [audio, setAudio] = useState([]);
-  const [item, setItem] = useState([]);
 
+  function shortPrice(str) {
+    return str && str.length > 6 ? str.substring(0, 6) + "..." : str;
+  }
 
-  // async function fetchData() {
-  //   const response = await fetch(tokenUri);
-  //   const json = await response.json();
-  //   setImage(json.image);
-  //   setAudio(json.audio);
-  //   setItem(json);
-  // }
+  function shortDesc(str) {
+    return str && str.length > 20 ? str.substring(0, 20) + "..." : str;
+  }
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [image, audio, item]);
-
-  const onChangeName = (elem) => {
-    setName((prevName) => elem.target.value);
+  const onChangeTitle = (elem) => {
+    setTitle((prevName) => elem.target.value);
   };
 
   const onChangePrice = (elem) => {
@@ -91,15 +84,19 @@ export const CreateItem = () => {
         <Col>
           <div style={{ maxWidth: "280px", margin: "auto" }}>
             <h3 style={{ color: "white", fontFamily: "Epilogue" }}>Preview</h3>
-            <ItemSample
+            <div className="d-grid justify-content-center expCSS" style={{ height: "100%" }}>
+              <div className="thumbnail">
+                <Image src={thumbnailFile ? thumbnailFile : thumbDefault} className="expImg" fluid />
+                <Player sound={soundFile} />
+              </div>
 
-              sellerUsername=""
-              name={name ? name : "Item Name"}
-              askingPrice={askingPrice ? askingPrice : "0"}
-              image={thumbnailFile ? thumbnailFile : thumbDefault}
-              audio={soundFile}
-            // desc={item.desc ? shortString(item.desc) : "Description"}
-            />
+              <div className="expInfo">
+                <h6>{title ? title : "NFT Title"}</h6>
+                <h6>{shortPrice(askingPrice) ? shortPrice(askingPrice) : 0} ETH</h6>
+                <h6>{shortDesc(desc) ? shortDesc(desc) : "Description"} </h6>
+              </div>
+
+            </div>
           </div>
         </Col>
         <Col
@@ -114,7 +111,7 @@ export const CreateItem = () => {
             <Form.Group
               controlId="createItemName"
               className="d-flex align-items-center mb-3"
-              value={name}
+              value={title}
             >
               <Form.Label
                 style={{
@@ -123,15 +120,15 @@ export const CreateItem = () => {
                   marginRight: "auto",
                 }}
               >
-                Item Name:
+                Item Title:
               </Form.Label>
 
               <Form.Control
                 type="text"
-                placeholder="name"
+                placeholder="item title"
                 className="createItemFormCSS"
-                value={name}
-                onChange={onChangeName}
+                value={title}
+                onChange={onChangeTitle}
               />
             </Form.Group>
 

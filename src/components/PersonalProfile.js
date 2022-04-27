@@ -181,8 +181,14 @@ export const PersonalProfile = () => {
 
 const ProfileTabs = () => {
 
-
+  const { data: userItems } = useMoralisCloudFunction("getUserItems");
   const [tabTitle, setTabTitle] = useState("Create");
+
+  const [itemData, setItemData] = useState([]);
+
+  useEffect(() => {
+    setItemData(userItems);
+  }, [userItems]);
 
   const switchTabs = (e) => {
     setTabTitle(e);
@@ -202,14 +208,14 @@ const ProfileTabs = () => {
       {/* COLLECTIONS TAB */}
       <Tab eventKey="Collections" title="Collections" id="tabLink">
         <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
-
-          {/* {itemData && itemData.map((item) => {
+          {itemData && itemData.map((item) => {
             return (
-              <Col style={{ marginTop: "15px" }} key={item.uid}>
-                <ExploreItem {...item}></ExploreItem>
+              <Col style={{ marginTop: "15px" }} key={item.tokenObjectId}>
+                <ItemSample {...item}></ItemSample>
               </Col>
             );
-          })} */}
+          })}
+
         </Row>
 
       </Tab>

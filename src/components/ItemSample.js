@@ -43,7 +43,6 @@ export const ItemSample = ({ uid, src, sellerUsername, name, askingPrice, bid, t
       </div>
       {/* <Link to={`/item/${id}`} className="text-decoration-none"> */}
       <div className="expInfo">
-        <h6>By: {shortUsername(sellerUsername)}</h6>
         <h6>{item.name}</h6>
         <h6>{shortPrice(askingPrice)} ETH</h6>
         <h6>{shortDesc(item.description)} </h6>
