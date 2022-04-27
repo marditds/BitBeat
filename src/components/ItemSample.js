@@ -12,7 +12,18 @@ export const ItemSample = ({
   soundSRC,
   desc,
 }) => {
-  const history = useHistory();
+
+  function shortUsername(str) {
+    return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
+  }
+
+  function shortPrice(str) {
+    return str && str.length > 6 ? str.substring(0, 6) + "..." : str;
+  }
+
+  function shortDesc(str) {
+    return str && str.length > 20 ? str.substring(0, 20) + "..." : str;
+  }
 
   return (
     <div className="d-grid justify-content-center expCSS">
@@ -22,9 +33,9 @@ export const ItemSample = ({
       </div>
       {/* <Link to={`/item/${id}`} className="text-decoration-none"> */}
       <div className="expInfo">
-        <h6>{name}</h6>
-        <h6>{price} ETH</h6>
-        <h6>{desc}</h6>
+        <h6>{shortUsername(name)}</h6>
+        <h6>{shortPrice(price)} ETH</h6>
+        <h6>{shortDesc(desc)}</h6>
       </div>
       {/* </Link> */}
     </div>

@@ -18,6 +18,7 @@ export const ExploreList = () => {
   const { data } = useMoralisCloudFunction("getItems");
 
   const [itemData, setItemData] = useState([]);
+
   useEffect(() => {
     setItemData(data);
   }, [data]);
@@ -29,10 +30,10 @@ export const ExploreList = () => {
         style={{ marginTop: "40px", paddingTop: "25px", paddingBottom: "30px" }}
       >
         <DropButtons />
-        <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
+        <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={2}>
           {itemData && itemData.map((item) => {
             return (
-              <Col style={{ marginTop: "15px" }} key={item.id}>
+              <Col style={{ marginTop: "15px" }} key={item.uid}>
                 <ExploreItem {...item}></ExploreItem>
               </Col>
             );
@@ -151,7 +152,7 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
   }, [image, audio, item]);
 
 
-  console.log(item);
+  // console.log(item);
 
 
   function shortUsername(str) {

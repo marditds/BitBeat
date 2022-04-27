@@ -12,6 +12,7 @@ import {
 import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
 import { CreateItem } from "./CreateItem";
+import { ItemSample } from "./ItemSample";
 
 export const PersonalProfile = () => {
   const { setUserData, user, isAuthenticated } = useMoralis();
@@ -23,7 +24,6 @@ export const PersonalProfile = () => {
   const [avatar, setAvatar] = useState();
   const [uploadStatus, setUploadStatus] = useState(true);
 
-  // <pre>{JSON.stringify(user)}</pre>;
 
   const onChangeUsername = (elem) => {
     setUsername(elem.target.value);
@@ -103,14 +103,6 @@ export const PersonalProfile = () => {
             className="personalProfPic"
             roundedCircle
           />
-
-          {/* <p style={{ color: "white" }}>
-              {isAuthenticated ? user.get("username") : "Your Name"}
-            </p> */}
-
-          {/* <p style={{ color: "white" }}>
-              {isAuthenticated ? user.get("email") : null}
-            </p> */}
         </Col>
         <Col className="nameEmailCol">
           <Form>
@@ -204,7 +196,27 @@ const ProfileTabs = () => {
       </Tab>
       <Tab eventKey="Collections" title="Collections" id="tabLink">
         <p style={{ color: "white" }}>This is the Collections tab.</p>
+        <Row xxl={6} xl={6} lg={5} md={4} sm={3} xs={2}>
+          <Col>
+            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
+          </Col>
+          <Col>
+            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
+          </Col>
+          <Col>
+            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
+          </Col>
+          <Col>
+            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
+          </Col>
+          <Col>
+            <ItemSample name="Hakop" price="1200002" desc="sdffs" />
+          </Col>
+
+
+        </Row>
+
       </Tab>
-    </Tabs>
+    </Tabs >
   );
 };
