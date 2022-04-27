@@ -120,12 +120,12 @@ export const CreateItem = () => {
                   marginRight: "auto",
                 }}
               >
-                Item Title:
+                NFT Title:
               </Form.Label>
 
               <Form.Control
                 type="text"
-                placeholder="item title"
+                placeholder="NFT title"
                 className="createItemFormCSS"
                 value={title}
                 onChange={onChangeTitle}
