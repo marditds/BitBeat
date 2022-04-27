@@ -38,7 +38,7 @@ export const ItemSample = ({ uid, src, sellerUsername, name, askingPrice, bid, t
   return (
     <div className="d-grid justify-content-center expCSS" style={{ height: "100%" }}>
       <div className="thumbnail">
-        <Image src={image ? image : avatarDefault} className="expImg" fluid />
+        <Image src={image ? image : avatarDefault} className="expImg" fluid style={{ height: "100%" }} />
         <Player sound={audio} />
       </div>
       {/* <Link to={`/item/${id}`} className="text-decoration-none"> */}
