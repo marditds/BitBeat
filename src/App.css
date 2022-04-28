@@ -6,7 +6,7 @@ body {
   scroll-behavior: smooth;
 }
 
-h3{
+h3 {
   font-family: Epilogue;
   color: white;
 }
@@ -200,7 +200,7 @@ h3{
   width: 80px;
 }
 
-.popCSS:hover > .popImg {
+.popCSS:hover>.popImg {
   filter: grayscale(0%);
 }
 
@@ -236,9 +236,11 @@ h3{
   border-radius: 3px;
   position: relative;
 }
+
 .expInfo {
   padding-bottom: 10px;
 }
+
 .expInfo h6 {
   transition: 0.3s;
   color: #fff;
@@ -423,9 +425,7 @@ h3{
   color: #082032;
 }
 
-#footLink:hover {
-  
-}
+#footLink:hover {}
 
 .nameEmailCol {
   display: flex;
@@ -441,6 +441,7 @@ h3{
   /* border: #f0a500 transparent; */
   box-shadow: none;
 }
+
 #nameEntryArea,
 #emailEntryArea {
   width: 300px;
@@ -484,7 +485,8 @@ h3{
   color: white;
   align-self: center;
 }
-.userInfoCol > p {
+
+.userInfoCol>p {
   margin-bottom: 0;
 }
 
@@ -613,42 +615,42 @@ h3{
   max-width: 18rem;
 }
 
-#accordion-item{
+#accordion-item {
   background-color: #f0a500;
 }
 
-div.accordion-body{
+div.accordion-body {
   color: white;
   background-color: #334756;
 }
 
-button.accordion-button{
+button.accordion-button {
   color: #f0a500;
   background-color: #334756;
-} 
+}
 
-button.accordion-button:hover{
+button.accordion-button:hover {
   color: #082032;
   background-color: #7691a1;
-} 
+}
 
-button.accordion-button:focus{
+button.accordion-button:focus {
   border-color: #f0a500;
   box-shadow: none;
 }
 
-button.accordion-button::after{
+button.accordion-button::after {
   background-color: #7691a1;
   border-radius: 4px;
 }
 
-button.accordion-button:not(.collapsed){
+button.accordion-button:not(.collapsed) {
   color: #082032;
   background-color: #7691a1;
 }
 
-button.accordion-button.collapsed::after{
-  color: #f0a500; 
+button.accordion-button.collapsed::after {
+  color: #f0a500;
 }
 
 @media (max-width: 411px) {
@@ -752,6 +754,7 @@ button.accordion-button.collapsed::after{
   .popImg {
     clear: right;
   }
+
   .popInfo {
     clear: left;
   }

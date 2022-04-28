@@ -33,12 +33,15 @@ export const ExploreList = () => {
         <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={2}>
           {itemData && itemData.map((item) => {
             return (
-              <Col style={{ marginTop: "15px" }} key={item.uid}>
-                <ExploreItem {...item}></ExploreItem>
+              <Col style={{ marginTop: "15px" }} key={item.tokenId}>
+                <Link to={`/item/${item.tokenId}`} className="text-decoration-none">
+                  <ExploreItem {...item}></ExploreItem>
+                </Link>
               </Col>
             );
           })}
         </Row>
+
         <Row style={{ marginTop: "30px" }}>
           <Col lg={4} md={3} sm={3} xs={2}></Col>
 
@@ -130,7 +133,7 @@ const DropButtons = () => {
   );
 };
 
-export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid, musicSrc, tokenUri }) => {
+export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPrice, bid, musicSrc, tokenUri }) => {
   const history = useHistory();
 
   const [image, setImage] = useState([]);
@@ -152,6 +155,7 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
   }, [image, audio, item]);
 
 
+
   function shortUsername(str) {
     return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
   }
@@ -167,21 +171,21 @@ export const ExploreItem = ({ uid, src, sellerUsername, title, askingPrice, bid,
   return (
     <div
       className="d-grid justify-content-center expCSS"
-      onClick={() => history.push(`/item/${uid}`)}
+      onClick={() => history.push(`/item/${tokenId}`)}
       style={{ height: "100%" }}
     >
       <div className="thumbnail">
         <Image src={image ? image : avatarDefault} className="expImg" fluid style={{ height: "100%" }} />
         <Player sound={audio} />
       </div>
-      <Link to={`/item/${uid}`} className="text-decoration-none">
-        <div className="expInfo">
-          <h6>By: {shortUsername(sellerUsername)}</h6>
-          <h6>{item.name}</h6>
-          <h6>{shortPrice(askingPrice)} ETH</h6>
-          <h6>{shortDesc(item.description)} </h6>
-        </div>
-      </Link>
+      {/* <Link to={`/item/${tokenId}`} className="text-decoration-none"> */}
+      <div className="expInfo">
+        <h6>By: {shortUsername(sellerUsername)}</h6>
+        <h6>{item.name}</h6>
+        <h6>{shortPrice(askingPrice)} ETH</h6>
+        <h6>{shortDesc(item.description)} </h6>
+      </div>
+      {/* </Link> */}
     </div>
   );
 };

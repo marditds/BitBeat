@@ -35,6 +35,7 @@ export const ItemSample = ({ uid, src, sellerUsername, name, askingPrice, bid, t
     return str && str.length > 20 ? str.substring(0, 20) + "..." : str;
   }
 
+
   return (
     <div className="d-grid justify-content-center expCSS" style={{ height: "100%" }}>
       <div className="thumbnail">

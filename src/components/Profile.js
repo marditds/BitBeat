@@ -12,6 +12,7 @@ const Profile = () => {
   const user = users && users.find((person) => person.objectId === id);
   const username = user?.username ?? "Username";
 
+  console.log(user);
 
   function shortString(str) {
     return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
@@ -38,8 +39,6 @@ const Profile = () => {
       >
         {/* COLLECTIONS TAB */}
         <Tab eventKey="Collections" title="Collections">
-
-
         </Tab>
         <Tab eventKey="Creations" title="Creations">
           <p style={{ color: "white" }}>This is the Creations tab.</p>
