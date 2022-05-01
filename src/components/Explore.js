@@ -34,9 +34,7 @@ export const ExploreList = () => {
           {itemData && itemData.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.tokenId}>
-                <Link to={`/item/${item.tokenId}`} className="text-decoration-none">
-                  <ExploreItem {...item}></ExploreItem>
-                </Link>
+                <ExploreItem {...item}></ExploreItem>
               </Col>
             );
           })}
@@ -149,7 +147,6 @@ export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPr
     setItem(json);
   }
 
-
   useEffect(() => {
     fetchData();
   }, [image, audio, item]);
@@ -178,14 +175,14 @@ export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPr
         <Image src={image ? image : avatarDefault} className="expImg" fluid style={{ height: "100%" }} />
         <Player sound={audio} />
       </div>
-      {/* <Link to={`/item/${tokenId}`} className="text-decoration-none"> */}
-      <div className="expInfo">
-        <h6>By: {shortUsername(sellerUsername)}</h6>
-        <h6>{item.name}</h6>
-        <h6>{shortPrice(askingPrice)} ETH</h6>
-        <h6>{shortDesc(item.description)} </h6>
-      </div>
-      {/* </Link> */}
+      <Link to={`/item/${tokenId}`} className="text-decoration-none">
+        <div className="expInfo">
+          <h6>By: {shortUsername(sellerUsername)}</h6>
+          <h6>{item.name}</h6>
+          <h6>{shortPrice(askingPrice)} ETH</h6>
+          <h6>{shortDesc(item.description)} </h6>
+        </div>
+      </Link>
     </div>
   );
 };
