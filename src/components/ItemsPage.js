@@ -5,6 +5,7 @@ import { Container, Image, Row, Col, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
 import { ItemSample } from "./ItemSample";
+import { Player } from "./Player";
 import avatarDefault from "../images/avatarDefault.png";
 
 export const ItemsPage = () => {
@@ -18,9 +19,26 @@ export const ItemsPage = () => {
   const sellerUsername = item?.sellerUsername ?? "BitBeat User";
   const askingPrice = item?.askingPrice ?? "0";
 
+  const [image, setImage] = useState([]);
+  const [audio, setAudio] = useState([]);
+  const [theItem, setTheItem] = useState([]);
 
-  const testData = () => {
-    console.log(item);
+  async function fetchData() {
+    const response = await fetch(item && item.tokenUri);
+    const json = await response.json();
+    setImage(json.image);
+    setAudio(json.audio);
+    setTheItem(json);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [image, audio, theItem]);
+
+  const printItem = () => {
+    console.log("all data " + item);
+    console.log("current item" + theItem);
+
   }
 
   // useEffect(() => {
@@ -50,14 +68,34 @@ export const ItemsPage = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#334756" }}>
+    <div style={{ backgroundColor: "#334756" }} className="p-4">
 
       <Container>
-        <h2 style={{ fontFamily: "Epilogue", color: "white" }} className="mb-0">NFT By: {sellerUsername}</h2>
-        <Button onClick={testData}>Click Click Click</Button>
+        <h2 style={{ fontFamily: "Epilogue", color: "white" }}>NFT By: {sellerUsername}</h2>
+        <Row>
+          <Col md={6} sm={12} >
+            <div className="d-flex justify-content-center" style={{ position: "relative" }}>
+              <Image src={image ? image : avatarDefault} className="rounded-3" fluid />
+              <Player sound={audio} />
+            </div>
+          </Col>
+          <Col style={{ color: "white" }} className="d-flex flex-column justify-content-around">
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+              <div style={{ color: "#cccccc" }}>NFT Title:</div>
+              <div style={{ fontSize: "1.5rem" }}>{theItem.name}</div>
+            </Row>
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+              <div style={{ color: "#cccccc" }}>Price:</div>
+              <div style={{ fontSize: "1.5rem" }}>{askingPrice} ETH</div>
+            </Row>
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+              <div style={{ color: "#cccccc" }}>Description:</div>
+              <div style={{ fontSize: "1.5rem" }}>{theItem.description}</div>
+            </Row>
+          </Col>
 
-        <ItemSample askingPrice={askingPrice} />
-
+        </Row>
+        <Button onClick={printItem}>Click Here</Button>
       </Container>
 
       {/* {item && ( 
@@ -113,7 +151,7 @@ export const ItemsPage = () => {
         </Row>
       </Container> 
       )}*/}
-    </div>
+    </div >
   );
 };
 

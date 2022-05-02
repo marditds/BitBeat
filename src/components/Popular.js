@@ -34,7 +34,6 @@ const Popular = ({ objectId, avatar, username, email }) => {
       />
       <div>
         <h6>{shortString(username)}</h6>
-        <h6>{shortString(email)}</h6>
       </div>
     </div>
   );
@@ -97,7 +96,7 @@ const DropButtons = () => {
         <h3 id="creators">Our Creators</h3>
       </Col>
       <Col className="d-flex justify-content-end align-items-center">
-        <Link to="/" className="text-decoration-none viewAll">
+        {/* <Link to="/" className="text-decoration-none viewAll">
           View All
         </Link>
         <DropdownButton id="dropdownToggleCSS" title={stringControl(val)} onSelect={options} >
@@ -113,7 +112,7 @@ const DropButtons = () => {
           <Dropdown.Item eventKey="Year" href="#" id="dropdownMenuCSS" >
             Year
           </Dropdown.Item>
-        </DropdownButton>
+        </DropdownButton> */}
       </Col>
     </div>
   );

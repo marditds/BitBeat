@@ -23,6 +23,7 @@ export const ExploreList = () => {
     setItemData(data);
   }, [data]);
 
+  console.log(itemData && "the number of items: " + itemData.length);
 
   return (
     <div style={{ backgroundColor: "#334756" }}>
@@ -31,7 +32,7 @@ export const ExploreList = () => {
       >
         <DropButtons />
         <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={2}>
-          {itemData && itemData.map((item) => {
+          {itemData && itemData.slice(0, 6).map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.tokenId}>
                 <ExploreItem {...item}></ExploreItem>
@@ -44,7 +45,7 @@ export const ExploreList = () => {
           <Col lg={4} md={3} sm={3} xs={2}></Col>
 
           <Col className="d-flex justify-content-center ">
-            <Link to="/" className="text-decoration-none seeMore">
+            <Link to="/discover" className="text-decoration-none seeMore">
               See More
             </Link>
           </Col>
@@ -79,7 +80,7 @@ const DropButtons = () => {
       </Col>
 
       <Col className="d-flex justify-content-end">
-        <DropdownButton
+        {/* <DropdownButton
           id="expdropdownToggleCSS"
           title={val}
           onSelect={options}
@@ -125,7 +126,7 @@ const DropButtons = () => {
           <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
             B
           </Dropdown.Item>
-        </DropdownButton>
+        </DropdownButton>*/}
       </Col>
     </Row>
   );

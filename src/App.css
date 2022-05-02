@@ -662,6 +662,7 @@ button.accordion-button.collapsed::after {
 @media (max-width: 414px) {
   .popImg {
     height: 40px;
+    width: 40px;
   }
 }
 
