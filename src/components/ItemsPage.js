@@ -77,18 +77,18 @@ export const ItemsPage = () => {
           </Col>
           <Col style={{ color: "white" }} className="d-flex flex-column justify-content-evenly">
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
-              <div style={{ color: "#cccccc" }}>NFT Title:</div>
-              <div style={{ fontSize: "1.5rem" }}>{theItem.name}</div>
+              <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>NFT Title:</div>
+              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{theItem.name}</div>
             </Row>
             <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
-              <div style={{ color: "#cccccc" }}>Price:</div>
-              <div style={{ fontSize: "1.5rem" }}>{askingPrice} ETH</div>
+              <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>Price:</div>
+              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{askingPrice} ETH</div>
             </Row>
             <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
-              <div style={{ color: "#cccccc" }}>Description:</div>
-              <div style={{ fontSize: "1.5rem" }}>{theItem.description}</div>
+              <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>Description:</div>
+              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{theItem.description}</div>
             </Row>
           </Col>
 
