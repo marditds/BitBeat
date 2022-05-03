@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "./static/css/main.55a03097.chunk.css",
-    "main.js": "./static/js/main.3f589ed3.chunk.js",
-    "main.js.map": "./static/js/main.3f589ed3.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.13e85b35.js",
-    "runtime-main.js.map": "./static/js/runtime-main.13e85b35.js.map",
-    "static/css/2.f2512455.chunk.css": "./static/css/2.f2512455.chunk.css",
-    "static/js/2.b5ef14b2.chunk.js": "./static/js/2.b5ef14b2.chunk.js",
-    "static/js/2.b5ef14b2.chunk.js.map": "./static/js/2.b5ef14b2.chunk.js.map",
-    "static/js/3.cd020a8b.chunk.js": "./static/js/3.cd020a8b.chunk.js",
-    "static/js/3.cd020a8b.chunk.js.map": "./static/js/3.cd020a8b.chunk.js.map",
+    "main.js": "./static/js/main.28e16d18.chunk.js",
+    "main.js.map": "./static/js/main.28e16d18.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.35ace2f1.js",
+    "runtime-main.js.map": "./static/js/runtime-main.35ace2f1.js.map",
+    "static/css/2.c1256375.chunk.css": "./static/css/2.c1256375.chunk.css",
+    "static/js/2.a9f1879a.chunk.js": "./static/js/2.a9f1879a.chunk.js",
+    "static/js/2.a9f1879a.chunk.js.map": "./static/js/2.a9f1879a.chunk.js.map",
+    "static/js/3.97987dcd.chunk.js": "./static/js/3.97987dcd.chunk.js",
+    "static/js/3.97987dcd.chunk.js.map": "./static/js/3.97987dcd.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/2.f2512455.chunk.css.map": "./static/css/2.f2512455.chunk.css.map",
+    "static/css/2.c1256375.chunk.css.map": "./static/css/2.c1256375.chunk.css.map",
     "static/css/main.55a03097.chunk.css.map": "./static/css/main.55a03097.chunk.css.map",
-    "static/js/2.b5ef14b2.chunk.js.LICENSE.txt": "./static/js/2.b5ef14b2.chunk.js.LICENSE.txt",
+    "static/js/2.a9f1879a.chunk.js.LICENSE.txt": "./static/js/2.a9f1879a.chunk.js.LICENSE.txt",
     "static/media/MetaMask.png": "./static/media/MetaMask.0b7c6fce.png",
     "static/media/MetaMaskWhite.png": "./static/media/MetaMaskWhite.a74034d3.png",
     "static/media/avatarDefault.png": "./static/media/avatarDefault.3158ff90.png",
@@ -29,10 +29,10 @@
     "static/media/sexOnFire.mp3": "./static/media/sexOnFire.0e5905b5.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.13e85b35.js",
-    "static/css/2.f2512455.chunk.css",
-    "static/js/2.b5ef14b2.chunk.js",
+    "static/js/runtime-main.35ace2f1.js",
+    "static/css/2.c1256375.chunk.css",
+    "static/js/2.a9f1879a.chunk.js",
     "static/css/main.55a03097.chunk.css",
-    "static/js/main.3f589ed3.chunk.js"
+    "static/js/main.28e16d18.chunk.js"
   ]
 }

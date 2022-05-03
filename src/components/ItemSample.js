@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { Player } from "./Player";
 import avatarDefault from "../images/avatarDefault.png";
 
@@ -10,22 +10,23 @@ export const ItemSample = ({ uid, src, sellerUsername, name, askingPrice, bid, t
   const [audio, setAudio] = useState([]);
   const [item, setItem] = useState([]);
 
-  async function fetchData() {
-    const response = await fetch(tokenUri);
-    const json = await response.json();
-    setImage(json.image);
-    setAudio(json.audio);
-    setItem(json);
-  }
+
 
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(tokenUri);
+      const json = await response.json();
+      setImage(json.image);
+      setAudio(json.audio);
+      setItem(json);
+    };
     fetchData();
-  }, [image, audio, item]);
+  }, [tokenUri]);
 
 
-  function shortUsername(str) {
-    return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
-  }
+  // function shortUsername(str) {
+  //   return str && str.length > 10 ? str.substring(0, 10) + "..." : str;
+  // }
 
   function shortPrice(str) {
     return str && str.length > 6 ? str.substring(0, 6) + "..." : str;

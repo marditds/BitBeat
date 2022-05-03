@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { exploreInfo, itemImages } from "../ExploreList";
-import { Container, Image, Row, Col } from "react-bootstrap";
-import { ItemModal } from "./ItemsModal";
+// import { Link } from "react-router-dom";
+// import { exploreInfo, itemImages } from "../ExploreList";
+import { Container, Row, Col } from "react-bootstrap";
+// import { ItemModal } from "./ItemsModal";
 import { ExploreItem } from "./Explore";
 import { useMoralisCloudFunction } from "react-moralis";
 

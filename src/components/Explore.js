@@ -140,17 +140,17 @@ export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPr
   const [item, setItem] = useState([]);
 
 
-  async function fetchData() {
-    const response = await fetch(tokenUri);
-    const json = await response.json();
-    setImage(json.image);
-    setAudio(json.audio);
-    setItem(json);
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(tokenUri);
+      const json = await response.json();
+      setImage(json.image);
+      setAudio(json.audio);
+      setItem(json);
+    }
+    ;
     fetchData();
-  }, [image, audio, item]);
+  }, [tokenUri]);
 
 
 

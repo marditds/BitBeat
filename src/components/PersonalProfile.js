@@ -12,8 +12,9 @@ import {
 import { useMoralis, useMoralisFile } from "react-moralis";
 import avatarDefault from "../images/avatarDefault.png";
 import { CreateItem } from "./CreateItem";
-import { ItemSample } from "./ItemSample";
-import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
+// import { ItemSample } from "./ItemSample";
+import { useMoralisCloudFunction } from "react-moralis";
+import { ExploreItem } from "./Explore";
 
 export const PersonalProfile = () => {
   const { setUserData, user, isAuthenticated } = useMoralis();
@@ -211,7 +212,7 @@ const ProfileTabs = () => {
           {itemData && itemData.map((item) => {
             return (
               <Col style={{ marginTop: "15px" }} key={item.tokenObjectId}>
-                <ItemSample {...item}></ItemSample>
+                <ExploreItem {...item}></ExploreItem>
               </Col>
             );
           })}

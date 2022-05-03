@@ -6,8 +6,6 @@ import {
   Image,
   Row,
   Col,
-  Dropdown,
-  DropdownButton,
 } from "react-bootstrap";
 import avatarDefault from "../images/avatarDefault.png";
 
@@ -86,9 +84,9 @@ const DropButtons = () => {
     setVal(e);
   };
 
-  function stringControl(str) {
-    return str && str.length < 5 ? str.substring(0, 4) + ":)" : str;
-  }
+  // function stringControl(str) {
+  //   return str && str.length < 5 ? str.substring(0, 4) + ":)" : str;
+  // }
 
   return (
     <div className="d-flex align-items-center">

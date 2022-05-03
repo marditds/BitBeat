@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { RatingView } from "react-simple-star-rating";
-import { exploreInfo, itemImages } from "../ExploreList";
-import { Container, Image, Row, Col, Button } from "react-bootstrap";
+// import { RatingView } from "react-simple-star-rating";
+// import { exploreInfo, itemImages } from "../ExploreList";
+import { Container, Image, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
-import { ItemSample } from "./ItemSample";
+import { useMoralisCloudFunction } from "react-moralis";
+// import { ItemSample } from "./ItemSample";
 import { Player } from "./Player";
 import avatarDefault from "../images/avatarDefault.png";
 
@@ -23,23 +23,17 @@ export const ItemsPage = () => {
   const [audio, setAudio] = useState([]);
   const [theItem, setTheItem] = useState([]);
 
-  async function fetchData() {
-    const response = await fetch(item && item.tokenUri);
-    const json = await response.json();
-    setImage(json.image);
-    setAudio(json.audio);
-    setTheItem(json);
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(item && item.tokenUri);
+      const json = await response.json();
+      setImage(json.image);
+      setAudio(json.audio);
+      setTheItem(json);
+    };
     fetchData();
-  }, [image, audio, theItem]);
+  }, [item]);
 
-  const printItem = () => {
-    console.log("all data " + item);
-    console.log("current item" + theItem);
-
-  }
 
   // useEffect(() => {
   //   const exploreItem = theItem && theItem.find((item) => theItem.tokenId === parseInt(id));
@@ -62,10 +56,10 @@ export const ItemsPage = () => {
   //   }
   // };
 
-  const itemChangeHandler = (id) => {
-    const changedItem = exploreInfo.find((item) => item.id === parseInt(id));
-    // setItem(changedItem);
-  };
+  // const itemChangeHandler = (id) => {
+  //   const changedItem = exploreInfo.find((item) => item.id === parseInt(id));
+  //   // setItem(changedItem);
+  // };
 
   return (
     <div style={{ backgroundColor: "#334756" }} className="p-4">
@@ -95,7 +89,7 @@ export const ItemsPage = () => {
           </Col>
 
         </Row>
-        <Button onClick={printItem}>Click Here</Button>
+
       </Container>
 
       {/* {item && ( 
@@ -154,6 +148,7 @@ export const ItemsPage = () => {
     </div >
   );
 };
+
 
 // const ItemsFromSameCreator = (item, itemChangeHandler) => {
 //   return (

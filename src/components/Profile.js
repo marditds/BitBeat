@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Container, Col, Row, Tabs, Tab, Image, Button } from "react-bootstrap";
-import { ItemSample } from "./ItemSample";
-import { useMoralisCloudFunction, useMoralisQuery } from "react-moralis";
+import React, { useState } from "react";
+import { Container, Col, Row, Tabs, Tab, Image } from "react-bootstrap";
+import { useMoralisCloudFunction } from "react-moralis";
 import { useParams } from "react-router-dom";
 import avatarDefault from "../images/avatarDefault.png";
 
