@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { Container, Col, Row, Tabs, Tab, Image } from "react-bootstrap";
+import { ExploreItem } from "./Explore";
 import { useMoralisCloudFunction } from "react-moralis";
 import { useParams } from "react-router-dom";
 import avatarDefault from "../images/avatarDefault.png";
 
 const Profile = () => {
   const { data: users } = useMoralisCloudFunction("theUsers");
+  const { data: collection } = useMoralisCloudFunction("getItems");
+
   const { id } = useParams();
 
   const user = users && users.find((person) => person.objectId === id);
   const username = user?.username ?? "Username";
 
-  console.log(user);
+  const items = collection && collection.filter((item) => item?.sellerUsername === username);
+
+  console.log(items);
 
   function shortString(str) {
     return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
@@ -32,16 +37,28 @@ const Profile = () => {
 
     return (
       <Tabs
-        className=" justify-content-center"
+        className=" justify-content-center createTabs"
         activeKey={tabTitle}
         onSelect={switchTabs}
       >
         {/* COLLECTIONS TAB */}
         <Tab eventKey="Collections" title="Collections">
+          <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={1}>
+            {items && items.map((itemInfo) => {
+              return (
+                <Col style={{ marginTop: "15px" }} key={itemInfo.tokenId}>
+                  <ExploreItem {...itemInfo} ></ExploreItem>
+                </Col>
+
+              );
+            })
+
+            }
+          </Row>
         </Tab>
-        <Tab eventKey="Creations" title="Creations">
+        {/* <Tab eventKey="Creations" title="Creations">
           <p style={{ color: "white" }}>This is the Creations tab.</p>
-        </Tab>
+        </Tab> */}
 
       </Tabs>
     );
@@ -68,7 +85,7 @@ const Profile = () => {
             />
           </Col>
           <Col className="userInfoCol">
-            <p>{shortString(username)}</p>
+            <h3 style={{ fontFamily: "Epilogue" }}>{username}'s Profile</h3>
           </Col>
         </Row>
         <ProfileTabs />

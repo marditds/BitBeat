@@ -3,13 +3,10 @@ import {
   Container,
   Row,
   Col,
-  Tab,
-  Tabs,
   Form,
   Button,
   Image,
 } from "react-bootstrap";
-import { ItemSample } from "./ItemSample";
 import thumbDefault from "../images/avatarDefault.png";
 import { Player } from "./Player";
 
@@ -65,9 +62,9 @@ export const CreateItem = () => {
     }
   };
 
-  function shortString(str) {
-    return str && str.length > 200 ? str.substring(0, 200) + "..." : str;
-  }
+  // function shortString(str) {
+  //   return str && str.length > 200 ? str.substring(0, 200) + "..." : str;
+  // }
 
   return (
     <Container>
