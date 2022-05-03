@@ -85,7 +85,7 @@ const Profile = () => {
             />
           </Col>
           <Col className="userInfoCol">
-            <h3 style={{ fontFamily: "Epilogue" }}>{username}'s Profile</h3>
+            <h3 style={{ fontFamily: "Epilogue", marginBottom: "0px" }}>{username}'s Profile</h3>
           </Col>
         </Row>
         <ProfileTabs />
