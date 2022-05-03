@@ -65,7 +65,9 @@ export const ItemsPage = () => {
     <div style={{ backgroundColor: "#334756" }} className="p-4">
 
       <Container>
-        <h2 style={{ fontFamily: "Epilogue", color: "white" }}>NFT By: {sellerUsername}</h2>
+        <Row>
+          <h2 style={{ fontFamily: "Epilogue", color: "white" }}>NFT By: {sellerUsername}</h2>
+        </Row>
         <Row>
           <Col md={6} sm={12} >
             <div className="d-flex justify-content-center" style={{ position: "relative" }}>
@@ -73,16 +75,18 @@ export const ItemsPage = () => {
               <Player sound={audio} />
             </div>
           </Col>
-          <Col style={{ color: "white" }} className="d-flex flex-column justify-content-around">
-            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+          <Col style={{ color: "white" }} className="d-flex flex-column justify-content-evenly">
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc" }}>NFT Title:</div>
               <div style={{ fontSize: "1.5rem" }}>{theItem.name}</div>
             </Row>
-            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+            <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc" }}>Price:</div>
               <div style={{ fontSize: "1.5rem" }}>{askingPrice} ETH</div>
             </Row>
-            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mt-3">
+            <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
+            <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc" }}>Description:</div>
               <div style={{ fontSize: "1.5rem" }}>{theItem.description}</div>
             </Row>

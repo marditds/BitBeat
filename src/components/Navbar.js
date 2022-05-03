@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Nav, Navbar, Form } from "react-bootstrap";
+import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
@@ -26,30 +26,47 @@ export const NavBar = () => {
         expand="lg"
         id="navbar"
       >
-        <Navbar.Brand href="/">
-          <Image src={logo} style={{ height: "80px", paddingLeft: "20px" }} />
-        </Navbar.Brand>
+        <Container>
+          <Navbar.Brand href="/">
+            <Image src={logo} style={{ height: "80px", paddingLeft: "20px" }} />
+          </Navbar.Brand>
 
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          id="navToggleButton"
-        />
-        <Navbar.Collapse
-          id="responsive-navbar-nav"
-          className="justify-content-around"
-        >
-          <Nav.Item>
-            <Nav.Link href="/discover" id="navLink">
-              Discover
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="/howitworks" id="navLink">
-              How It Works
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="align-self-center" id="searchBarSpace">
-            <Form action="/" method="get">
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            id="navToggleButton"
+          />
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-around"
+          >
+            <Nav.Item>
+              <Nav.Link href="/discover" id="navLink">
+                Discover
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/howitworks" id="navLink">
+                How It Works
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/#creators" id="navLink">
+                Our Creators
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/#explore" id="navLink">
+                Explore
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/about" id="navLink">
+                About
+              </Nav.Link>
+            </Nav.Item>
+
+            {/* <Nav.Item className="align-self-center" id="searchBarSpace">
+             <Form action="/" method="get">
               <Form.Group>
                 <Form.Control
                   type="text"
@@ -58,54 +75,55 @@ export const NavBar = () => {
                 />
                 <div className="searchPic"></div>
               </Form.Group>
-            </Form>
-          </Nav.Item>
+            </Form> 
+          </Nav.Item>*/}
 
-          <Nav.Item
-            className="wallet"
-            id="connectWallet"
-            onClick={() => authenticate()}
-            style={{ display: showConnect }}
-          >
-            Connect Wallet
-          </Nav.Item>
+            <Nav.Item
+              className="wallet"
+              id="connectWallet"
+              onClick={() => authenticate()}
+              style={{ display: showConnect }}
+            >
+              Connect Wallet
+            </Nav.Item>
 
-          <Nav.Link
-            href="/profile"
-            className="profileButton"
-            id="profileButton"
-            style={{ display: showProfile }}
-          >
-            Profile
-          </Nav.Link>
-          <Nav.Item
-            className="logOutButton"
-            id="logOutButton"
-            onClick={() => logout()}
-            style={{ display: showLogOut }}
-          >
-            Log Out
-          </Nav.Item>
-
-          <div className="navButtonSet2">
             <Nav.Link
               href="/profile"
-              className="profileButton2"
-              id="profileButton2"
+              className="profileButton"
+              id="profileButton"
               style={{ display: showProfile }}
             >
               Profile
             </Nav.Link>
             <Nav.Item
-              className="logOutButton2"
-              id="logOutButton2"
+              className="logOutButton"
+              id="logOutButton"
               onClick={() => logout()}
               style={{ display: showLogOut }}
             >
               Log Out
             </Nav.Item>
-          </div>
-        </Navbar.Collapse>
+
+            <div className="navButtonSet2">
+              <Nav.Link
+                href="/profile"
+                className="profileButton2"
+                id="profileButton2"
+                style={{ display: showProfile }}
+              >
+                Profile
+              </Nav.Link>
+              <Nav.Item
+                className="logOutButton2"
+                id="logOutButton2"
+                onClick={() => logout()}
+                style={{ display: showLogOut }}
+              >
+                Log Out
+              </Nav.Item>
+            </div>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
     </div>
   );
