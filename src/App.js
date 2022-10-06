@@ -10,7 +10,7 @@ import { Discover } from "./components/Discover";
 import { ScrollTop } from "./components/ScrollTop";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { PersonalProfile } from "./components/PersonalProfile";
-import { HowItWorks } from "./components/HowItWorks";
+import { HowItWorks } from "./components/howitworks";
 import { About } from "./components/About";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/profile" component={PersonalProfile} />
           <Route exact path="/profile/:id" children={<Profile />} />
-          <Route exact path="/item/:id" children={<ItemsPage />} />
+          <Route exact path="/item/:urlKey" children={<ItemsPage />} />
           <Route exact path="*" component={Error} />
         </Switch>
         <ScrollTop />

@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import { Link } from "react-router-dom";
-// import { exploreInfo, itemImages } from "../ExploreList";
+// import { exploreInfo, itemImages } from "../ExploreInfo";
 import { Container, Row, Col } from "react-bootstrap";
 // import { ItemModal } from "./ItemsModal";
 import { ExploreItem } from "./Explore";
-import { useMoralisCloudFunction } from "react-moralis";
+import { exploreInfo, itemImages, itemSounds } from "../ExploreInfo";
+// import { useMoralisCloudFunction } from "react-moralis";
 
 
 export const Discover = () => {
-  const { data } = useMoralisCloudFunction("getItems");
-  const [itemData, setItemData] = useState([]);
+  // const { data } = useMoralisCloudFunction("getItems");
+  // const [itemData, setItemData] = useState([]);
 
-  useEffect(() => {
-    setItemData(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setItemData(data);
+  // }, [data]);
+
+  // function shortDesc(str){
+
+  // }
 
   return (
     <div style={{ backgroundColor: "#334756" }}>
@@ -21,13 +26,32 @@ export const Discover = () => {
         style={{ paddingTop: "25px", paddingBottom: "45px" }}
       >
         <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={2}>
-          {itemData && itemData.map((item) => {
+          {exploreInfo && exploreInfo.map(({ thumbnail, sound, key, desc, ...item }) => {
             return (
-              <Col style={{ marginTop: "15px" }} key={item.tokenId}>
-                <ExploreItem {...item}></ExploreItem>
+              <Col style={{
+                marginTop: "15px"
+              }}
+                key={key}>
+                <ExploreItem {...item}
+                  urlKey={key}
+                  thumbnail={itemImages(thumbnail).default}
+                  sound={itemSounds(sound).default}
+                />
               </Col>
-            );
+            )
           })}
+          {/* {exploreInfo && exploreInfo.map(({ id, name, items }) => items.map(item => ({ id, name, ...item }))).flat().map(item =>
+            <Col style={{
+              marginTop: "15px"
+            }}
+              key={item.key} >
+              <ExploreItem name={item.name}
+                title={item.title}
+                thumbnail={itemImages(item.thumbnail).default}
+                sound={itemSounds(item.sound).default}
+                price={item.price} />
+            </Col>
+          )} */}
         </Row>
       </Container>
     </div>

@@ -3,18 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { MoralisProvider } from "react-moralis";
+// import { MoralisProvider } from "react-moralis";
 
 // const serverUrl = "https://eb2mpznt2lst.usemoralis.com:2053/server";
 // const appId = "BxHJcO08o9RgRIjsfre8gPp5GxINImJjt0wJKLk9";
 
 ReactDOM.render(
-  <MoralisProvider
-    appId="cZv9zIpMxV7r5VkyFMwGZV6rhDWAhEpiVp6kGksd"
-    serverUrl="https://acv92lhffirh.usemoralis.com:2053/server"
-  >
-    <App />
-  </MoralisProvider>,
+  // <MoralisProvider
+  // appId="cZv9zIpMxV7r5VkyFMwGZV6rhDWAhEpiVp6kGksd"
+  // serverUrl="https://acv92lhffirh.usemoralis.com:2053/server"
+  // >  {/* </MoralisProvider>, */}
+  <App />,
+
 
   document.getElementById("root")
 );

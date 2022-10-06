@@ -1,49 +1,58 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useMoralisCloudFunction } from "react-moralis";
+// import { useMoralisCloudFunction } from "react-moralis";
 import {
   Container,
   Image,
   Row,
   Col,
 } from "react-bootstrap";
-import avatarDefault from "../images/avatarDefault.png";
+import { exploreInfo, itemImages } from "../ExploreInfo";
+import { users } from "../Users";
+// import avatarDefault from "../images/avatarDefault.png";
 
-const Popular = ({ objectId, avatar, username, email }) => {
+const Popular = ({ id, avatar, name, }) => {
   function shortString(str) {
     return str && str.length > 7 ? str.substring(0, 6) + "..." : str;
   }
 
-  function profAvatar(avat) {
-    return avat ? avat._url : avatarDefault;
-  }
+  // function profAvatar(avat) {
+  //   return avat ? avat._url : avatarDefault;
+  // }
+
+  // function returnAvatar(id, avatar) {
+  //   for (let i = 0; i < exploreInfo.length; i++) {
+  //     avatar = exploreInfo[id].avatar;
+  //     return avatar;
+  //   }
+  // }
 
   return (
     <div
       className="justify-content-around d-flex align-items-center popCSS"
-      key={objectId}
+      key={id}
     >
       <h6> </h6>
       <Image
-        src={profAvatar(avatar)}
+        src={itemImages((avatar)).default}
         alt="profile_picutre"
         roundedCircle
         className="popImg"
       />
       <div>
-        <h6>{shortString(username)}</h6>
+        <h6>{shortString(name)}</h6>
       </div>
     </div>
   );
 };
 
 export const PopularList = () => {
-  const { data } = useMoralisCloudFunction("theUsers");
-  const [users, setUsers] = useState([]);
+  // const { data } = useMoralisCloudFunction("theUsers");
+  // const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    setUsers(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setUsers(exploreInfo);
+  // }, []);
 
   return (
     <Container style={{ marginTop: "25px" }}>
@@ -61,10 +70,10 @@ export const PopularList = () => {
                 xs={6}
                 className="d-felx align-self-end"
                 style={{ marginTop: "5px" }}
-                key={user.objectId}
+                key={user.userId}
               >
                 <Link
-                  to={`/profile/${user.objectId}`}
+                  to={`/profile/${user.userId}`}
                   className="text-decoration-none"
                 >
                   <Popular {...user}></Popular>
@@ -78,11 +87,11 @@ export const PopularList = () => {
 };
 
 const DropButtons = () => {
-  const [val, setVal] = useState("Today");
+  // const [val, setVal] = useState("Today");
 
-  const options = (e) => {
-    setVal(e);
-  };
+  // const options = (e) => {
+  //   setVal(e);
+  // };
 
   // function stringControl(str) {
   //   return str && str.length < 5 ? str.substring(0, 4) + ":)" : str;

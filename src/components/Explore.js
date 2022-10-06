@@ -1,30 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { exploreInfo, itemImages, itemSounds } from "../ExploreList";
+import { exploreInfo, itemImages, itemSounds } from "../ExploreInfo";
 import {
   Container,
   Image,
   Row,
   Col,
-  Dropdown,
-  DropdownButton,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Player } from "./Player";
 import { useHistory } from "react-router-dom";
-import { useMoralisCloudFunction } from "react-moralis";
-import avatarDefault from "../images/avatarDefault.png";
 
 export const ExploreList = () => {
-  const { data } = useMoralisCloudFunction("getItems");
-
-  const [itemData, setItemData] = useState([]);
-
-  useEffect(() => {
-    setItemData(data);
-  }, [data]);
-
-  console.log(itemData && "the number of items: " + itemData.length);
-
   return (
     <div style={{ backgroundColor: "#334756" }}>
       <Container
@@ -32,13 +18,46 @@ export const ExploreList = () => {
       >
         <DropButtons />
         <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={2}>
-          {itemData && itemData.slice(0, 6).map((item) => {
+          {exploreInfo && exploreInfo.slice(0, 6).map((item) => {
             return (
-              <Col style={{ marginTop: "15px" }} key={item.tokenId}>
-                <ExploreItem {...item}></ExploreItem>
+              <Col style={{ marginTop: "15px" }} key={item.key}>
+                <ExploreItem id={item.id}
+                  urlKey={item.key}
+                  name={item.name}
+                  title={item.title}
+                  price={item.price}
+                  thumbnail={itemImages(item.thumbnail).default}
+                  sound={itemSounds(item.sound).default}
+                ></ExploreItem>
               </Col>
             );
           })}
+          {/* {exploreInfo && exploreInfo.map(({ id, name, items }) => items.map(item => ({ id, name, ...item }))).flat().slice(0, 6).map(item =>
+            <Col style={{
+              marginTop: "15px"
+            }}
+              key={item.key} >
+              <ExploreItem
+                id={item.key}
+                name={item.name}
+                title={item.title}
+                thumbnail={itemImages(item.thumbnail).default}
+                sound={itemSounds(item.sound).default}
+                price={item.price} />
+            </Col>
+          )}; */}
+
+          {/* {exploreInfo && exploreInfo.map(person => person.items).flat().slice(0, 6).map(item =>
+            <Col style={{
+              marginTop: "15px"
+            }} >
+              <ExploreItem title={item.title}
+                thumbnail={itemImages(item.thumbnail).default}
+                sound={itemSounds(item.sound).default}
+                price={item.price} />
+            </Col>
+          )
+          } */}
         </Row>
 
         <Row style={{ marginTop: "30px" }}>
@@ -52,105 +71,41 @@ export const ExploreList = () => {
           <Col lg={4} md={3} sm={3} xs={2}></Col>
         </Row>
       </Container>
-    </div>
+    </div >
   );
 };
 
 const DropButtons = () => {
-  const [val, setVal] = useState("Collections");
-  const [val2, setVal2] = useState("Sale Type");
-  const [val3, setVal3] = useState("Price");
-
-  const options = (e) => {
-    setVal(e);
-  };
-
-  const options2 = (e) => {
-    setVal2(e);
-  };
-
-  const options3 = (e) => {
-    setVal3(e);
-  };
 
   return (
     <Row className="align-items-center">
       <Col>
         <h3 id="explore">Explore NFTs</h3>
       </Col>
-
-      <Col className="d-flex justify-content-end">
-        {/* <DropdownButton
-          id="expdropdownToggleCSS"
-          title={val}
-          onSelect={options}
-        >
-          <Dropdown.Item eventKey="Collections" href="#" id="dropdownMenuCSS">
-            Collections
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-            A
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-            B
-          </Dropdown.Item>
-        </DropdownButton>
-
-        <DropdownButton
-          id="expdropdownToggleCSS"
-          title={val2}
-          onSelect={options2}
-        >
-          <Dropdown.Item eventKey="Sale Type" href="#" id="dropdownMenuCSS">
-            Sale Type
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-            A
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-            B
-          </Dropdown.Item>
-        </DropdownButton>
-
-        <DropdownButton
-          id="expdropdownToggleCSS"
-          title={val3}
-          onSelect={options3}
-        >
-          <Dropdown.Item eventKey="Price" href="#" id="dropdownMenuCSS">
-            Price
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="A" href="#" id="dropdownMenuCSS">
-            A
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="B" href="#" id="dropdownMenuCSS">
-            B
-          </Dropdown.Item>
-        </DropdownButton>*/}
-      </Col>
+      <Col className="d-flex justify-content-end"></Col>
     </Row>
   );
 };
 
-export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPrice, bid, musicSrc, tokenUri }) => {
+export const ExploreItem = ({ id, thumbnail, name, title, price, sound, desc, items, urlKey }) => {
   const history = useHistory();
 
-  const [image, setImage] = useState([]);
-  const [audio, setAudio] = useState([]);
-  const [item, setItem] = useState([]);
+  // const [image, setImage] = useState([]);
+  // const [audio, setAudio] = useState([]);
+  // const [item, setItem] = useState([]);
 
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(tokenUri);
-      const json = await response.json();
-      setImage(json.image);
-      setAudio(json.audio);
-      setItem(json);
-    }
-    ;
-    fetchData();
-  }, [tokenUri]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(tokenUri);
+  //     const json = await response.json();
+  //     setImage(json.image);
+  //     setAudio(json.audio);
+  //     setItem(json);
+  //   }
+  //   ;
+  //   fetchData();
+  // }, [tokenUri]);
 
 
 
@@ -163,27 +118,27 @@ export const ExploreItem = ({ tokenId, uid, src, sellerUsername, title, askingPr
   }
 
   function shortDesc(str) {
-    return str && str.length > 20 ? str.substring(0, 20) + "..." : str;
+    return str && str.length > 36 ? str.substring(0, 36) + "..." : str;
   }
 
   return (
     <div
       className="d-grid justify-content-center expCSS"
-      onClick={() => history.push(`/item/${tokenId}`)}
+      onClick={() => history.push(`/item/${urlKey}`)}
       style={{ height: "100%" }}
     >
       <div className="thumbnail">
-        <Image src={image ? image : avatarDefault} className="expImg" fluid style={{ height: "100%" }} />
-        <Player sound={audio} />
+        <Image src={thumbnail} className="expImg" fluid style={{ height: "100%" }} />
+        <Player sound={sound} />
       </div>
-      <Link to={`/item/${tokenId}`} className="text-decoration-none">
+      <Link to={`/item/${urlKey}`} className="text-decoration-none">
         <div className="expInfo">
-          <h6>By: {shortUsername(sellerUsername)}</h6>
-          <h6>{item.name}</h6>
-          <h6>{shortPrice(askingPrice)} ETH</h6>
-          <h6>{shortDesc(item.description)} </h6>
+          <h6 class="title">{title}</h6>
+          <h6 class="price">{shortPrice(price)} ETH</h6>
+          <h6>{shortDesc(desc)} </h6>
+          <h6><span style={{ color: "#cccccc" }}>By:</span> {shortUsername(name)}</h6>
         </div>
       </Link>
-    </div>
+    </div >
   );
 };

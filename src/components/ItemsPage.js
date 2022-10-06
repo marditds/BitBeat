@@ -1,46 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import { RatingView } from "react-simple-star-rating";
-// import { exploreInfo, itemImages } from "../ExploreList";
+import { exploreInfo, itemImages, itemSounds } from "../ExploreInfo";
 import { Container, Image, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useMoralisCloudFunction } from "react-moralis";
+// import { useMoralisCloudFunction } from "react-moralis";
 // import { ItemSample } from "./ItemSample";
 import { Player } from "./Player";
-import avatarDefault from "../images/avatarDefault.png";
+// import avatarDefault from "../images/avatarDefault.png";
 
 export const ItemsPage = () => {
-  const { data } = useMoralisCloudFunction("getItems");
-  const { id } = useParams();
+  // const { data } = useMoralisCloudFunction("getItems");
+  const { urlKey } = useParams();
 
-  //const [rating, setRating] = useState({});
-  // const [sameCreatorItems, setSameCreatorItems] = useState([]);
+  const item = exploreInfo && exploreInfo.find((nft) => nft.key === +urlKey);
+  const name = item.name ?? "BitBeat User";
+  const price = item.price ?? "0";
+  const thumbnail = item.thumbnail;
+  const sound = item.sound;
 
-  const item = data && data.find((nft) => nft.tokenId === id);
-  const sellerUsername = item?.sellerUsername ?? "BitBeat User";
-  const askingPrice = item?.askingPrice ?? "0";
+  console.log(item);
 
-  const [image, setImage] = useState([]);
-  const [audio, setAudio] = useState([]);
-  const [theItem, setTheItem] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(item && item.tokenUri);
-      const json = await response.json();
-      setImage(json.image);
-      setAudio(json.audio);
-      setTheItem(json);
-    };
-    fetchData();
-  }, [item]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(item && item.tokenUri);
+  //     const json = await response.json();
+  //     setImage(json.image);
+  //     setAudio(json.audio);
+  //     setTheItem(json);
+  //   };
+  //   fetchData();
+  // }, [item]);
 
 
   // useEffect(() => {
   //   const exploreItem = theItem && theItem.find((item) => theItem.tokenId === parseInt(id));
   //   setItem(exploreItem);
   // }, [id]);
-
-
 
 
   // useEffect(() => {
@@ -66,29 +61,30 @@ export const ItemsPage = () => {
 
       <Container>
         <Row>
-          <h2 style={{ fontFamily: "Epilogue", color: "white" }}>NFT By: {sellerUsername}</h2>
+          <h2 style={{ fontFamily: "Epilogue", color: "white" }}><span style={{ color: "#cccccc" }}>NFT By:</span> {name}
+          </h2>
         </Row>
         <Row>
           <Col md={6} sm={12} >
             <div className="d-flex justify-content-center" style={{ position: "relative" }}>
-              <Image src={image ? image : avatarDefault} className="rounded-3" fluid />
-              <Player sound={audio} />
+              <Image src={itemImages(thumbnail).default} className="rounded-3" fluid />
+              <Player sound={itemSounds(sound).default} />
             </div>
           </Col>
           <Col style={{ color: "white" }} className="d-flex flex-column justify-content-evenly">
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>NFT Title:</div>
-              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{theItem.name}</div>
+              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{item.title}</div>
             </Row>
             <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>Price:</div>
-              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{askingPrice} ETH</div>
+              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{price} ETH</div>
             </Row>
             <hr className="mt-0 mb-0 pt-0 pb-0" style={{ color: "#F0A500", height: "2px" }} />
             <Row style={{ fontSize: "1.2rem" }} className="mt-lg-0 mb-lg-0 mt-3 mb-3">
               <div style={{ color: "#cccccc", fontFamily: "Epilogue" }}>Description:</div>
-              <div style={{ fontSize: "1.5rem", fontFamily: "Epilogue" }}>{theItem.description}</div>
+              <div style={{ fontSize: "1rem", fontFamily: "Epilogue" }}>{item.desc}</div>
             </Row>
           </Col>
 

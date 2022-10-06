@@ -60,11 +60,11 @@ h3 {
 .profileButton2,
 .logOutButton2 {
   font-family: Epilogue;
-  cursor: pointer;
-  color: #f0a500;
+  /* cursor: pointer; */
+  color: #334756;
   font-size: 12pt;
   text-align: center;
-  border: orange thin solid;
+  border: #334756 thin solid;
   border-radius: 15px;
   padding: 10px;
   transition: 0.3s;
@@ -246,6 +246,14 @@ h3 {
   color: #fff;
   font-family: Epilogue;
   margin-bottom: 0px;
+}
+
+.expInfo>.title {
+  color: #c8eafd;
+}
+
+.expInfo>.price {
+  color: #7691a1;
 }
 
 .expImg {

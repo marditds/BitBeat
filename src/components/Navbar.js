@@ -3,20 +3,20 @@ import { Image, Nav, Navbar, Form, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import logo from "../logo.png";
-import { useMoralis } from "react-moralis";
+// import { useMoralis } from "react-moralis";
 
 export const NavBar = () => {
-  const { authenticate, isAuthenticated, logout } = useMoralis();
+  // const { authenticate, isAuthenticated, logout } = useMoralis();
 
-  const showConnect = isAuthenticated ? "none" : "block";
-  const showProfile = isAuthenticated ? "block" : "none";
-  const showLogOut = isAuthenticated ? "block" : "none";
+  // const showConnect = isAuthenticated ? "none" : "block";
+  // const showProfile = isAuthenticated ? "block" : "none";
+  // const showLogOut = isAuthenticated ? "block" : "none";
 
-  if (!isAuthenticated) {
-    console.log("aaaaaaaaaaaaaaaaa");
-  } else {
-    console.log("bbbbbbbbbbbbbbbbb");
-  }
+  // if (!isAuthenticated) {
+  //   console.log("aaaaaaaaaaaaaaaaa");
+  // } else {
+  //   console.log("bbbbbbbbbbbbbbbbb");
+  // }
 
   return (
     <div>
@@ -81,46 +81,47 @@ export const NavBar = () => {
             <Nav.Item
               className="wallet"
               id="connectWallet"
-              onClick={() => authenticate()}
-              style={{ display: showConnect }}
+
+            // onClick={() => authenticate()}
+            // style={{ display: showConnect }}
             >
               Connect Wallet
             </Nav.Item>
 
-            <Nav.Link
+            {/* <Nav.Link
               href="/profile"
               className="profileButton"
               id="profileButton"
-              style={{ display: showProfile }}
+            style={{ display: showProfile }}
             >
               Profile
-            </Nav.Link>
-            <Nav.Item
+            </Nav.Link> */}
+            {/* <Nav.Item
               className="logOutButton"
               id="logOutButton"
-              onClick={() => logout()}
-              style={{ display: showLogOut }}
+            onClick={() => logout()}
+            style={{ display: showLogOut }}
             >
               Log Out
-            </Nav.Item>
+            </Nav.Item> */}
 
             <div className="navButtonSet2">
-              <Nav.Link
+              {/* <Nav.Link
                 href="/profile"
                 className="profileButton2"
                 id="profileButton2"
-                style={{ display: showProfile }}
+              style={{ display: showProfile }}
               >
                 Profile
-              </Nav.Link>
-              <Nav.Item
+              </Nav.Link> */}
+              {/* <Nav.Item
                 className="logOutButton2"
                 id="logOutButton2"
-                onClick={() => logout()}
-                style={{ display: showLogOut }}
+              onClick={() => logout()}
+              style={{ display: showLogOut }}
               >
                 Log Out
-              </Nav.Item>
+              </Nav.Item> */}
             </div>
           </Navbar.Collapse>
         </Container>

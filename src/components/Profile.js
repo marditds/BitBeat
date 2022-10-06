@@ -1,26 +1,32 @@
 import React, { useState } from "react";
 import { Container, Col, Row, Tabs, Tab, Image } from "react-bootstrap";
 import { ExploreItem } from "./Explore";
-import { useMoralisCloudFunction } from "react-moralis";
+import { exploreInfo, itemImages, itemSounds } from "../ExploreInfo";
+import { users } from "../Users";
+// import { useMoralisCloudFunction } from "react-moralis";
 import { useParams } from "react-router-dom";
 import avatarDefault from "../images/avatarDefault.png";
+import { ItemSample } from "./ItemSample";
 
 const Profile = () => {
-  const { data: users } = useMoralisCloudFunction("theUsers");
-  const { data: collection } = useMoralisCloudFunction("getItems");
+  // const { data: users } = useMoralisCloudFunction("theUsers");
+  // const { data: collection } = useMoralisCloudFunction("getItems");
 
   const { id } = useParams();
 
-  const user = users && users.find((person) => person.objectId === id);
-  const username = user?.username ?? "Username";
+  const user = users && users.find((person) => person.userId === id);
+  const username = users[id].name ?? "Username";
 
-  const items = collection && collection.filter((item) => item?.sellerUsername === username);
+  const items = exploreInfo && exploreInfo.filter((item) => item?.name === username);
 
-  console.log(items);
+  // const items = exploreInfo[id];
 
-  function shortString(str) {
-    return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
-  }
+  console.log(username);
+
+
+  // function shortString(str) {
+  //   return str && str.length > 25 ? str.substring(0, 25) + "..." : str;
+  // }
 
   var avatar = user?.avatar;
 
@@ -42,27 +48,43 @@ const Profile = () => {
         onSelect={switchTabs}
       >
         {/* COLLECTIONS TAB */}
-        <Tab eventKey="Collections" title="Collections">
+        <Tab eventKey="Collections" title="Creations">
           <Row xxl={6} xl={5} lg={4} md={3} sm={2} xs={1}>
-            {items && items.map((itemInfo) => {
+            {items && items.map(({ thumbnail, sound, key, desc, ...item }) => {
               return (
-                <Col style={{ marginTop: "15px" }} key={itemInfo.tokenId}>
-                  <ExploreItem {...itemInfo} ></ExploreItem>
+                <Col style={{
+                  marginTop: "15px"
+                }}
+                  key={key} >
+                  <ExploreItem {...item}
+                    urlKey={key}
+                    thumbnail={itemImages(thumbnail).default}
+                    sound={itemSounds(sound).default}
+                  />
                 </Col>
-
-              );
-            })
-
-            }
+              )
+            })}
+            {/* {items && items.map(({ id, name, items }) => items.map(item => ({ id, name, ...item }))).flat().map(item =>
+              <Col style={{
+                marginTop: "15px"
+              }}
+                key={item.key} >
+                <ExploreItem name={item.name}
+                  title={item.title}
+                  thumbnail={itemImages(item.thumbnail).default}
+                  sound={itemSounds(item.sound).default}
+                  price={item.price} />
+              </Col>
+            )} */}
           </Row>
         </Tab>
-        {/* <Tab eventKey="Creations" title="Creations">
-          <p style={{ color: "white" }}>This is the Creations tab.</p>
-        </Tab> */}
 
       </Tabs>
     );
   };
+
+
+  avatar = users[id].avatar;
 
   return (
     <div>
@@ -77,7 +99,7 @@ const Profile = () => {
         >
           <Col className="profPicCol">
             <Image
-              src={profAvatar(avatar)}
+              src={itemImages(avatar).default}
               alt="profilePicture"
               roundedCircle
               fluid
